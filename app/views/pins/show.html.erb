@@ -1,0 +1,11 @@
+<div class="text-center">
+  <h2><%= @pin.title %></h2>
+  <img width="500" src=<%= @pin.image_url %> alt=<%= @pin.title %>>
+  <p>Updated on <%= @pin.updated_at.to_s(:db) %></p>
+  <hr>
+  <%= link_to "Edit", edit_pin_path(@pin), :class => "btn btn-default"%>
+  <%= link_to "Delete", pin_path(@pin),
+    method: :delete,
+    data: {confirm: "Are you sure?"},
+    :class => "btn btn-danger"%>
+</div>

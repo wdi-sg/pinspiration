@@ -1,0 +1,6 @@
+Rails.application.routes.draw do
+  resources :boards
+  devise_for :users
+
+  root 'boards#index'
+end

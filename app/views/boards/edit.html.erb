@@ -1,0 +1,16 @@
+<h1>Editing Board</h1>
+
+<%= form_with scope: :board, url: boards_path, local: true do |form| %>
+
+	<p>
+    <%= form.label :name %><br>
+    <%= form.text_area :name %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @board %> |
+<%= link_to 'Back', boards_path %>

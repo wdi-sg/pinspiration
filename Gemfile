@@ -59,3 +59,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # generate fake data using Faker
 gem 'faker', '2.7.0'
+
+# use bootstrap
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+
+# use octicons
+gem 'octicons'
+gem 'octicons_helper'

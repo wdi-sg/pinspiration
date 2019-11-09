@@ -1,4 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<img src= <%= @pin.pin_url %> />
+
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  User:
+  <%= @pin.user.username %>
+</p>
+
 <%= link_to 'Edit', edit_pin_path(@pin) %> |
 <%= link_to 'Back', pins_path %>

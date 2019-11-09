@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Pinspiration</h1>
-
-<table>
+<div>
+	<% if user_signed_in? %>
+		<%= link_to 'New Pin', new_pin_path %> |
+		<%= link_to 'Log Out', destroy_user_session_url, method: :delete %>
+	<% else %>
+		<%= link_to 'Sign up', new_user_registration_url %> |
+		<%= link_to 'Log In', new_user_session_url %>
+	<% end %>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
 	    <th>Pin</th>
@@ -25,13 +33,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<% if user_signed_in? %>
-	<%= link_to 'New Pin', new_pin_path %> |
-	<%= link_to 'Log Out', destroy_user_session_url, method: :delete %>
-<% else %>
-	<%= link_to 'Sign up', new_user_registration_url %> |
-	<%= link_to 'Log In', new_user_session_url %>
-<% end %>

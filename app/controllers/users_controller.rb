@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @pins = Pin.all
+    @pins = Pin.all.order("created_at DESC")
   end
 
 private

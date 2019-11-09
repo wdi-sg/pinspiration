@@ -1,23 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pinspiration</h1>
+<p>
+  <strong>User:</strong>
+  <%= @user.username %>
+</p>
 
 <table>
   <thead>
     <tr>
 	    <th>Pin</th>
 	    <th>Title</th>
-	    <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @pins.each do |pin| %>
+  	<% @user.pin.each do |pin| %>
       <tr>
 	      <td><img src= <%= pin.pin_url %> height="200"/></td>
 	      <td><%= pin.title %></td>
-	      <td><%= link_to pin.user.username, user_path(id: pin.user_id) %></td>
         <td><%= link_to 'Show', pin %></td>
         <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
         <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,12 +27,4 @@
   </tbody>
 </table>
 
-<br>
-
-<% if user_signed_in? %>
-	<%= link_to 'New Pin', new_pin_path %> |
-	<%= link_to 'Log Out', destroy_user_session_url, method: :delete %>
-<% else %>
-	<%= link_to 'Sign up', new_user_registration_url %> |
-	<%= link_to 'Log In', new_user_session_url %>
-<% end %>
+<%= link_to 'Back', pins_path %>

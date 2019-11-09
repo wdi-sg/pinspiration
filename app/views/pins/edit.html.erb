@@ -1,6 +1,8 @@
-<h1>Editing Pin</h1>
-
-<%= render 'form', pin: @pin %>
-
-<%= link_to 'Show', @pin %> |
+<h1>Edit Pin</h1>
+<%= simple_form_for @pin do |f| %>
+  <%= f.input :caption %>
+  <%= f.input :category %>
+  <%= f.input :photo_url %>
+  <%= f.button :submit %>
+<% end %>
 <%= link_to 'Back', pins_path %>

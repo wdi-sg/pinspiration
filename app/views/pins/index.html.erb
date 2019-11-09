@@ -1,25 +1,24 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Pins</h1>
-
+<h1>Hello <%=@user.email%>, here are your pins</h1>
 <table>
   <thead>
     <tr>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @pins.each do |pin| %>
       <tr>
-        <td><%= link_to 'Show', pin %></td>
+        <% @pins.each do |k| %>
+          <li><%=k.caption%></li>
+          <li><%=k.category%></li>
+          <li><img src ="<%=k.photo_url%>"/></li>
+        <%end%>
         <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
         <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <%end%>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Pin', new_pin_path %>

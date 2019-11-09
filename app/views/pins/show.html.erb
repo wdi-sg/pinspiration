@@ -2,11 +2,9 @@
 <h2>You've created a new pin!</h2>
 <hr/>
 <ul>
-  <% @pins.each do |k| %>
-    <li><%=k.caption%></li>
-    <li><%=k.category%></li>
-    <li><img src ="<%=k.photo_url%>"/></li>
-  <%end%>
+  <li><%=@pin.caption%></li>
+  <li><%=@pin.category%></li>
+  <li><img src ="<%=@pin.photo_url%>"/></li>
 </ul>
 <%= link_to 'Edit', edit_pin_path(@pin) %> |
 <%= link_to 'Back', pins_path %>

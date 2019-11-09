@@ -1,24 +1,47 @@
 <p id="notice"><%= notice %></p>
-<h1>Hello <%=@user.email%>, here are your pins</h1>
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @pins.each do |pin| %>
-      <tr>
-        <% @pins.each do |k| %>
-          <li><%=k.caption%></li>
-          <li><%=k.category%></li>
-          <li><img src ="<%=k.photo_url%>"/></li>
+<% if current_user %>
+  <h1>Hello <%=@user.email%>, here are your pins</h1>
+  <div class='container'>
+    <% @pins.each_slice(3) do |pin| %>
+      <div class="row">
+        <% pin.each do |k| %>
+          <div class='col-md-4'>
+            <div class="card">
+              <img src="<%= k.photo_url%>" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><b>By:</b> <%=k.user.email%></h5>
+                <h5 class="card-title"><b>Category:</b> <%=k.category%></h5>
+                <p class="card-text"><b>Caption: </b><%=k.caption%></p>
+                <hr/>
+                <p><%= link_to 'Delete', pin_path(k), method: :delete%>
+                  <%= link_to 'Edit', edit_pin_path(k)%></p>
+              </div>
+            </div>
+          </div>
         <%end%>
-        <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
-        <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      </div>
     <%end%>
-  </tbody>
-</table>
-<br>
-<%= link_to 'New Pin', new_pin_path %>
+  </div>
+<%else%>
+  <div class ='container'>
+    <h1>Welcome to Pinspiration!</h1>
+    <h3>Browse pins by our great users below!</h3>
+    <div class='container'>
+      <% @pins.each_slice(3) do |pin| %>
+        <div class="row">
+          <% pin.each do |k| %>
+            <div class='col-md-4'>
+              <div class="card">
+                <img src="<%= k.photo_url%>" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title"><b>By:</b> <%=k.user.email%></h5>
+                  <h5 class="card-title"><b>Category:</b> <%=k.category%></h5>
+                  <p class="card-text"><b>Caption: </b><%=k.caption%></p>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        </div>
+      <%end%>
+    </div>
+  <%end%>

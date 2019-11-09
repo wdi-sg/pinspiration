@@ -59,3 +59,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # User authentication
 gem 'devise'
+
+group :development, :test do
+  gem 'ffaker'
+end

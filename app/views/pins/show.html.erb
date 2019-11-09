@@ -1,4 +1,8 @@
 <p>
+<%= link_to 'Back', root_path %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @pin.title %>
 </p>
@@ -10,8 +14,29 @@
 
 <img src="<%=@pin.url%>"/>
 <br/>
-<button><%= link_to 'Add comment', new_comment_path %></button>
 
-<p>
-<%= link_to 'Back', root_path %>
-</p>
+<h3>Comments</h3>
+<%@pin.comments.each do |comment|%>
+	<div>
+		<h4>Title: <%=comment.title%></h4>
+		<h5>Comment: <%=comment.text%></h5>
+		<h5>Posted: <%=comment.created_at%></h5>
+	</div>
+<%end%>
+<br/>
+<h3>Add comment</h3>
+	<%= form_for([@pin, @pin.comments.build]) do |form| %>
+	  <p>
+	    <%= form.label :title %><br>
+	    <%= form.text_field :title %>
+	  </p>
+
+	  <p>
+	    <%= form.label :text %><br>
+	    <%= form.text_area :text %>
+	  </p>
+
+	  <p>
+	    <%= form.submit %>
+	  </p>
+	<% end %>

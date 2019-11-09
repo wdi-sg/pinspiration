@@ -9,8 +9,10 @@
 <button><%= link_to 'Add new pin', new_pin_path %></button>
 
 <%@pins.each do |x|%>
-<p>Title: <a href=<%=pin_path(x)%>><%=x.title%></a></p>
-<p>Text: <%=x.text%></p>
-<img src="<%=x.url%>"/>
+<div>
+	<p>Title: <a href=<%=pin_path(x)%>><%=x.title%></a></p>
+	<p>Text: <%=x.text%></p>
+	<img src="<%=x.url%>"/>
+</div>
 
 <%end%>

@@ -13,11 +13,13 @@ class CommentsController < ApplicationController
   end
 
   def create
-     @pin = Pin.new(pin_params)
-     @pin.user = current_user
+     @pin = Pin.find(params[:pin_id])
+     @comment = @pin.comments.new(comment_params)
+     @comment.user = current_user
 
 
-    if @pin.save
+
+    if @comment.save
       redirect_to @pin
     else
       render 'new'
@@ -30,5 +32,8 @@ class CommentsController < ApplicationController
   def destroy
   end
 
-
+private
+  def comment_params
+    params.require(:comment).permit(:title, :text, :user_id)
+  end
 end

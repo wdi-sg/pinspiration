@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get '/dashboard', to: 'users#show'
+
 
 end

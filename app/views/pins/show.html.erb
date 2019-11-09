@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+<h2>You've created a new pin!</h2>
+<div class="card" style="width: 18rem;">
+  <img src="<%= @pin.photo_url%>" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title"><b>Category:</b> <%=@pin.category%></h5>
+    <p class="card-text"><b>Caption: </b><%=@pin.caption%></p>
+  </div>
+</div>
+<%= link_to 'Edit', edit_pin_path(@pin) %>
+<%= link_to 'Delete', pin_path(@pin), method: :delete%>
+<%= link_to 'Back', pins_path %>

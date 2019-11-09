@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+<% if current_user %>
+  <h1>Hello <%=@user.email%>, here are your pins</h1>
+  <div class='container'>
+    <% @pins.each_slice(3) do |pin| %>
+      <div class="row">
+        <% pin.each do |k| %>
+          <div class='col-md-4'>
+            <div class="card">
+              <img src="<%= k.photo_url%>" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><b>By:</b> <%=k.user.email%></h5>
+                <h5 class="card-title"><b>Category:</b> <%=k.category%></h5>
+                <p class="card-text"><b>Caption: </b><%=k.caption%></p>
+                <hr/>
+                <p><%= link_to 'Delete', pin_path(k), method: :delete%>
+                  <%= link_to 'Edit', edit_pin_path(k)%></p>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    <%end%>
+  </div>
+<%else%>
+  <div class ='container'>
+    <h1>Welcome to Pinspiration!</h1>
+    <h3>Browse pins by our great users below!</h3>
+    <div class='container'>
+      <% @pins.each_slice(3) do |pin| %>
+        <div class="row">
+          <% pin.each do |k| %>
+            <div class='col-md-4'>
+              <div class="card">
+                <img src="<%= k.photo_url%>" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title"><b>By:</b> <%=k.user.email%></h5>
+                  <h5 class="card-title"><b>Category:</b> <%=k.category%></h5>
+                  <p class="card-text"><b>Caption: </b><%=k.caption%></p>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        </div>
+      <%end%>
+    </div>
+  <%end%>

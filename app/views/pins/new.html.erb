@@ -1,5 +1,20 @@
 <h1>New Pin</h1>
 
-<%= render 'form', pin: @pin %>
+<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+	<p>
+		<%= form.label :pin_url %><br>
+		<%= form.url_field :pin_url %>
+
+	</p>
+
+	<p>
+		<%= form.label :title %><br>
+		<%= form.text_field :title %>
+	</p>
+
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>
 
 <%= link_to 'Back', pins_path %>

@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   # post 'pins' => 'pins#create'
   # get '/pins/:id' => 'pins#show', as: 'pin'
 
-  resources :pins
+  resources :pins do
+    resources :comments
+  end
 end

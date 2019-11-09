@@ -67,3 +67,5 @@ gem 'jquery-rails'
 # use octicons
 gem 'octicons'
 gem 'octicons_helper'
+
+gem 'devise'

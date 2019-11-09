@@ -1,0 +1,11 @@
+<h1>Showing Pin <%= @pin.title %></h1>
+
+<img src=<%= @pin.url %> alt=""> 
+
+
+<%= link_to 'Delete', pin_path(@pin),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %> 
+
+<%= link_to 'edit', edit_pin_path(@pin) %>
+  <%= link_to 'Back', root_path %>

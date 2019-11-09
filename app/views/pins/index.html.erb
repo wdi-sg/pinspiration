@@ -1,0 +1,10 @@
+<h1>Pinspiration</h1>
+
+<% @pins.each do |pin| %>
+<li> <a href="/pins/<%= pin.id %>"><%= pin.title %></a>  <br>
+<img src=<%= pin.url %> alt="">
+</li>
+
+<% end %>
+
+<a href="pins/new">Add a pin</a>

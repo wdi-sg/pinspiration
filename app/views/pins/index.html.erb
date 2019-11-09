@@ -1,18 +1,16 @@
-<h1>Pinspiration</h1>
 
+<div class="container-fluid mt-5" id="pins_container" >
+    <div class="card-columns" >
+    <% @pins.each do |pin| %>
+<div class="card" > 
+<a href="/pins/<%= pin.id %>"> <%=  image_tag pin.image , :class =>"img-fluid card-img-top" %> </a>
 
-<% @pins.each do |pin| %>
-<div class="card mt-3" style="width: 18rem;"> <img class="img-fluid rounded mx-auto d-block" width="300px" src=<%= pin.url %> alt="" >
-<div class="card-body">
-<div class="card-text">
-<a href="/pins/<%= pin.id %>"><%= pin.title %></a> 
-
-</div>
-</div>
 </div>
 
 <% end %>
+</div>
+</div>
 
-<a href="pins/new">Add a pin</a>
 
-<%= link_to 'log out', destroy_user_session_url, method: :delete %>
+
+

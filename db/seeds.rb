@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+10.times do
+    Pin.create(
+        title: FFaker::Book.title,
+        image_url: FFaker::Image.url,
+        user_id: 1,
+        created_at: FFaker::Time.datetime,
+        updated_at: FFaker::Time.datetime
+    )
+end

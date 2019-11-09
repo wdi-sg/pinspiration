@@ -18,6 +18,8 @@ class PinsController < ApplicationController
 
     def show
     @pin = Pin.find(params[:id])
+    @comment = Comment.new
+    @comments = @pin.comments
     end
 
     def destroy

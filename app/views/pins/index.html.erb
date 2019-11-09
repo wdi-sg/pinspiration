@@ -1,12 +1,18 @@
 <h1>Pinspiration</h1>
-<div class="container text-center">
+
 
 <% @pins.each do |pin| %>
-<li> <a href="/pins/<%= pin.id %>"><%= pin.title %></a>  <br>
-<img src=<%= pin.url %> alt="">
-</li>
+<div class="card mt-3" style="width: 18rem;"> <img class="img-fluid rounded mx-auto d-block" width="300px" src=<%= pin.url %> alt="" >
+<div class="card-body">
+<div class="card-text">
+<a href="/pins/<%= pin.id %>"><%= pin.title %></a> 
+
+</div>
+</div>
+</div>
 
 <% end %>
 
 <a href="pins/new">Add a pin</a>
-</div>
+
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>

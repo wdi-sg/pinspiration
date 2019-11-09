@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :pin       
+  has_many :comments
+
+  def username
+    return email.split('@')[0].capitalize
+  end
 end

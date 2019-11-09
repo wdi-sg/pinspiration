@@ -1,0 +1,17 @@
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @pin.text %>
+</p>
+
+<img src="<%=@pin.url%>"/>
+<br/>
+<button><%= link_to 'Add comment', new_comment_path %></button>
+
+<p>
+<%= link_to 'Back', root_path %>
+</p>

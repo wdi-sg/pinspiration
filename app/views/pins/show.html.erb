@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Imageurl:</strong>
+  <%= @pin.imageURL %>
+</p>
+
+<p>
+  <strong>Caption:</strong>
+  <%= @pin.caption %>
+</p>
+
+<p>
+  <strong>Board:</strong>
+  <%= @pin.board.name %>
+</p>
+
+<p>
+  <strong>Posted by:</strong>
+  <%= @pin.user.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<%= link_to 'Back', pins_path %>

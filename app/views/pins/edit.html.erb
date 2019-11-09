@@ -1,0 +1,24 @@
+<h1>Editing Pin</h1>
+
+<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+
+	<p>Board:</p>
+  <%= form.collection_select :board_id, @boards, :id, :name %>
+
+	<p>
+    <%= form.label :Title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :caption %><br>
+    <%= form.text_area :caption %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @pin %> |
+<%= link_to 'Back', pins_path %>

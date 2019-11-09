@@ -6,12 +6,15 @@ class PinsController < ApplicationController
   def index
     @pins = Pin.all
     @user = current_user
+    if current_user
+      @pins = current_user.pin
+    end
   end
 
   # GET /pins/1
   # GET /pins/1.json
   def show
-    @pins = Pin.all
+    @pin = Pin.find(params[:id])
   end
 
   # GET /pins/new

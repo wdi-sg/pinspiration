@@ -1,6 +1,55 @@
-<h1>hello world</h1>
+<div class="containr">
+	<h1 class="display-4 row justify-content-center">All Pins</h1>
+
+	<%= form_with scope: :pin, url: root_path, method: "get", local: true do |form| %>
+		<div class="form-group mt-3 mb-5" style="width: 20%; margin: 0 auto">
+
+	    <select name="order" class="form-control" id="exampleFormControlSelect1">
+	    	<option value="" disabled selected>Sort By</option>
+	      <option value="desc">Oldest - Newest</option>
+	      <option value="">Newest - Oldest</option>
+	    </select>
+
+	    <div class="mt-3 mb-5 text-center">
+	    	<%= form.submit "Sort", class: "btn btn-primary btn-sm" %>
+	    </div>
+
+		</div>
+	<% end %>
+
+  <div class="text-center mb-5">
+		<%= link_to 'New Pin', new_pin_path, {:class => "btn btn-outline-primary"} %>
+	</div>
+
+	<% if @order === "desc" %>
+	<% order = "asc" %>
+	<% else %>
+	<% order = "desc" %>
+	<% end %>
 
 
 
+  <% @pin.order({ created_at: order }).each do |x| %>
+  	<% time = x.created_at.localtime(utc_offset = nil) %>
+		<div class="card text-center ml-auto mr-auto mb-5" style="width: 20rem;">
+		  <img class="card-img-top" alt="image pin" src=<%= x.image %> >
+		  <div class="card-body">
+		    <h5 class="card-title"><%= x.title %></h5>
+		    <footer class="blockquote-footer">created at <cite title="Source Title"><%= x.created_at.day %>/<%= x.created_at.month %>/<%= x.created_at.year %> <%= time.strftime("%I:%M %p") %></cite></footer>
+		  </div>
+		  <div class="card-body">
 
-	<%= link_to 'New Pin', new_pin_path, {:class => "btn btn-outline-primary"} %>
+				<div class="btn-group" role="group" aria-label="Basic example">
+				  <%= link_to 'Show', pin_path(x), {:class => "btn btn-sm btn-primary"} %>
+				  <%= link_to 'Edit', edit_pin_path(x), {:class => "btn btn-sm btn-warning"} %>
+				  <%= link_to 'Delete', pin_path(x), :class => "btn btn-sm btn-secondary",
+		        method: :delete,
+		        data: { confirm: 'Are you sure?' } %>
+				</div>
+		  </div>
+		</div>
+  <% end %>
+
+
+
+</div>

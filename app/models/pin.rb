@@ -3,5 +3,5 @@ class Pin < ApplicationRecord
   belongs_to :user
 
 
-  validates :title, presence: true, length: { minimum: 3, maximum: 20 }
+  validates :title, presence: true, length: { minimum: 3, maximum: 40 }
 end

@@ -3,41 +3,63 @@ class PinsController < ApplicationController
 before_action :authenticate_user!
 
 
- def index
+  def index
+
     @pin = Pin.all
+
+    @order = params[:order]
+
+    puts @order
+
   end
 
   def show
 
-    if current_user.id === @pin.user_id
-      @pin = Pin.find(params[:id])
-    else
-      redirect_to root_path
-    end
+    @pin = Pin.find(params[:id])
+
+    @user = @pin.user
 
   end
 
   def new
+
   end
 
   def edit
+
     @pin = Pin.find(params[:id])
+
   end
 
   def create
 
     @pin = Pin.new(pin_params)
 
+    @pin.user = current_user
+
     @pin.save
-    redirect_to @pin
+
+    if @pin.save
+      redirect_to @pin
+    else
+      render 'new'
+    end
 
   end
 
   def update
     @pin = Pin.find(params[:id])
 
-    @pin.update(post_params)
-    redirect_to @pin
+    @pin.update(pin_params)
+
+    if @pin.update(pin_params)
+      redirect_to @pin
+    else
+      render action: :edit
+    end
+
+
+
   end
 
 

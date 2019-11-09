@@ -1,0 +1,25 @@
+<h1>All Pins </h1>
+
+<table class="table">
+	<tr>
+		<th>Title</th>
+		<th>Image</th>
+		<th></th>
+	</tr>
+
+	<% @pins.each do |pin| %>
+		<tr>
+			<td><%= pin.title %></td>
+      <td><%= image_tag pin.image_url,:size => "300x300" %>
+			<td><%= link_to 'Show',pin_path(pin) %></td>
+			<td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+			<td><%= link_to 'Destroy', pin_path(pin),
+				method: :delete,
+				data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'New Pin', new_pin_path %>
+<%= link_to 'Log Out', destroy_user_session_url, method: :delete %>
+<%= link_to 'Log In', new_user_session_url %>

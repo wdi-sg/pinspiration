@@ -15,11 +15,13 @@ class PinsController < ApplicationController
 
     def create
         @pin = Pin.new(pin_params)
-
         @pin.user = current_user
-
-        @pin.save
-        redirect_to @pin
+        # render plain: params.inspect
+        if @pin.save
+            redirect_to @pin
+        else
+            render :new
+        end
     end
 
     def show

@@ -2,6 +2,11 @@ class PinsController < ApplicationController
 
   before_action :authenticate_user!, :except => [ :show, :index, :home ]
 
+  def dashboard
+    @pins = current_user.pins
+    @comments = current_user.comments
+  end
+
   def index
     @pins = Pin.all
   end

@@ -3,7 +3,6 @@
   <img src="<%= @pin.img_src %>" class="img-fluid"/>
   <p>Created by <%= @pin.user.username %> <%= distance_of_time_in_words(Time.now,@pin.created_at) %> ago</p>
 	<hr class="my-4">
-<% if user_signed_in? %>
 	<div class="container">
 		<p class="lead"><strong><%= @pin.comments.count %></strong> Comment(s)</p>
 		<% @pin.comments.reverse.each do |comment| %>
@@ -17,6 +16,7 @@
   			</div>
 			</div>
 		<% end %>
+<% if user_signed_in? %>
 		<p>Leave a comment</p>
 		<%= form_with scope: :comment, url: pin_comments_path(pin_id: @pin.id), local: true do |form| %>
 			<div class="form-group">

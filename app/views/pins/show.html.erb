@@ -6,7 +6,8 @@
 </p>
 
 <p>
-  <img src="<%= @pin.image_url %>" style="width: 300px; height: 200px" />
+    <%= image_tag(@pin.image_url.url, alt: 'Image') if @pin.image_url? %>
+  <!-- <img src="<%= @pin.image_url %>" style="width: 300px; height: 200px" /> -->
 </p>
 
 <%= link_to 'Back to Pin Index', pins_path%>

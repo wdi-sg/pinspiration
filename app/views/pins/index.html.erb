@@ -8,7 +8,8 @@
 <% if @pins.length > 0 %>
     <% @pins.each do |pin| %>
         <p><%= link_to pin.title, pin_path(pin.id) %></p>
-        <img src="<%= pin.image_url %>" style="width: 300px; height: 200px" />
+        <%= image_tag(pin.image_url.url, alt: 'Image') if pin.image_url? %>
+        <!-- <img src="<%= pin.image_url %>" style="width: 300px; height: 200px" /> -->
     <% end %>
 <% else %>
     <p>You have no pins.</p>

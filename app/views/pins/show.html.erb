@@ -12,5 +12,24 @@
   <%= @pin.user.username %>
 </p>
 
+<%= form_with scope: :comment, model: [@pin, @comment], local: true do |form| %>
+
+	<p>
+		<%= form.label "Comment" %><br>
+		<%= form.text_field :content %>
+	</p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
+<% @pin.comments.each do |comment| %>
+	<p><%= comment.content %></p>
+	<p>by <%= link_to comment.user.username, user_path(id: comment.user_id) %></p>
+	<p><small class="text-muted"><%= comment.created_at %></small></p>
+<% end %>
+
 <%= link_to 'Edit', edit_pin_path(@pin) %> |
 <%= link_to 'Back', pins_path %>

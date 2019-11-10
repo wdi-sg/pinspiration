@@ -13,6 +13,8 @@ class PinsController < ApplicationController
   # GET /pins/1.json
   def show
     @users = User.all
+    @comment = Comment.new
+    @comments = @pin.comments
   end
 
   # GET /pins/new

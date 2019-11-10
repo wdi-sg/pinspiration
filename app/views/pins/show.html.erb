@@ -1,35 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-sm">
+		<p id="notice"><%= notice %></p>
 
-<img src= <%= @pin.pin_url %> />
+		<img class="img-fluid" src= <%= @pin.pin_url %> />
 
-<p>
-  <strong>Title:</strong>
-  <%= @pin.title %>
-</p>
+		<p>
+		  <strong>Title:</strong>
+		  <%= @pin.title %>
+		</p>
 
-<p>
-  User:
-  <%= @pin.user.username %>
-</p>
+		<p>
+		  by <%= link_to @pin.user.username, user_path(id: @pin.user_id) %>
+		</p>
 
-<%= form_with scope: :comment, model: [@pin, @comment], local: true do |form| %>
+		<p><small class="text-muted"><%= @pin.created_at %></small></p>
 
-	<p>
-		<%= form.label "Comment" %><br>
-		<%= form.text_field :content %>
-	</p>
+		<%= link_to 'Edit', edit_pin_path(@pin) %> |
+		<%= link_to 'Homepage', pins_path %>
+	</div>
 
-  <p>
-    <%= form.submit %>
-  </p>
+	<div class="col-sm">
+		<%= form_with scope: :comment, model: [@pin, @comment], local: true do |form| %>
 
-<% end %>
+			<p>
+				<%= form.label "Comment" %><br>
+				<%= form.text_area :content %>
+			</p>
 
-<% @pin.comments.each do |comment| %>
-	<p><%= comment.content %></p>
-	<p>by <%= link_to comment.user.username, user_path(id: comment.user_id) %></p>
-	<p><small class="text-muted"><%= comment.created_at %></small></p>
-<% end %>
+		  <p>
+		    <%= form.submit %>
+		  </p>
 
-<%= link_to 'Edit', edit_pin_path(@pin) %> |
-<%= link_to 'Back', pins_path %>
+		<% end %>
+
+		<% @pin.comments.each do |comment| %>
+		<div class="card">
+			<div class="card-body">
+				<p class="card-text"><%= comment.content %></p>
+				<p class="card-text">by <%= link_to comment.user.username, user_path(id: comment.user_id) %></p>
+				<p><small class="text-muted"><%= comment.created_at %></small></p>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

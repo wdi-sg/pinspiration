@@ -1,0 +1,15 @@
+<h2>Pin:</h2>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+
+<p>
+
+  <%= image_tag @pin.image_url,size: "100 x 100"%>
+</p>
+
+<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<%= link_to 'Back', pins_path %>

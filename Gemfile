@@ -60,6 +60,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # User authentication
 gem 'devise'
 
+# Add fake data
 group :development, :test do
   gem 'ffaker'
 end
+
+# Integrate Carrierwave for uploading files
+gem 'carrierwave', '~> 1.0'

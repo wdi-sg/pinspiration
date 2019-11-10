@@ -4,10 +4,7 @@
 
 		<img class="img-fluid" src= <%= @pin.pin_url %> />
 
-		<p>
-		  <strong>Title:</strong>
-		  <%= @pin.title %>
-		</p>
+		<h3><%= @pin.title %></h3>
 
 		<p>
 		  by <%= link_to @pin.user.username, user_path(id: @pin.user_id) %>
@@ -24,7 +21,7 @@
 
 			<p>
 				<%= form.label "Comment" %><br>
-				<%= form.text_area :content %>
+				<%= form.text_area :content, rows: 3, required: true %>
 			</p>
 
 		  <p>
@@ -36,7 +33,7 @@
 		<% @pin.comments.each do |comment| %>
 		<div class="card">
 			<div class="card-body">
-				<p class="card-text"><%= comment.content %></p>
+				<h6 class="card-text"><%= comment.content %></h6>
 				<p class="card-text">by <%= link_to comment.user.username, user_path(id: comment.user_id) %></p>
 				<p><small class="text-muted"><%= comment.created_at %></small></p>
 			</div>

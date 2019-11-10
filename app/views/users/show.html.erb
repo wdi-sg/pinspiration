@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @user.username %></h3>
+<h2><%= @user.username %></h2>
 <div class="container">
+	<h4>Pins</h4>
 	<div class="row">
 		<% @user.pin.each do |pin| %>
 	  <div class="col-sm-6">
@@ -12,19 +13,39 @@
 					<h6 class="card-subtitle mb-2 text-muted"><%= pin.created_at %></h6>
 					<%= link_to 'Show', pin %> | <%= link_to 'Edit', edit_pin_path(pin) %> |
 					<%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %><hr>
+					<div class="list-group">
 					<% pin.comments.each do |comment| %>
-					<div class="card">
-						<div class="card-body">
-							<p class="card-text"><%= comment.content %></p>
-							<p class="card-text">by <%= link_to comment.user.username, user_path(id: comment.user_id) %></p>
-							<p><small class="text-muted"><%= comment.created_at %></small></p>
-						</div>
-					</div>
+					  <div class="list-group-item list-group-item-action">
+					    <h6 class="mb-1"><%= comment.content %></h6>
+							<div class="d-flex w-100 justify-content-between">
+								<p class="mb-1">by <%= link_to comment.user.username, user_path(id: comment.user_id) %></p>
+								<small><%= comment.created_at %></small>
+					    </div>
+					  </div>
 					<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
 		<% end %>
 	</div>
 </div>
+<hr>
+<div class="container">
+	<h4>Comments</h4>
+	<div class="card-columns">
+		<% @user.comment.each do |comment| %>
+			<div class="card">
+				<div class="card-body">
+					<h6 class="card-title"><%= comment.content %></h6>
+					<small><%= comment.created_at %></small>
+				</div>
+				<a href="/pins/<%= comment.pin_id %>" >
+					<img src=<%= comment.pin.pin_url %> class="card-img-bottom" alt=<%= comment.pin.title %>>
+				</a>
+			</div>
+		<% end %>
+	</div>
+</div>
+<br>
 <%= link_to 'Homepage', pins_path %>

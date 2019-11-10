@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = @pin.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
-    redirect_to pin_path(@pin, notice: 'comment was successfully created.')
+    redirect_to pin_path(@pin)
   end
 
 private

@@ -1,0 +1,10 @@
+<h1>Editing Pin</h1>
+
+<%= simple_form_for @pin do |f| %>
+  <%= f.input :title %>
+  <%= f.input :image_url %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to 'Show', @pin %> |
+<%= link_to 'Back', pins_path %>

@@ -1,9 +1,5 @@
 class CommentsController < ApplicationController
 
-  def index
-    @comments = Comment.all
-  end
-
   def create
     @pin = Pin.find(params[:pin_id])
     @comment = Comment.new(comment_params)
@@ -12,10 +8,6 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to pin_path(@pin)
     end
-  end
-
-  def update
-
   end
 
   def destroy

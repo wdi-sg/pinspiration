@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <h1 class="display-4"><%= @pin.title %></h1>
   <img src="<%= @pin.img_src %>" class="img-fluid"/>
-  <p>Created by: <%= @pin.user.username %></p>
+  <p>Created by <%= @pin.user.username %> <%= distance_of_time_in_words(Time.now,@pin.created_at) %> ago</p>
 	<hr class="my-4">
 <% if user_signed_in? %>
 	<div class="container">
@@ -10,7 +10,7 @@
 			<div class="card">
   			<div class="card-body">
     			<p class="card-text"><%= comment.body %></p>
-    			<h6 class="card-subtitle mb-2 text-muted">From: <%= comment.user.username %></h6>
+    			<h6 class="card-subtitle mb-2 text-muted">Posted <%= distance_of_time_in_words(Time.now,comment.created_at) %> ago by <%= comment.user.username %></h6>
     			<% if comment.user == current_user %>
     				<%= link_to('Delete', pin_comment_path(@pin,comment), method: :delete, :class => "btn btn-danger btn-sm", data: {confirm: 'Are you sure?'})%>
   				<% end %>

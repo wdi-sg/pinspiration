@@ -1,0 +1,18 @@
+<h1 class="display-4">New Pin</h1>
+
+<%= form_with scope: :pin, model: @pin, local: true do |form| %>
+
+  <div class="form-group">
+    <%= form.label :title %><br>
+    <%= form.text_field(:title, {:class => "form-control"}) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :img_src %><br>
+    <%= form.url_field(:img_src, {:class => "form-control"}) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit({:class => "btn btn-primary"}) %>
+  </div>
+<% end %>

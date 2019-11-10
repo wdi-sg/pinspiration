@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<!-- <h1>Pins</h1> -->
+<%-#<%= link_to 'New Pin', new_pin_path %>
+
+<div class="container ">
+	<div class="card-row d-flex justify-content-around">
+
+		<% @pins.each do |pin| %>
+		<div class="card float-left justify-content-around" style="width: 18rem;">
+
+		  <img src="<%= pin.imgUrl %>" class="card-img-top" style="width: auto; height:200px;" alt="...">
+		  <div class="card-body">
+		    <h5 class="card-title"><%= pin.title %></h5>
+		    <p class="card-text"><%= pin.description %></p>
+		  </div>
+
+		  <div class="card-body">
+		    <a class="card-link"><%= link_to 'Show', pin %></a>
+		    <a class="card-link"> <%= link_to 'Edit', edit_pin_path(pin) %> </a>
+		    <a class="card-link"> <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+		  </div>
+		<br/>
+		</div>
+		<br/>
+		<% end %>
+		<br/>
+
+	</div>
+</div>

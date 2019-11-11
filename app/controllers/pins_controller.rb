@@ -17,6 +17,7 @@ class PinsController < ApplicationController
   def new
     @pin = Pin.new
     @boards = Board.all
+
   end
 
   # GET /pins/1/edit
@@ -28,6 +29,7 @@ class PinsController < ApplicationController
   # POST /pins.json
   def create
     @pin = Pin.new(pin_params)
+
     @pin.user = current_user
 
     respond_to do |format|

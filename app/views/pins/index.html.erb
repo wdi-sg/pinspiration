@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Pins</h1>
-
-<table>
+<%= link_to 'New Pin', new_pin_path, :class => "btn btn-primary" %>
+<br>
+<br>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -31,5 +33,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Pin', new_pin_path %>

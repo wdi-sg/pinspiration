@@ -1,0 +1,22 @@
+<h1> Welcome to PinThing!</h1>
+
+<% if user_signed_in? %>
+	<button><%= link_to 'log out', destroy_user_session_url, method: :delete %></button> <br/><br/>
+	<button><%= link_to 'my dashboard', '/dashboard' %>
+<%else%>
+	<button><%= link_to 'log in', new_user_session_url %></button> <br/><br/>
+<%end%>
+
+<button><%= link_to 'Add new pin', new_pin_path %></button>
+
+<%@pins.each do |x|%>
+<div>
+	<p>Title: <a href=<%=pin_path(x)%>><%=x.title%></a></p>
+	<p>Text: <%=x.text%></p>
+	<img src="<%=x.url%>"/>
+	<td><%= link_to 'Remove pin', pin_path(x),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+</div>
+
+<%end%>

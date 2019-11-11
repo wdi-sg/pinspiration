@@ -1,0 +1,23 @@
+<h1>Listing posts</h1>
+
+<% if user_signed_in? %>
+<%= link_to 'New Pin', new_pin_path %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Image_url</th>
+    <th></th>
+  </tr>
+
+  <% @pins.each do |pin| %>
+    <tr>
+      <td><%= pin.title %></td>
+      <td><%= image_tag pin.image_url,:size => "150x150" %></td>
+      <td><%= link_to 'Show', pin_path(pin) %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>
+<%= link_to 'log in', new_user_session_url %>

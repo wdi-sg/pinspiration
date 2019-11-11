@@ -1,0 +1,11 @@
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>img_url:</strong>
+  <%= image_tag @pin.image_url,:size => "105x150" %>
+</p>
+
+<%= link_to 'Back', root_path %>

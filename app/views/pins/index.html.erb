@@ -1,0 +1,16 @@
+
+<div class="container-fluid mt-5" id="pins_container" >
+    <div class="card-columns" >
+    <% @pins.each do |pin| %>
+<div class="card" > 
+<a href="/pins/<%= pin.id %>"> <%=  image_tag pin.image , :class =>"img-fluid card-img-top" %> </a>
+
+</div>
+
+<% end %>
+</div>
+</div>
+
+
+
+

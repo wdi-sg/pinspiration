@@ -1,0 +1,27 @@
+
+<div class="container text-center">
+<h1>Edit <%= @pin.title%></h1>
+
+
+
+
+<%= form_with scope: :pin, model: @pin, local: true do |form| %>
+
+  <p>
+    <%= form.label :Title %><br>
+    <%= form.text_field :title, :class => 'form-control'%>
+  </p>
+  <p>
+    <%= form.label :URL %><br>
+    <%= form.text_field :url, :class => 'form-control' %>
+  </p>
+
+
+  <p>
+    <%= form.submit 'Edit Pin', :class => 'btn btn-outline-secondary ' %>
+  </p>
+<% end %>
+
+</div>
+
+

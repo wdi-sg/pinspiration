@@ -1,0 +1,29 @@
+<div class="container text-center mt-5">
+  <h1>Add A New Pin</h1>
+
+<div class="form-group">
+  <%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+  <p>
+    <%= form.label :Title %><br>
+    <%= form.text_field :title, :class => 'form-control' %>
+  </p>
+
+  <p>
+    <%= form.label :Description %><br>
+    <%= form.text_area :description, :class => 'form-control' %>
+  </p>
+ 
+<%= form.label :Image %>
+<%= form.file_field :image, :class => 'form-control-file text-center' %>
+<br>
+<br>
+  <p>
+    <%= form.submit 'Add Pin', :class => 'btn btn-success btn-lg' %>
+  </p>
+
+  <%= link_to 'Back', root_path %>
+<% end %>
+</div>
+
+</div>
+

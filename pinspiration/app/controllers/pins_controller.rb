@@ -18,6 +18,10 @@ class PinsController < ApplicationController
   def new
 
     @pin = Pin.new
+    @pin.user = current_user
+     if current_user
+      @pins = current_user.pin
+    end
   end
 
   # GET /pins/1/edit

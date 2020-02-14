@@ -16,7 +16,7 @@
     <% @pins.each do |pin| %>
       <tr>
         <td><%= pin.title %></td>
-        <td><%= pin.img_url %></td>
+        <td><%= image_tag pin.img_url %></td>
         <td><%= pin.user.username %></td>
         <td><%= link_to 'Show', pin %></td>
         <td><%= link_to 'Edit', edit_pin_path(pin) %></td>

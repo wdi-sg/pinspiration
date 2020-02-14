@@ -1,6 +1,9 @@
 class PinsController < ApplicationController
+
+    before_action :authenticate_user!, :except => [ :show, :index ]
+
     def index
-        render plain: 'hellloooo'
+
     end
   
     def show

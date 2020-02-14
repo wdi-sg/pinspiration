@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  has_many :pin
+  has_many :pins
+  has_many :comments
+
   attr_writer :login
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

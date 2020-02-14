@@ -12,6 +12,7 @@ class PinsController < ApplicationController
   # GET /pins/1.json
   def show
     @pin = Pin.find(params[:id])
+    @comments = @pin.comments
   end
 
   # GET /pins/new

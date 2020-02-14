@@ -15,5 +15,31 @@
   <%= image_tag @pin.img_url %>
 </p>
 
+<p>
+  <strong>Comments:</strong></p>
+<ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.body %><br />
+    Posted by <%= comment.user.username %> on some date.
+    <td><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <br/></li>
+  <% end %>
+
+<%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+
+  <p>
+    Write a comment:<br/>
+    <%= form.label :body %><br>
+    <%= form.text_field :body %>
+  </p>
+
+    <%= form.hidden_field :pin_id, value: @pin.id %>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
 <%= link_to 'Edit', edit_pin_path(@pin) %> |
 <%= link_to 'Back', pins_path %>

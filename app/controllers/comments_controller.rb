@@ -15,7 +15,7 @@ before_action :authenticate_user!
   def destroy
   end
   private
-    def board_params
-      # params.require(:kopi).permit(:name, :origin_id,:roast_id,:user_id)
+    def comment_params
+    params.require(:comment).permit(:body,:user_id,:pin_id)
     end
 end

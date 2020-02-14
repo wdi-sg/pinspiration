@@ -1,0 +1,13 @@
+<h2>Edit Pinspiration</h2>
+
+<%= form_with scope: :pin, model: @pin, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', pins_path %>

@@ -1,0 +1,23 @@
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Photo :</strong>
+  <%= image_tag@pin.media_url %>
+</p>
+
+<p>
+  <strong>Created on:</strong>
+  <%= @pin.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %>
+</p>
+
+<p>
+  <strong>Updated on:</strong>
+  <%= @pin.updated_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %>
+</p>
+
+
+<%= link_to 'Back', root_path %>
+<%= link_to 'Edit', edit_pin_path(@pin) %>

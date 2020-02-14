@@ -1,5 +1,6 @@
 class PinsController < ApplicationController
     def index
+        render plain: 'hellloooo'
     end
   
     def show

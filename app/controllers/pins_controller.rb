@@ -70,11 +70,14 @@ class PinsController < ApplicationController
   # DELETE /pins/1.json
   def destroy
     @pin = Pin.find(params[:id])
-    if @pin
-    @pin.destroy
-    respond_to do |format|
-      format.html { redirect_to pins_url, notice: 'Pin was successfully destroyed.' }
-      format.json { head :no_content }
+    if @pin.user == current_user
+      @pin.destroy
+      respond_to do |format|
+        format.html { redirect_to pins_url, notice: 'Pin was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to @pin, notice: 'Cannot Delete'
     end
   end
 

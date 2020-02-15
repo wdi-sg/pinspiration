@@ -1,16 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'boards/new'
-  get 'boards/index'
-  get 'boards/create'
-  get 'dashboard/index'
-  # get 'comments/show'
-  # post 'comments/new'
-  # get 'comments/edit'
-  # get 'comments/create'
-  # get 'comments/update'
-  # get 'comments/destroy'
-
+  resources :boards
   resources :comments
   resources :pins
   devise_for :users

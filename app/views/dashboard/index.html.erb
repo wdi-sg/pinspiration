@@ -1,10 +1,23 @@
 <h1>Welcome to Pinspiration!</h1>
 
+
+<div>
+  <%= link_to new_pin_path,
+    class: "waves-effect waves-light btn-large" do %>
+      <i class="material-icons left">create</i>new pin
+  <% end %>
+  <%= link_to new_board_path,
+    class: "waves-effect waves-light btn-large" do %>
+      <i class="material-icons left">dashboard</i>new board
+  <% end %>
+</div>
 <div>
   <h2>Your Boards</h2>
   <% @boards.each_with_index do |board, ix| %>
-    
+    <p><%= link_to board, board.name %>
   <% end %>
+  </div>
+  <div>
   <h2>Your Pins</h2>
   <% @pins.each_with_index do |pin, ix| %>
       <% if ix % 3 == 0 %>
@@ -21,7 +34,10 @@
             <%= link_to 'Show', pin, class: "waves-effect waves-light btn-small"%>
             <% if user_signed_in? && pin.user_id == current_user.id %>
               <%= link_to 'Edit', edit_pin_path(pin), class: "waves-effect waves-light btn-small" %>
-              <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn-small" %>
+              <%= link_to 'Destroy',
+                pin, method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: "waves-effect waves-light btn-small" %>
             <% end %>
           </div>
         </div>
@@ -32,7 +48,9 @@
     <% end %>
 </div>
 
-<h2>Your Comments</h2>
-<% @comments.each do |comment| %>
-  <p><%= link_to comment.body, comment.pin %>
-<% end %>
+<div>
+  <h2>Your Comments</h2>
+  <% @comments.each do |comment| %>
+    <p><%= link_to comment.body, comment.pin %>
+  <% end %>
+</div>

@@ -1,4 +1,10 @@
 class BoardsController < ApplicationController
+  before_action :authenticate_user!, :except => [ :show, :index ]
+
+  def show
+    @board = Board.find(params[:id])
+  end
+
   def new
   end
 
@@ -8,13 +14,11 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     @board.user = current_user
-    respond_to do |format|
-      if @board.save
-        format.html { redirect_to @board, notice: 'Board Created' }
-        format.json { render :show, status :ok, location: @board }
-      else
-        p "whoopsy doopsy"
-      end
+
+    if @board.save
+      redirect_to @board
+    else
+      p "error"
     end
   end
 

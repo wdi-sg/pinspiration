@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <img class="pin-img" src=<%= @pin.url %>>
+</p>
+
+<p>
+  <strong>Posted by:</strong>
+  <%= @pin.user.email %>
+</p>
+
+<p>
+<strong>Comments:
+</strong>
+</p>
+
+<p>
+<% @comments.each do |comment| %>
+<p><%= comment.user.email %>: <%= comment.body %> <%= comment.created_at %></p>
+<% end %>
+</p>
+
+<p>
+<%= link_to "New comment", new_comment_path %>
+</p>
+
+<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<%= link_to 'Back', pins_path %>

@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<h1>Pins</h1>
+<% if user_signed_in? %>
+  <p><%= link_to 'New Pin', new_pin_path %></p>
+<% else %>
+  <p><%= link_to 'Sign In', "/users/sign_in" %></p>
+<% end %>
+<% @pins.each do |pin| %>
+  <a class="mr-5" href="/pins/<%= pin.id %>"><img class="pin-img" src=<%= pin.url %>></a>
+<% end %>
+<% if user_signed_in? %>
+  <p><%= link_to 'Log Out', destroy_user_session_url, method: :delete %></p>
+<% end %>

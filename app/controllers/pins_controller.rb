@@ -8,6 +8,7 @@ class PinsController < ApplicationController
 
   def show
     @pin = Pin.find(params[:id])
+    @comments = @pin.comments
   end
 
   def new

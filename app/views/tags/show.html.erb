@@ -1,0 +1,5 @@
+<p>All pins tagged with: <%= @tag.name %></p>
+
+<% @pins.each do |pin| %>
+<a href="/pins/<%= pin.id%>"><img class="pin-img" src="<%= pin.url %>"></a>
+<% end %>

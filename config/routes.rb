@@ -15,4 +15,9 @@ Rails.application.routes.draw do
   get "/boards/:id" => "boards#show", as: "board"
   get "/boards" => "boards#index"
   delete "/boards/:id" => "boards#destroy"
+
+  get "/tags" => "tags#index"
+  get "/tags/new" => "tags#new", as: "new_tag"
+  get "/tags/:id" => "tags#show"
+  post "/tags/" => "tags#create"
 end

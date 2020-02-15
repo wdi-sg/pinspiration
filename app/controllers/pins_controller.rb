@@ -37,6 +37,8 @@ class PinsController < ApplicationController
     @pin = Pin.new(pin_params)
     @pin.user = current_user
     @pin.board_id = 1
+    # TODO: allow an empty or not present board ID
+    # so you can just add pins without them being attached to a board
     respond_to do |format|
       if @pin.save
         format.html { redirect_to @pin, notice: 'Pin was successfully created.' }

@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 
   get "/pins/:id/comments/new" => "comments#new", as: "new_comment"
   post "/pins/:id/comments/new" => "comments#create", as: "comments"
-  get "/pins/:id/add" => "pins#add"
-  post "/pins/:id/add" => "pins#add_to_board", as: "add_to_boards"
+  get "/pins/:id/boards/add" => "pins#add"
+  post "/pins/:id/boards/add" => "pins#add_to_board", as: "add_to_boards"
+  get "/pins/:id/tags/add" => "pins#add_tag"
+  post "/pins/:id/tags/add" => "pins#create_tag", as: "add_tag"
 
   get "/boards/new" => "boards#new", as: "new_board"
   post "/boards/new" => "boards#create", as: "boards"

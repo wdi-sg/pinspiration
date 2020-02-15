@@ -30,6 +30,17 @@ class PinsController < ApplicationController
     @boards = current_user.board
   end
 
+  def add_tag
+
+  end
+
+  def create_tag
+    @pin = Pin.find(params[:id])
+    tag = Tag.create(tag_params)
+    @pin.tags.push(tag)
+    redirect_to root_path
+  end
+
   def add_to_board
     @pin = Pin.find(params[:id])
     @pin.board = Board.find(params["board"]["board_id"])
@@ -91,6 +102,10 @@ class PinsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_pin
     @pin = Pin.find(params[:id])
+  end
+
+  def tag_params
+    params.require(:tag).permit(:name)
   end
 
   # Only allow a list of trusted parameters through.

@@ -30,7 +30,8 @@
 </p>
 
 <p>
-<%= link_to "Add to board", "/pins/" + @pin.id.to_s + "/add" %>
+<%= link_to "Add to board", "/pins/" + @pin.id.to_s + "/boards/add" %>
+<%= link_to "Add tag", "/pins/" + @pin.id.to_s + "/tags/add" %>
 </p>
 
 <%= link_to 'Edit', edit_pin_path(@pin) %> |

@@ -36,7 +36,7 @@ class PinsController < ApplicationController
   def create
     @pin = Pin.new(pin_params)
     @pin.user = current_user
-
+    @pin.board_id = 1
     respond_to do |format|
       if @pin.save
         format.html { redirect_to @pin, notice: 'Pin was successfully created.' }

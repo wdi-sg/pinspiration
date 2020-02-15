@@ -3,5 +3,6 @@ class DashboardController < ApplicationController
   def index
     @pins = Pin.where("user_id = ?", current_user.id)
     @comments = Comment.where("user_id = ?", current_user.id)
+    @boards = Board.where("user_id = ?", current_user.id)
   end
 end

@@ -1,6 +1,10 @@
 <h1>Welcome to Pinspiration!</h1>
 
 <div>
+  <h2>Your Boards</h2>
+  <% @boards.each_with_index do |board, ix| %>
+    
+  <% end %>
   <h2>Your Pins</h2>
   <% @pins.each_with_index do |pin, ix| %>
       <% if ix % 3 == 0 %>

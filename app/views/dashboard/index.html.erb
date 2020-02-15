@@ -1,0 +1,11 @@
+<h1>Dashboard#index</h1>
+
+<h2>Pins</h2>
+<% @pins.each do |pin| %>
+  <p><%= pin.title %></p>
+<% end %>
+
+<h2>Comments</h2>
+<% @comments.each do |comment| %>
+  <p><%= comment.body %>
+<% end %>

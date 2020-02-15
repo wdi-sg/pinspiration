@@ -20,7 +20,7 @@
 <ul>
   <% @comments.each do |comment| %>
     <li><%= comment.body %><br />
-    Posted by <%= comment.user.username %> on some date.
+    Posted by <%= comment.user.username %> <%= time_ago_in_words(comment.created_at) %> ago.
     <td><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <br/></li>
   <% end %>

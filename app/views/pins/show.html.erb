@@ -9,8 +9,6 @@
   <%= image_tag(url_for(@pin.url), {:class=>"pin-img"}) %>
 </p>
 
-
-
 <p>
   <strong>Posted by:</strong>
   <%= @pin.user.email %>
@@ -23,7 +21,7 @@
 
 <p>
 <% @comments.each do |comment| %>
-<p><%= comment.user.email %>: <%= comment.body %> <%= comment.created_at %></p>
+<p><%= comment.user.email %>: <%= comment.body %> <i><%= time_ago_in_words(comment.created_at) %> ago</i></p>
 <% end %>
 </p>
 

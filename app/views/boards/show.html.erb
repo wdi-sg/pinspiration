@@ -2,7 +2,9 @@
 <p class="d-inline">by <%= @board.user.email%></p>
 <p>
   <% @board.pins.each do |pin| %>
-    <p class="d-inline"><img class="pin-img mr-2" src="<%= pin.url %>"></p>
+    <p class="d-inline"><p>
+  <%= image_tag(url_for(pin.url), {:class=>"pin-img"}) %>
+</p></p>
   <% end %>
 </p>
 <% if @board.user == current_user%>

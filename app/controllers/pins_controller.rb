@@ -2,11 +2,12 @@ class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+
+
   # GET /pins
   # GET /pins.json
   def index
     @pins = Pin.all()
-    @comments = current_user.comment
   end
 
   # GET /pins/1

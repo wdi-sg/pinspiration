@@ -2,15 +2,20 @@
 
 <h1>Listing pins</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Photo</th>
-    <th>Date created on</th>
-    <th>Date updated on</th>
-  </tr>
-
-  <% @pins.each do |pin| %>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Created on</th>
+      <th scope="col">Updated on</th>
+      <th scope="col">Show</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  	  <% @pins.each do |pin| %>
     <tr>
       <td><%= pin.title %></td>
       <td><%= image_tag pin.media_url %></td>
@@ -23,6 +28,7 @@
         data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
+  </tbody>
 </table>
 
 

@@ -46,7 +46,7 @@ class PinsController < ApplicationController
   end
 
   def destroy
-      @pin = Pin.find(params[:id])
+    @pin = Pin.find(params[:id])
       if @pin.user == current_user
         @pin.destroy
         redirect_to root_path

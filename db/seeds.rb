@@ -5,18 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+require 'ffaker'
 # Seeding users
-tyle = User.create(
- :username => 'Tyle325', :email=>'tyle@email.com', :password=>'password325'
-)
-user = User.create(
-:username => 'auser', :email => 'user@email.com', :password => 'password123')
+10.times do
+     User.create(
+        username: FFaker::Internet.user_name,
+        email: FFaker::Internet.email,
+        password: 'password123',
+      )
+end
+
 # Seeding pins
-tyle.pins.create(:title=>"Origami", :media_url=> 'https://www.phgmag.com/wp-content/uploads/2018/09/PHG1018Origami05.jpg')
+User.first.pins.create(:title=>"Origami", :media_url=> 'https://www.phgmag.com/wp-content/uploads/2018/09/PHG1018Origami05.jpg')
 
 # Seeding comments
-user.comments.create(:body=>"auser commenting", :pin_id=>'1')
+User.first.comments.create(:body=>"auser commenting", :pin_id=>'1')
 
  # Seeding boards
-user.boards.create(:name=>"Origami collections")
+User.first.boards.create(:name=>"Origami collections")

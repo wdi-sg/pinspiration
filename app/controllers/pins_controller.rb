@@ -2,16 +2,18 @@ class PinsController < ApplicationController
   # before_action :set_pin, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-
   # GET /pins
   # GET /pins.json
   def index
+
     @pins = Pin.all
   end
 
   # GET /pins/1
   # GET /pins/1.json
   def show
+    @pins = Pin.find(params[:id])
+
   end
 
   # GET /pins/new
@@ -26,15 +28,22 @@ class PinsController < ApplicationController
   # POST /pins
   # POST /pins.json
   def create
-    @pin = Pin.new(pin_params)
-
-    respond_to do |format|
+    if current_user
+      byebug
+      @user_id = current_user.id.to_s
+      puts 'Current User ID is:' + @user_id
+      @pin = Pin.new(title: pin_params[:title], image: pin_params[:image], user_id: @user_id)
+      @pin.save
+    # respond_to do |format|
       if @pin.save
-        format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
-        format.json { render :show, status: :created, location: @pin }
+        redirect_to '/pins'
+        # format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
+        # format.json { render :show, status: :created, location: @pin }
       else
-        format.html { render :new }
-        format.json { render json: @pin.errors, status: :unprocessable_entity }
+        puts @pin.errors.messages
+        redirect_to '/pins/new'
+        # format.html { render :new }
+        # format.json { render json: @pin.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,7 +65,8 @@ class PinsController < ApplicationController
   # DELETE /pins/1
   # DELETE /pins/1.json
   def destroy
-    @pin.destroy
+      @pin = Pin.find(params[:id])
+      @pin.destroy
     respond_to do |format|
       format.html { redirect_to pins_url, notice: 'Pin was successfully destroyed.' }
       format.json { head :no_content }

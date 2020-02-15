@@ -4,16 +4,17 @@ class UsersController < ApplicationController
 
   # GET /boards
   def index
-    @pins = Pin.all
+    @users = User.all
   end
 
   # GET /boards/1
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /boards/new
   def new
-    @pin = Pin.new
+    @user = User.new
   end
 
   # GET /boards/1/edit
@@ -45,6 +46,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:title, :user)
+      params.require(:user).permit(:id, :username)
     end
 end

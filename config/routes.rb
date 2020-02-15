@@ -10,11 +10,12 @@ Rails.application.routes.draw do
   patch '/pins/:id' => 'pins#update'
   delete '/pins/:id' => 'pins#destroy'
 
-  get '/comments' => 'comments#index', as: 'comments'
+  get 'dashboard/pins' => 'pins#created', as: 'user_pin'
+  get '/dashboard/comments' => 'comments#index', as: 'comments'
   get '/comments/new' => 'comments#new' , as: 'new_comment'
   get '/comments/:id/edit' => 'comments#edit', as: 'edit_comment'
   get '/comments/:id' => 'comments#show', as: 'comment'
-  post '/comments' => 'comments#create'
+  post '/dashboard/comments' => 'comments#create'
   patch '/comments/:id' => 'comments#update'
   delete '/comments/:id' => 'comments#destroy'
 

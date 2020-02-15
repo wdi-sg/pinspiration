@@ -11,10 +11,13 @@
 
   <body>
   	<ul>
-  <li><%= link_to 'Pinspiration', pins_path %></li>
-  <li><%= link_to 'Create pin', new_pin_path %></li>
-  <li style="float:right"><%= link_to 'logout', destroy_user_session_url, method: :delete %></li>
-</ul>
+  	<% if user_signed_in? %>
+	 <%= render :partial =>"shared/signin"%>
+		<%else%>
+		<%= render "shared/signout"%>
+			<% end %>
+  	</ul>
     <%= yield %>
+
   </body>
 </html>

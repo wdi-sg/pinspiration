@@ -21,6 +21,9 @@ before_action :authenticate_user!
         render 'new'
       end
     end
+    def created
+    @pin = Pin.where(:user_id=>current_user.id)
+    end
   def update
     @pin = Pin.find(params[:id])
     if current_user.id == @pin.user_id

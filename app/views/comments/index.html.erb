@@ -1,0 +1,9 @@
+<h2>Dashboard</h2>
+<% @pin.each do |pin| %>
+<p><%= pin.title%></p>
+<p><%= image_tag pin.media_url%></p>
+<% pin.comment.each do |comment| %>
+<p><%= comment.body%></p>
+<% end %>
+<% end %>
+</table>

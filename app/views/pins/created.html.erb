@@ -1,0 +1,6 @@
+<h1><%=session[:username]%>'s post</h1>
+<% @pin.each do |pin| %>
+<%= link_to edit_pin_path(pin.id) do%>
+<%=image_tag pin.media_url%>
+<% end %>
+<% end %>

@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
+
+  def after_sign_in_path_for(resource)
+    @user = User.find(current_user.id).username
+    session[:username] = @user
+    pins_path
+  end
 end

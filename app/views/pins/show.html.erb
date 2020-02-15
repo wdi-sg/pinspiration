@@ -4,4 +4,15 @@
 <%= link_to "Delete", pin_path(@pin.id),
         method: :delete,
         data: { confirm: 'Are you sure?' }%>
+
+<%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+<%= form.hidden_field :pin_id, :value => @pin.id %>
+  <p>
+    <%= form.label :Comment %><br>
+    <%= form.text_area:body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
 <%= link_to "Back", pins_path %>

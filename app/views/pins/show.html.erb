@@ -10,7 +10,24 @@
   <%= @pin.url %>
 </p>
 
+<%= form_with scope: :comment, url: comment_path, local: true do |comment| %>
 
+    <p>
+    <%= comment.label :comment %>
+    <%= comment.text_field :body %>
+    </p>
+
+    <p>
+    <%= comment.submit %>
+  </p>
+
+<% end %>
+
+<h1>Comments</h1>
+
+<% @comments.each do |comment| %>
+  <p><%= comment.user.username %>: <%= comment.body %></p>
+<% end %>
 
 <%= link_to 'Edit', edit_pin_path(@pin) %> |
 <%= link_to 'Back', pins_path %>

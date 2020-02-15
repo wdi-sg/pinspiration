@@ -24,6 +24,11 @@
   </tbody>
 </table>
 
+<h1>My Comments</h1>
+<% @comments.each do |comment| %>
+<p>Comment: <%= comment.body %> @ pin: <%= comment.pin.title %> <%= link_to "Go to pin", "/pins/"+comment.pin.id.to_s %></p>
+<% end %>
+
 <br>
 
 <%= link_to 'New Pin', new_pin_path %>

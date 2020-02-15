@@ -6,11 +6,14 @@ class PinsController < ApplicationController
   # GET /pins.json
   def index
     @pins = Pin.all
+    @comments = current_user.comment
   end
 
   # GET /pins/1
   # GET /pins/1.json
   def show
+    @pin = Pin.find(params[:id])
+    @comments = @pin.comment.all()
   end
 
   # GET /pins/new
@@ -25,18 +28,19 @@ class PinsController < ApplicationController
   # POST /pins
   # POST /pins.json
   def create
-    @pin = Pin.new(pin_params)
-    @pin.user = current_user
 
-    respond_to do |format|
-      if @pin.save
-        format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
-        format.json { render :show, status: :created, location: @pin }
-      else
-        format.html { render :new }
-        format.json { render json: @pin.errors, status: :unprocessable_entity }
+      @pin = Pin.new(pin_params)
+      @pin.user = current_user
+
+      respond_to do |format|
+        if @pin.save
+          format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
+          format.json { render :show, status: :created, location: @pin }
+        else
+          format.html { render :new }
+          format.json { render json: @pin.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PATCH/PUT /pins/1

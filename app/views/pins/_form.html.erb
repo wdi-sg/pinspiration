@@ -16,6 +16,8 @@
     <%= form.text_area :title %>
   </div>
 
+  <%= form.hidden_field :body, :value => [] %>
+
   <div class="field">
     <%= form.label :url %>
     <%= form.text_area :url %>

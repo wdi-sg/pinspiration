@@ -6,8 +6,10 @@
 </p>
 
 <p>
-  <img class="pin-img" src=<%= @pin.url %>>
+  <%= image_tag(url_for(@pin.url), {:class=>"pin-img"}) %>
 </p>
+
+
 
 <p>
   <strong>Posted by:</strong>

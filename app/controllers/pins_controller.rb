@@ -31,14 +31,24 @@ class PinsController < ApplicationController
   end
 
   def add_tag
-
   end
 
   def create_tag
     @pin = Pin.find(params[:id])
-    tag = Tag.create(tag_params)
-    @pin.tags.push(tag)
-    redirect_to root_path
+    puts "**********************************************************"
+    name = params["tag"]["name"]
+    tag = Tag.where(name: name)
+    if tag.length == 0
+      tag = Tag.new(tag_params)
+      @pin.tags.push(tag)
+    else
+      @pin.tags.push(tag)
+    end
+    # puts Tag.where(name: name).length
+    puts "**********************************************************"
+
+    # @pin.tags.push(tag)
+    # redirect_to root_path
   end
 
   def add_to_board

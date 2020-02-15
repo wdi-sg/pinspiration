@@ -1,11 +1,11 @@
 <h1>Dashboard#index</h1>
 
-<h2>Pins</h2>
+<h2>Your Pins</h2>
 <% @pins.each do |pin| %>
-  <p><%= pin.title %></p>
+  <p><%= link_to pin.title, pin %></p>
 <% end %>
 
-<h2>Comments</h2>
+<h2>Your Comments</h2>
 <% @comments.each do |comment| %>
-  <p><%= comment.body %>
+  <p><%= link_to comment.body, comment.pin %>
 <% end %>

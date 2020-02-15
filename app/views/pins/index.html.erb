@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 <h1>Pins</h1>
 <% if user_signed_in? %>
+  <p><%= link_to "Dashboard", "/dashboard" %></p>
+  <p><%= link_to "My Boards", "/boards" %>
   <p><%= link_to 'New Pin', new_pin_path %></p>
+  <p><%= link_to 'New Board', new_board_path %></p>
 <% else %>
   <p><%= link_to 'Sign In', "/users/sign_in" %></p>
 <% end %>

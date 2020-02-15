@@ -25,6 +25,18 @@ class PinsController < ApplicationController
     @pin = Pin.new
   end
 
+  def add
+    @pin = Pin.find(params[:id])
+    @boards = current_user.board
+  end
+
+  def add_to_board
+    @pin = Pin.find(params[:id])
+    @pin.board = Board.find(params["board"]["board_id"])
+    @pin.save
+    redirect_to "/boards"
+  end
+
   # GET /pins/1/edit
   def edit
     @pin = Pin.find(params[:id])
@@ -84,5 +96,9 @@ class PinsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def pin_params
     params.require(:pin).permit(:title, :url)
+  end
+
+  def board_params
+    params.require(:board).permit(:board_id)
   end
 end

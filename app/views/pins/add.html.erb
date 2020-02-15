@@ -1,0 +1,12 @@
+<h1>Add to my boards</h1>
+
+<%= form_with scope: :board, url: add_to_boards_path, local: true do |form| %>
+
+  <%= form.collection_select :board_id, @boards, :id, :name %>
+
+  <p class="mt-2">
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<p><%= link_to 'Home', root_url %></p>

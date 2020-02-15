@@ -1,6 +1,6 @@
 <h1>My Dashboard</h1>
 <% @user.pin.each do |pin| %>
-  <img class="pin-img" src="<%= pin.url %>">
+  <p><img class="pin-img" src="<%= pin.url %>"><p>
   <% pin.comment.each do |comment| %>
     <p><%= comment.user.email %> commented: <%= comment.body %> <%= comment.created_at%></p>
   <% end %>

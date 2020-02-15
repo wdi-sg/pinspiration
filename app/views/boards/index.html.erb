@@ -1,0 +1,9 @@
+<h1>All boards</h1>
+
+<p>
+<% @boards.each do |board| %>
+<%= link_to board.name, "/boards/" + board.id.to_s %>
+<% end %>
+</p>
+
+<p><%= link_to "Home", root_path %></p>

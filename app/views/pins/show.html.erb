@@ -29,5 +29,9 @@
 <%= link_to "New comment", new_comment_path %>
 </p>
 
+<p>
+<%= link_to "Add to board", "/pins/" + @pin.id.to_s + "/add" %>
+</p>
+
 <%= link_to 'Edit', edit_pin_path(@pin) %> |
 <%= link_to 'Back', pins_path %>

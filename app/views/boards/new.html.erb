@@ -1,0 +1,14 @@
+<%= form_with scope: :board, url: boards_path, local: true do |form| %>
+  <p>
+    <%= form.label :board_name %><br>
+    <%= form.text_area :name %>
+  </p>
+  <%= collection_check_boxes(:pin, :pin_ids, @pins, :id, :title) do |b| %>
+    <img class="pin-img" src="<%= b.object.url %>">
+    <%=  b.label(:"data-value" => b.value) { b.check_box + " " + b.text } %>
+  <% end %>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<%= link_to 'Home', root_path %>

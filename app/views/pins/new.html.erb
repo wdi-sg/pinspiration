@@ -1,0 +1,24 @@
+<h1>Create New Pin</h1>
+
+<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :media_url %><br>
+    <%= form.text_area :media_url %>
+  </p>
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+
+<button>
+<%= link_to 'Back', pins_path %>
+</button>

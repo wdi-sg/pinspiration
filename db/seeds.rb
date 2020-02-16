@@ -38,7 +38,7 @@ end
     img_url: FFaker::Image.url,
     created_at: FFaker::Time.between(6.months.ago, 1.day.ago),
     # The "RANDOM()" SQL direct query will be depreciated in Ruby 6, it's not a good idea.
-    user: User.order("RANDOM()").first)
+    user: User.order("RANDOM()").first
   )
   # The pin needs to be saved to a board that the owner of the pin has
   pin.board_id = pin.user.board.sample
@@ -51,8 +51,8 @@ end
     body: FFaker::CheesyLingo.sentence,
     created_at: FFaker::Time.between(6.months.ago, 1.day.ago),
     # The "RANDOM()" SQL direct query will be depreciated in Ruby 6, it's not a good idea.
-    user: User.order("RANDOM()").first),
-    pin: Pin.order("RANDOM()").first)
+    user: User.order("RANDOM()").first,
+    pin: Pin.order("RANDOM()").first
   )
 end
 

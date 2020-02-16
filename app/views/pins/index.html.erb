@@ -35,9 +35,7 @@
           </p>
           <hr/>
             <% pin.tags.each do |tag| %>
-              <div class="chip">
-                <%= tag.tag %>
-              </div>
+              <%= link_to tag.tag, tag_path(tag.tag), class: "chip" %>
             <% end %>
         </div>
       </div>

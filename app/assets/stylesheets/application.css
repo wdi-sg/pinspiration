@@ -14,7 +14,15 @@
  *= require_self
  */
 
- .pin-img {
-   max-width: 300px;
-   max-height: 300px
- }
+a {
+  color: #000;
+}
+
+a:visited {
+  color: #666;
+}
+
+.pin-img {
+  max-width: 300px;
+  max-height: 300px;
+}

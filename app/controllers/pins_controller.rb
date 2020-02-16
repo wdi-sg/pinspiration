@@ -53,6 +53,8 @@ class PinsController < ApplicationController
         @pin.tags.push(tag)
         redirect_to tags_path
       end
+    elsif tags.length == 0 and name == ""
+      redirect_to tags_path
     else
       @pin = Pin.find(params[:id])
       tags = Tag.where(id: tags)

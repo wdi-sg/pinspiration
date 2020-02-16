@@ -66,7 +66,7 @@ class PinsController < ApplicationController
     @pin = Pin.find(params[:id])
     @pin.board = Board.find(params["board"]["board_id"])
     @pin.save
-    redirect_to "/boards"
+    redirect_to "/boards/" + @pin.board.id.to_s
   end
 
   # GET /pins/1/edit

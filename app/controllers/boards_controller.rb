@@ -2,7 +2,16 @@ class BoardsController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
 
   def index
+    sort_by = params["sort"]
     @boards = current_user.board
+    if sort_by == "asc"
+      @boards = @boards.sort_by { |board| board.pins.length }.reverse
+      @message = "Most to least"
+    elsif sort_by =="desc"
+      @boards = @boards.sort_by { |board| board.pins.length }
+      @message = "Least to most"
+    end
+    
   end
 
   def show

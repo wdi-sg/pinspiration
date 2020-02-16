@@ -1,4 +1,4 @@
-<h6>All tagged posts</h6>
+<h6>Tagged Pins</h6>
 <p>
   <% @tags.each do |tag| %>
     <% if @tags.length == 1 %>
@@ -10,6 +10,6 @@
 </p>
 <% @tags.each do |tag| %>
   <% tag.pins.each do |pin| %>
-    <a href="/pins/<%= pin.id %>"><%= image_tag(url_for(pin.url), {:class=>"pin-img col-lg-4 mb-2"}) %></a>
+    <a href="/pins/<%= pin.id %>"><%= image_tag(url_for(pin.url), {:class=>"pin-img mb-2"}) %></a>
   <% end %>
 <% end %>

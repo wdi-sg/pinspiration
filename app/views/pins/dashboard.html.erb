@@ -1,12 +1,8 @@
-<h1>My Dashboard</h1>
-<div class="container">
-  <div class="row">
-    <% @user.pin.each do |pin| %>
-      <div>
-        <a class="mr-2" href="/pins/<%= pin.id %>"><%= image_tag(url_for(pin.url), {:class=>"pin-img"}) %></a><% pin.comment.each do |comment| %>
-          <p><%= comment.user.email %> commented: <%= comment.body %> <i><%= time_ago_in_words(comment.created_at)%> ago</i></p>
-        <% end %>
-      </div>
+<h6>Dashboard</h6>
+<% @user.pin.each do |pin| %>
+  <div>
+    <a class="mr-2" href="/pins/<%= pin.id %>"><%= image_tag(url_for(pin.url), {:class=>"pin-img"}) %></a><% pin.comment.each do |comment| %>
+      <p><%= comment.user.email %> commented: <%= comment.body %> <i><%= time_ago_in_words(comment.created_at)%> ago</i></p>
     <% end %>
   </div>
-</div>
+<% end %>

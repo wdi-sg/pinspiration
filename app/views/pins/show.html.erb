@@ -6,6 +6,11 @@
   </div>
   <div class="col m8">
     <h4><%= @pin.title %></h4>
+    <% @pin.tags.each do |tag| %>
+      <div class="chip">
+        <%= tag.tag %>
+      </div>
+    <% end %>
     <p>Posted by <%= @pin.user.username %> <%= time_ago_in_words(@pin.created_at) %> ago.</p>
     <hr/>
     <h5>Comments</h5>

@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# clear the uniqueness restriction
+FFaker::UniqueUtils.clear
+
 # and have one admin user (me) for testing.
 User.create(email: 'stuart.myers@gmail.com', username: 'StuartAdmin', password: 'MyPassword1234')
 
@@ -21,6 +24,11 @@ end
 # The "RANDOM()" SQL direct query will be depreciated in Ruby 6, it's not a good idea.
 30.times do
   Board.create(name: FFaker::DizzleIpsum.word, user: User.order("RANDOM()").first)
+end
+
+# create 20 tags
+20.times do
+  Tag.create(tag: FFaker::Lorem.unique.word)
 end
 
 # create 50 random pins
@@ -46,4 +54,11 @@ end
     user: User.order("RANDOM()").first),
     pin: Pin.order("RANDOM()").first)
   )
+end
+
+50.times do
+  pin = Pin.order("RANDOM()").first
+  tag = Tag.order("RANDOM()").first
+  pin.tags << tag
+  pin.save
 end

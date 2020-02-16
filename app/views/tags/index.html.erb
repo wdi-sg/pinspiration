@@ -1,0 +1,15 @@
+<h6>Tagged Pins</h6>
+<p>
+  <% @tags.each do |tag| %>
+    <% if @tags.length == 1 %>
+      <p><%= link_to "All Tags", tags_path %></p>
+    <% else %>
+      <a href="/tags/?filter=<%= tag.name %>"><%= tag.name%></a>
+    <% end %>
+  <% end %>
+</p>
+<% @tags.each do |tag| %>
+  <% tag.pins.each do |pin| %>
+    <a href="/pins/<%= pin.id %>"><%= image_tag(url_for(pin.url), {:class=>"pin-img mb-2"}) %></a>
+  <% end %>
+<% end %>

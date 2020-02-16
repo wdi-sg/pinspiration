@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <%= image_tag(url_for(@pin.url), {:class=>"pin-img"}) %>
+</p>
+
+<p>
+  <strong>Posted by:</strong>
+  <%= @pin.user.email %>
+</p>
+
+<p>
+<strong>Comments:
+</strong>
+</p>
+
+<p>
+<% @comments.each do |comment| %>
+<p><%= comment.user.email %>: <%= comment.body %> <i><%= time_ago_in_words(comment.created_at) %> ago</i></p>
+<% end %>
+</p>
+
+<p>
+<%= link_to "New comment", new_comment_path %>
+</p>
+
+<p>
+<%= link_to "Add to board", "/pins/" + @pin.id.to_s + "/boards/add" %>
+<%= link_to "Add tag", "/pins/" + @pin.id.to_s + "/tags/add" %>
+</p>
+
+<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<%= link_to 'Back', pins_path %>

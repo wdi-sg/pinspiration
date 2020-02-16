@@ -1,0 +1,13 @@
+<h1 class="d-inline mr-2"><%= @board.name %></h1>
+<p class="d-inline">by <%= @board.user.email%></p>
+<p>
+  <% @board.pins.each do |pin| %>
+    <%= image_tag(url_for(pin.url), {:class=>"pin-img"}) %>
+  <% end %>
+</p>
+<% if @board.user == current_user %>
+  <p><%= link_to 'Delete board', board_path(@board),
+        method: :delete %></p>
+<% end %>
+<p><%= link_to 'Back to boards', "/boards" %></p>
+

@@ -1,0 +1,9 @@
+<h6>Pinboards</h6>
+<% if @message %>
+<h6><%= @message %></h6>
+<% end %>
+<p>
+<% @boards.each do |board| %>
+<p><%= link_to board.name, "/boards/" + board.id.to_s %></p>
+<% end %>
+</p>

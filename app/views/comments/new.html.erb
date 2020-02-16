@@ -1,0 +1,12 @@
+<%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+<p><%= image_tag(url_for(@pin.url), {:class=>"pin-img"}) %></p>
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_area :body %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back to pin', @pin %>

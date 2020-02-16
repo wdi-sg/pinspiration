@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pins</h1>
+
+<div class = 'pinscontainer'>
+    <% @pins.each do |pin| %>
+      <div class = 'eachpin'>
+        <h3><%= pin.title %></h3>
+          <%= image_tag pin.image  %>
+        <p>
+          <%= link_to 'Show', pin %> <%= link_to 'Edit', edit_pin_path(pin) %> <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div>
+    <% end %>
+</div>
+    
+
+<br>
+
+<div><%= link_to 'New Pin', new_pin_path %></div>
+<div><%= link_to 'log out', destroy_user_session_url, method: :delete %></div>
+<div><%= link_to 'log in', new_user_session_url %></div>

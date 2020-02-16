@@ -1,0 +1,22 @@
+// Place all the styles related to the pins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+img {
+	width: 250px;
+}
+
+.pinscontainer {
+	display:flex;
+	flex-wrap: wrap;
+	text-align: center;
+}
+
+.eachpin {
+	width: 250px;
+	margin: 5px;
+}
+
+.pinimage {
+	width:290px;
+}

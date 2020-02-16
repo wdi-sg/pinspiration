@@ -1,0 +1,13 @@
+<h6>Your Pins</h6>
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>
+<%= link_to 'Back', pins_path %>
+
+  <%@pins.each do |pin| %>
+    <div>
+        <p>
+        <img src = "<%= pin.image%>" height = "500px" width = "500px"/>
+        <%= link_to 'Edit', edit_pin_path(pin.id) %>
+        </p>
+  <%end%>
+    </div>
+

@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Pins</h1>
+<%= link_to 'New Pin', new_pin_path %>
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>
+
 
 <table>
   <thead>
@@ -15,7 +18,8 @@
     <% @pins.each do |pin| %>
       <tr>
         <td><%= pin.title %></td>
-        <td><%= pin.image %></td>
+        <td><img src = "<%= pin.image%>" height = "500px" width = "500px"></img></td>
+
         <td><%= link_to 'Show', pin %></td>
         <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
         <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,6 +30,4 @@
 
 <br>
 
-<%= link_to 'New Pin', new_pin_path %>
-<%= link_to 'log out', destroy_user_session_url, method: :delete %>
 

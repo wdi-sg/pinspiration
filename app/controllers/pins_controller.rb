@@ -5,14 +5,24 @@ class PinsController < ApplicationController
   # GET /pins
   # GET /pins.json
   def index
-
+    if user_signed_in?
+      puts "=========="+ current_user.inspect+ "=========="
+    @current_user_id = current_user[:id]
     @pins = Pin.all
+    end
+end
+
+  def dashboard
+    @user = current_user
+    @pins = Pin.where("user_id = ?", current_user.id)
+    puts "===== User is:"+ @user.inspect
   end
+
 
   # GET /pins/1
   # GET /pins/1.json
   def show
-    @pins = Pin.find(params[:id])
+    @pin = Pin.find(params[:id])
 
   end
 
@@ -23,16 +33,22 @@ class PinsController < ApplicationController
 
   # GET /pins/1/edit
   def edit
+    @pin = Pin.find(params[:id])
+
   end
 
   # POST /pins
   # POST /pins.json
   def create
-    if current_user
+    if user_signed_in?
+
       byebug
       @user_id = current_user.id.to_s
       puts 'Current User ID is:' + @user_id
       @pin = Pin.new(title: pin_params[:title], image: pin_params[:image], user_id: @user_id)
+      @pin.user = current_user
+      puts 'pin user is:' + @pin.user.to_s
+
       @pin.save
     # respond_to do |format|
       if @pin.save
@@ -51,15 +67,20 @@ class PinsController < ApplicationController
   # PATCH/PUT /pins/1
   # PATCH/PUT /pins/1.json
   def update
-    respond_to do |format|
+    # respond_to do |format|
+    @pin = Pin.find(params[:id])
+
+    @pin.update(pin_params)
       if @pin.update(pin_params)
-        format.html { redirect_to @pin, notice: 'Pin was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pin }
+      redirect_to @pin
+        # format.html { redirect_to @pin, notice: 'Pin was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @pin }
       else
-        format.html { render :edit }
-        format.json { render json: @pin.errors, status: :unprocessable_entity }
+        puts @pin.errors.messages
+        redirect_to '/pins/'+@user_id+'edit'
+        # format.html { render :edit }
+        # format.json { render json: @pin.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # DELETE /pins/1
@@ -81,6 +102,6 @@ class PinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pin_params
-      params.require(:pin).permit(:title, :image)
+      params.require(:pin).permit(:id, :title, :image)
     end
 end

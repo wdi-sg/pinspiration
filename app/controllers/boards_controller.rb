@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => [ :show, :index ]
 
   def index
     @boards = Board.all
@@ -7,6 +7,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @pins = Pin.where("board_is =?", @board.id)
   end
 
   def new
@@ -14,26 +15,29 @@ class BoardsController < ApplicationController
 
   def create
       @board = Board.new(board_params)
-      @board.user_id = current_user.id
-      @board.save
-      redirect_to @board
+      @board.user = current_user
+      if @board.save
+        redirect_to @board
+      else
+        puts "error in creating"
+      end
   end
 
   def edit
-    @board = Board.find(params[:id])
+    # @board = Board.find(params[:id])
   end
 
   def update
-      @board = Board.find(params[:id])
-      # .update also a method
-      @board.update(pin_params)
-      redirect_to @board
+      # @board = Board.find(params[:id])
+      # # .update also a method
+      # @board.update(pin_params)
+      # redirect_to @board
   end
 
   def destroy
-      @board = Board.find(params[:id])
-      @board.destroy
-      redirect_to root_path
+      # @board = Board.find(params[:id])
+      # @board.destroy
+      # redirect_to root_path
   end
 
 private

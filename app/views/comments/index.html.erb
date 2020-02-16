@@ -9,9 +9,13 @@
 <%=image_tag pin.media_url, :class=>"card-img-top"%>
 	    <%end%>
 	    <h5 class="card-title text-center"><%= pin.title%></h5>
+	    <p class="card-body">
+	    	<strong><u>Comments</u></strong><br>
 <% pin.comment.each do |comment| %>
-<p class="card-body"><%= comment.body%></p>
+<strong><%= comment.user.username%></strong><br>
+<%= comment.body%><br>
 <% end %>
+</p>
 </div>
 </div>
 <% end %>

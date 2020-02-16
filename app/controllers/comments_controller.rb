@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 before_action :authenticate_user!
   def index
     # @comment = Comment.where(user_id: current_user.id)
-    @pin = Pin.all
+    @pin = Pin.joins(:comment).distinct.where("comments.user_id =" +current_user.id.to_s)
   end
   def show
   end
@@ -14,7 +14,7 @@ before_action :authenticate_user!
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
       if @comment.save
-        redirect_to @comment
+        redirect_to pins_path
       else
         @comment
         render 'new'

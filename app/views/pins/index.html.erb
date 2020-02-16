@@ -1,0 +1,26 @@
+<h1 class="text-center">Pinspiration</h1>
+<div class="text-center">
+  <button type="button" class="btn btn-primary">
+    <%= link_to 'new pin', new_pin_path, class: "text-white" %>
+  </button>
+</div>
+<div class="container">
+  <div class="row">
+    <% @pins.each do |pin| %>
+      <div class="col m-2">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="<%= pin.url %>" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text"><%= pin.title %></p>
+            <div class="d-flex justify-content-around">
+              <div><%= link_to octicon("kebab-horizontal"), pin %></div>
+              <div><%= link_to octicon("pencil"), edit_pin_path(pin) %></div>
+              <div><%= link_to octicon("x"), pin, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>

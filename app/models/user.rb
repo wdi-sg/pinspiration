@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :pins
   has_many :comments
+  has_many :board
 
   attr_writer :login
   # Include default devise modules. Others available are:

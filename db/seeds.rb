@@ -9,19 +9,32 @@
 # and have one admin user (me) for testing.
 User.create(email: 'stuart.myers@gmail.com', username: 'StuartAdmin', password: 'MyPassword1234')
 
-# create 20 random users
+# create 20 random users, each user will have one board at least.
 20.times do
+  i = 1
   User.create(email: FFaker::Internet.email, username: FFaker::Internet.user_name, password: FFaker::Internet.password)
+  Board.create(name: FFaker::DizzleIpsum.word, user_id: i)
+  i += 1
+end
+
+# create 30 extra random boards and attach them
+# The "RANDOM()" SQL direct query will be depreciated in Ruby 6, it's not a good idea.
+30.times do
+  Board.create(name: FFaker::DizzleIpsum.word, user: User.order("RANDOM()").first)
 end
 
 # create 50 random pins
 50.times do
-  Pin.create(
+  pin = Pin.new(
     title: FFaker::CheesyLingo.title,
     img_url: FFaker::Image.url,
     created_at: FFaker::Time.between(6.months.ago, 1.day.ago),
-    user_id: (rand(20) + 1)
+    # The "RANDOM()" SQL direct query will be depreciated in Ruby 6, it's not a good idea.
+    user: User.order("RANDOM()").first)
   )
+  # The pin needs to be saved to a board that the owner of the pin has
+  pin.board_id = pin.user.board.sample
+  pin.save
 end
 
 # create 100 random comments
@@ -29,7 +42,8 @@ end
   Comment.create(
     body: FFaker::CheesyLingo.sentence,
     created_at: FFaker::Time.between(6.months.ago, 1.day.ago),
-    user_id: (rand(20) + 1),
-    pin_id: (rand(49) + 1)
+    # The "RANDOM()" SQL direct query will be depreciated in Ruby 6, it's not a good idea.
+    user: User.order("RANDOM()").first),
+    pin: Pin.order("RANDOM()").first)
   )
 end

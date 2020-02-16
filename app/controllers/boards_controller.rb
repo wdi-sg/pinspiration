@@ -5,11 +5,11 @@ class BoardsController < ApplicationController
     sort_by = params["sort"]
     @boards = current_user.board
     if sort_by == "asc"
-      @boards = @boards.sort_by { |board| board.pins.length }.reverse
-      @message = "Most to least"
-    elsif sort_by =="desc"
       @boards = @boards.sort_by { |board| board.pins.length }
       @message = "Least to most"
+    elsif sort_by =="desc"
+      @boards = @boards.sort_by { |board| board.pins.length }.reverse
+      @message = "Most to least"
     end
     
   end

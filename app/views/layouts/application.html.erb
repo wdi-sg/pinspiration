@@ -44,8 +44,10 @@
                   Sort
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/boards?sort=desc">Boards with least pins</a>
-                  <a class="dropdown-item" href="/boards?sort=asc">Boards with most pins</a>
+                  <a class="dropdown-item" href="/boards?sort=asc">Boards with least pins</a>
+                  <a class="dropdown-item" href="/boards?sort=desc">Boards with most pins</a>
+                  <a class="dropdown-item" href="/pins?sort=asc">Pins with the least comments</a>
+                  <a class="dropdown-item" href="/pins?sort=desc">Pins with the most comments</a>
                 </li>
               </ul>
               <%= link_to 'Log Out', destroy_user_session_url, method: :delete %>

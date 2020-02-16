@@ -6,6 +6,12 @@ class PinsController < ApplicationController
   # GET /pins.json
   def index
     @pins = Pin.all
+    sort_by = params[:sort]
+    if sort_by == "asc"
+      @pins = @pins.sort_by { |pin| pin.comment.length }
+    elsif sort_by == "desc"
+      @pins = @pins.sort_by { |pin| pin.comment.length }.reverse
+    end
   end
 
   def dashboard

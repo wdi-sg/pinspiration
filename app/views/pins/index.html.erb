@@ -1,24 +1,21 @@
 <div>
-<h1> Welcome to Pinspiration</h1>
-</div>
-
-<div>
-    <button>
+    <button type="button" class="btn btn-warning">
     <%= link_to "Add a New Pin", new_pin_path %>
     </button>
 </div>
 
 
-<div>
+
+<div class="container">
     <%= @pins.each do |pinimage| %>
 </div>
 
 
- <div>
+ <div class="container">
     <p><%=pinimage.title%></p>
     <p><a href=<%=pin_path(pinimage)%>></p>
-    <img src="<%=pinimage.media_url%>" width="auto" height="200" border="2" />
-</div>
+    <img src="<%=pinimage.media_url%>" width="600" height="auto" border="2" border-radius: 50px />
+  </div>
 
 
 <% end %>

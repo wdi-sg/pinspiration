@@ -10,11 +10,11 @@
 <img src="<%=@pin.media_url%>" width="auto" height="400" border="2"/>
 
 
-<button>
+<button type="button" class="btn btn-warning">
     <%= link_to 'Back', root_path %>
 </button>
 
 
-<button>
+<button type="button" class="btn btn-warning">
     <%= link_to 'Delete', pin_path, method: :delete, data: { confirm: "Do you really want to delete this pin? 🧐" } %>
 </button>

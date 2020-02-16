@@ -4,15 +4,19 @@
     <title>Pinspiration</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-  </head>
 
-  <body>
+
+<nav class="navbar navbar-warning bg-warning">
+  <span class="navbar-brand mb-0 h1">Pinspiration</span>
+<!--   <img src="app/assets/images/logo.svg" width="60" height="60" /> -->
+</nav>
+  </head>  <body>
     <p class='notice'><%= notice %></p>
     <p class='alert'><%= alert %></p>
 
-    <%= yield %>
+     <%= yield %>
   </body>
 </html>

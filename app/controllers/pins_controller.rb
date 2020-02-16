@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
     before_action :find_pin, only: [:show, :edit, :update, :destroy]
-
+Added functionality that associates user id to pins.
     # before_action :authenticate_user!, :except => [ :show, :index ]
 
 
@@ -14,16 +14,20 @@ class PinsController < ApplicationController
   end
 
 
-
-
   def new
-     @pin = Pin.new
+     # @pin = Pin.new
+
+# FOR LOGGED IN USER
+     @pin = current_user.pins.build
   end
 
 
-
   def create
-    @pin = Pin.new(pin_params)
+    # @pin = Pin.new(pin_params)
+
+# FOR LOGGED IN USER
+     @pin = current_user.pins.build(pin_params)
+
     if @pin.save
         redirect_to @pin, notice: "You have created a new Pin"
     else

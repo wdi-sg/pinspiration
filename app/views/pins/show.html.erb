@@ -2,6 +2,10 @@
 <%= @pin.title  %>
 </h2>
 
+<div>
+    <h6>Pinned by: <%= @pin.user.email %></h6>
+</div>
+
 
 <img src="<%=@pin.media_url%>" width="auto" height="400" border="2"/>
 

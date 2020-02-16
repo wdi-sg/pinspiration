@@ -1,4 +1,4 @@
-<h1>Add tags</h1>
+<h1>New tag</h1>
 
 <%= form_with scope: :tag, url: tags_path, local: true do |form| %>
 
@@ -6,11 +6,6 @@
     <%= form.label :tag_name %><br>
     <%= form.text_field :name %>
   </p>
-
-  <%= collection_check_boxes(:pin, :pin_ids, @pins, :id, :title) do |b| %>
-    <img class="pin-img" src="<%= b.object.url %>">
-    <%=  b.label(:"data-value" => b.value) { b.check_box + " " + b.text } %>
-  <% end %>
 
   <p class="mt-2">
     <%= form.submit %>

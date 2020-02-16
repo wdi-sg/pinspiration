@@ -3,17 +3,14 @@ class TagsController < ApplicationController
 
   def index
     if filter_by = params["filter"] != nil
-      puts filter_by
-      @tags = Tag.where(name:params["filter"])
-      puts @tags
-      puts "HELOOOOOOOOOOOOOOOOOOOOOOOOO EHRERE"
+      @tags = Tag.where(name: params["filter"])
     else
-    @tags = Tag.all
+      @tags = Tag.all
     end
   end
 
   def show
-    @tag = Tag.where(name:params[:id])[0]
+    @tag = Tag.where(name: params[:id])[0]
     @pins = @tag.pins
   end
 
@@ -23,9 +20,9 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new(tag_params)
-    pins = params["pin"]["pin_ids"] - [""]
-    @pins = Pin.where(id: pins)
-    @tag.pins = @pins
+    # pins = params["pin"]["pin_ids"] - [""]
+    # @pins = Pin.where(id: pins)
+    # @tag.pins = @pins
     @tag.save
     redirect_to tags_path
     # puts @tag.inspect

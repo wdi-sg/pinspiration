@@ -56,7 +56,8 @@ end
   )
 end
 
-50.times do
+# 100 tags!
+100.times do
   pin = Pin.order("RANDOM()").first
   tag = Tag.order("RANDOM()").first
   pin.tags << tag

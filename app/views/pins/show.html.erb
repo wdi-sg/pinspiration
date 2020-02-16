@@ -7,8 +7,42 @@
 
 <p>
   <strong>Image url:</strong>
-  <%= @pin.image_url %>
+  <%if @pin.image_url %>
+        <%= image_tag @pin.image_url %>
+        <%end%>
 </p>
 
-<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<p>
+  <strong>Comment:</strong>
+ <% @comments.each do |comment| %>
+  <%= comment.body %>
+    <%= comment.created_at %>
+</p>
+<% if user_signed_in? && comment.user_id == current_user.id %>
+<%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+        <br/></li>
+    <% if user_signed_in? %>
+      <%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+        <p>
+          <strong>Add a comment:</strong><br/>
+          <%= form.label :comment %><br>
+          <%= form.text_field :body %>
+        </p>
+          <%= form.hidden_field :pin_id, value: @pin.id %>
+          <%= form.submit%>
+      <% end %>
+    <% end %>
+  
+
+<% if user_signed_in? && @pin.user_id == current_user.id %>
+  <%= link_to edit_pin_path(@pin) %>
+  <%= link_to @pin, method: :delete, data: { confirm: 'Are you sure?' }%>
+  <% end %>
+<% end %>
+<br/>
 <%= link_to 'Back', pins_path %>
+ 
+ 
+

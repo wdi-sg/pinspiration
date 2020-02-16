@@ -15,6 +15,14 @@
  */
 
 
+
+
+
+
+
+
+
+
 body {
   background-color: #f4f1eb;
 }
@@ -25,7 +33,6 @@ body {
     color: white;
 }
 
-
 h1 {
   color: green;
   text-align: center;
@@ -34,4 +41,9 @@ h1 {
 h2 {
   color: grey;
   text-align: center;
+}
+
+textarea {
+    min-height: 100px;
+    min-width: 200px;
 }

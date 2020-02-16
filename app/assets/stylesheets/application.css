@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+ html {
+    /* background-color: orange; */
+  }
+
+nav{
+    text-align: center;
+    padding-top: 50px
+}
+
+a{
+     font-family: montserrat, sans-serif;
+     text-transform: uppercase;
+     text-decoration: none; 
+     font-size: 16px;
+     color: grey;
+     padding-right: 20px;
+     letter-spacing: 5px
+ }
+
+ a:hover{
+     font-weight: bold;
+ }
+
+ .page-title{
+    font-family: montserrat, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: orange;
+    letter-spacing: 30px;
+    text-align: center;
+    padding-top: 50px
+ }

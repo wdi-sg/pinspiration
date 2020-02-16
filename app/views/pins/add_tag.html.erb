@@ -1,13 +1,14 @@
 <h1>Add tag to pin</h1>
-
 <%= form_with scope: :tag, url: add_tag_path, local: true do |form| %>
+  <p><%= form.text_field :name %></p>
 
-  
-  <%= form.text_field :name %>
-
+  <p>
+  <%= collection_check_boxes(:tag, :tag_ids, @tags, :id, :name) do |b| %>
+    <%= b.label(class:"mr-2", :"data-value" => b.value) { b.check_box + " " + b.text } %>
+  <% end %>
+  </p>
   <p class="mt-2">
     <%= form.submit %>
   </p>
 <% end %>
-
 <p><%= link_to 'Home', root_url %></p>

@@ -1,7 +1,15 @@
-<h1>Tags</h1>
+<h6>All tagged posts</h6>
 <p>
   <% @tags.each do |tag| %>
-    <a href="/tags/<%= tag.name %>"><%= tag.name%></a>
+    <% if @tags.length == 1 %>
+      <p><%= link_to "All Tags", tags_path %></p>
+    <% else %>
+      <a href="/tags/?filter=<%= tag.name %>"><%= tag.name%></a>
+    <% end %>
   <% end %>
 </p>
-<p><%= link_to "Home", root_path %></p>
+<% @tags.each do |tag| %>
+  <% tag.pins.each do |pin| %>
+    <a href="/pins/<%= pin.id %>"><%= image_tag(url_for(pin.url), {:class=>"pin-img col-lg-4 mb-2"}) %></a>
+  <% end %>
+<% end %>

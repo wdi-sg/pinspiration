@@ -1,20 +1,12 @@
 <p id="notice"><%= notice %></p>
-<h1>Pins</h1>
-<% if user_signed_in? %>
-  <p><%= link_to "Dashboard", "/dashboard" %></p>
-  <p><%= link_to "My Boards", "/boards" %>
-    <p><%= link_to "Tags", tags_path %></p>
-    <p><%= link_to 'New Pin', new_pin_path %></p>
-    <p><%= link_to "New Tag", new_tag_path %>
-      <p><%= link_to 'New Board', new_board_path %></p>
-    <% else %>
-      <p><%= link_to 'Sign In', "/users/sign_in" %></p>
-    <% end %>
-    <p>
-      <% @pins.each do |pin| %>
-        <a href="/pins/<%= pin.id%>"><%= image_tag(url_for(pin.url), {:class=>"pin-img"}) %></a>
+
+<div class="container">
+<div class="row">
+<% @pins.each do |pin| %>
+        <a class="col-lg-4 mb-2" href="/pins/<%= pin.id%>"><%= image_tag(url_for(pin.url), {:class=>"pin-img"}) %></a>
       <% end %>
+</div>
+</div>
+    <p>
+      
     </p>
-    <% if user_signed_in? %>
-      <p><%= link_to 'Log Out', destroy_user_session_url, method: :delete %></p>
-    <% end %>

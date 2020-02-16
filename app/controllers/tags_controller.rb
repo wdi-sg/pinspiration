@@ -2,7 +2,14 @@ class TagsController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
 
   def index
+    if filter_by = params["filter"] != nil
+      puts filter_by
+      @tags = Tag.where(name:params["filter"])
+      puts @tags
+      puts "HELOOOOOOOOOOOOOOOOOOOOOOOOO EHRERE"
+    else
     @tags = Tag.all
+    end
   end
 
   def show

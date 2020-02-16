@@ -18,10 +18,10 @@ class BoardsController < ApplicationController
   end
 
   def create
-    pins = Pin.where(id: params["pin"]["pin_ids"] - [""])
+    # pins = Pin.where(id: params["pin"]["pin_ids"] - [""])
     @board = Board.new(board_params)
     @board.user = current_user
-    @board.pins.push(pins)
+    # @board.pins.push(pins)
     @board.save
     redirect_to "/boards/" + @board.id.to_s
   end

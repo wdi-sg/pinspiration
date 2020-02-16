@@ -1,8 +1,8 @@
-<%= form_with scope: :park, url: pins_path, local: true do |form| %>
+<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
 
     <p>
-      <%= form.label :name %><br>
-      <%= form.text_field :name %>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
     </p>
   
     <p>
@@ -14,3 +14,5 @@
       <%= form.submit %>
     </p>
   <% end %>
+
+  <%= link_to 'back', pins_path %>

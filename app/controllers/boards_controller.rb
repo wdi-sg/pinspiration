@@ -3,6 +3,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @pins = Pin.where("board_id = ?", @board.id)
   end
 
   def new

@@ -18,12 +18,13 @@ class PinsController < ApplicationController
   # GET /pins/new
   def new
     @pin = Pin.new
+    @boards = Board.where("user_id = ?", current_user.id)
   end
 
   # GET /pins/1/edit
   def edit
     @pin = Pin.find(params[:id])
-    p @pin.user
+    @boards = Board.where("user_id = ?", current_user.id)
     if @pin.user == current_user
       return
     else
@@ -90,6 +91,6 @@ class PinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pin_params
-      params.require(:pin).permit(:title, :img_url, :user_id)
+      params.require(:pin).permit(:title, :img_url, :user_id, :board_id)
     end
 end

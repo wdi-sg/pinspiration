@@ -21,6 +21,12 @@
     <%= form.text_field :img_url %>
   </div>
 
+  <div class="board">
+    <%= form.label :board_id %>
+    <%= form.collection_select :board_id, @boards, :id, :name, { include_blank: true }, { class: 'browser-default' } %>
+  </div>
+
+  <hr />
   <div class="actions">
     <%= form.submit %>
   </div>

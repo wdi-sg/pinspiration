@@ -1,9 +1,21 @@
+<div style="width:1300px; margin:0 auto;">
 <h2>Dashboard</h2>
+	<div class="col">
+			<div class="row">
+<div class="card-group">
 <% @pin.each do |pin| %>
-<p><%= pin.title%></p>
-<p><%= image_tag pin.media_url%></p>
+<div class="card", style="max-width: 12rem;">
+<%= link_to pin_path(pin.id) do %>
+<%=image_tag pin.media_url, :class=>"card-img-top"%>
+	    <%end%>
+	    <h5 class="card-title text-center"><%= pin.title%></h5>
 <% pin.comment.each do |comment| %>
-<p><%= comment.body%></p>
+<p class="card-body"><%= comment.body%></p>
 <% end %>
+</div>
+</div>
 <% end %>
-</table>
+
+</div>
+</div>
+</div>

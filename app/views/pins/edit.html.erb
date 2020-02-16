@@ -1,3 +1,4 @@
+<div style="width:1300px; margin:0 auto;">
 <h2>Edit Pinspiration</h2>
 
 <%= form_with scope: :pin, model: @pin, local: true do |form| %>
@@ -10,4 +11,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', pins_path %>
+<%= link_to 'Back', pins_path, :class=> "btn btn-primary" %>
+</div>

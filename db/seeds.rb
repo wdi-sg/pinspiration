@@ -13,8 +13,8 @@ FFaker::UniqueUtils.clear
 User.create(email: 'stuart.myers@gmail.com', username: 'StuartAdmin', password: 'MyPassword1234')
 
 # create 20 random users, each user will have one board at least.
+i = 1 # it helps to have the counter initialised outside of the loop.
 20.times do
-  i = 1
   User.create(email: FFaker::Internet.email, username: FFaker::Internet.user_name, password: FFaker::Internet.password)
   Board.create(name: FFaker::DizzleIpsum.word, user_id: i)
   i += 1

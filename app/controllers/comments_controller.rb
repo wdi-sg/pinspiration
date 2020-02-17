@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to @comment.pin, notice: 'Comment Posted' }
         format.json { render :show, status: :ok, location: @pin }
       else
+        @comment.save.errors
         format.html { redirect_to @comment.pin, notice: 'Error Posting' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end

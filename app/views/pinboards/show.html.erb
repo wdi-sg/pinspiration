@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pinboard.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pinboard.user %>
+</p>
+
+<%= link_to 'Edit', edit_pinboard_path(@pinboard) %> |
+<%= link_to 'Back', pinboards_path %>

@@ -1,0 +1,14 @@
+<h1>Dashboard</h1>
+
+  
+  <div>
+  <h2>Your Pins</h2>
+  <%= render "pins/pin_foryou" %>
+</div>
+
+<div>
+  <h2>Your Comments</h2>
+  <% @comments.each do |comment| %>
+    <p><%= link_to comment.body, comment.pin %>
+  <% end %>
+</div>

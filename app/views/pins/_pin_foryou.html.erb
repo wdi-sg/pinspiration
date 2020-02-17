@@ -1,0 +1,23 @@
+<table>
+<thead>
+    <tr>
+<th>Title</th>
+<th>Image url</th>
+</tr>
+  </thead>
+<tbody>
+<% @pins.each do |pin| %>
+ <%= pin.title %>
+    <%if pin.image_url %>
+        <%= image_tag pin.image_url %>
+        <%end%>
+   
+      <td><%= link_to 'Show', pin %></td>
+        <% if user_signed_in? && pin.user_id == current_user.id %> 
+<%end%>
+        <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+        <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <%end%>
+  </tbody>
+  </table>

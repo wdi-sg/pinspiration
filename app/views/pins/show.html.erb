@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+<img src = "<%= @pin.image%>" height = "500px" width = "500px"/>
+
+</p>
+
+
+<%= link_to 'Edit', edit_pin_path(@pin) %>
+<%= link_to 'Back', pins_path %>
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>

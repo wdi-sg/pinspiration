@@ -5,10 +5,10 @@
       <br/>
 
       <p>pins | <%= link_to 'create pins', new_pin_path %> </p>
-
+      <% puts @pins %>
       <ul>
       <% @pins.each do |pin| %>
-      <li><%= pin.title %></li>
+      <li><%= link_to pin.title, pin_path(pin) %></li>
       <% end %>
       </ul>
 

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Pins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pins.each do |pin| %>
+      <tr>
+        <td><%= pin.title %></td>
+        <td><img  src="<%= pin.url %>"/></td>
+        <td><%= link_to 'Show', pin %></td>
+        <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+        <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+
+<h1>My Comments</h1>
+<% @comments.each do |comment| %>
+<p>Comment: <%= comment.body %>, Pin Title: <%= comment.pin.title %>, Created at: <%= time_ago_in_words(comment.created_at) %> ago, <%= link_to "Go to pin", "/pins/"+comment.pin.id.to_s %></p>
+<% end %>
+
+<%= link_to 'New Pin', new_pin_path %>

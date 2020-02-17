@@ -1,0 +1,11 @@
+<div style="width:1300px; margin:0 auto;">
+	<h1><%=session[:username]%>'s post</h1>
+
+		<% @pin.each do |pin| %>
+		<%= link_to pin_path(pin.id) do%>
+		<%=image_tag pin.media_url%>
+		<% end %>
+		<p>Title: <%= pin.title%></p>
+	<% end %>
+</div>
+</div>

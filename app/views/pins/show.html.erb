@@ -1,0 +1,23 @@
+<div style="width:1300px; margin:0 auto;">
+<h1><%= @pin.title %></h1>
+<%=image_tag @pin.media_url%>
+<%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+<%= form.hidden_field :pin_id, :value => @pin.id %>
+  <p>
+    <%= form.label :Comment %><br>
+    <%= form.text_area:body %>
+  </p>
+  <p>
+    <%= form.submit 'Comment', :class=>"btn btn-primary" %>
+  </p>
+<% end %>
+<p>
+<%= link_to "Edit", edit_pin_path, :class=>"btn btn-primary" %>
+<%= link_to "Delete", pin_path(@pin.id),
+        method: :delete,
+        data: { confirm: 'Are you sure?' }, :class=>"btn btn-primary"%>
+</p>
+<p>
+<%= link_to "Back", pins_path, :class=>"btn btn-primary" %>
+</p>
+</div>

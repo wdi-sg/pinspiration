@@ -1,0 +1,13 @@
+ <li><%= link_to 'Pinspiration', pins_path %></li>
+  <li><%= link_to 'Create pin', new_pin_path %></li>
+  <li><div class="dropdown" style="position:absolute;">
+  <button class="btn bg-transparent dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: 14px">
+    Dashboard
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <%= link_to 'Comments', comments_path, :class=>"dropdown-item" %>
+<%= link_to 'Pins', user_pin_path, :class=>"dropdown-item" %>
+  </div>
+</div></li>
+  <li style="float:right"><%= link_to 'logout', destroy_user_session_url, method: :delete %></li>
+   <li style="float:right; padding-right: 550px"><p><%=session[:username]%></p></li>

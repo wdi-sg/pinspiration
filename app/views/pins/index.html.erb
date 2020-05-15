@@ -4,35 +4,29 @@
 	</div>
 </div>
 
-<div class="row pt-2">
+<div class="row pt-2 pb-2">
 	<div class="col-12 text-center">
+		<% if user_signed_in? %>
+		<button>
 		<%= link_to 'New pin', new_pin_path %>
-	</div>
-</div>
-
-<div class="row pt-2">
-	<div class="col-3 text-center">
-		<h4>Title</h4>
-	</div>
-	<div class="col-3 text-center">
-		<h4>View</h4>
-	</div>
-	<div class="col-3 text-center">
-		<h4>Edit</h4>
-	</div>
-		<div class="col-3 text-center">
-		<h4>/Delete</h4>
+		</button>
+		<% else %>
+			<div>Hello guest Please <%= link_to 'log in', new_user_session_url %></div>
+		<% end %>
 	</div>
 </div>
 
 
 
-<div class="row pt-2 border">
+
+
+<div class="row border">
   <% @pins.each do |pin| %>
-    <div class="col-4 border text-center">
+    <div class="col-4 border text-center pt-3 pb-3">
     	<div class="row">
     		<div class = "col-12 text-center">
       		<p><%= pin.url %></p>
+
       	</div>
       </div>
 

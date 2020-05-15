@@ -7,7 +7,7 @@
   <strong>Title:</strong>
   <%= @pin.title %>
 </p>
-
+<p>By <%= @pin.user.email %></p>
 <%= link_to 'Edit', edit_pin_path(@pin) %>
 <%= link_to 'Destroy', pin_path(@pin),
         method: :delete,

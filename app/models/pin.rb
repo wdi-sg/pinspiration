@@ -1,3 +1,3 @@
 class Pin < ApplicationRecord
-  has many :comments, dependent: destroy
+  has_many :comments, dependent: destroy
 end

@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_action :authenticate_user!, :except => [ :show, :index ]
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
   # GET /tags
@@ -69,6 +70,6 @@ class TagsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tag_params
-      params.require(:tag).permit(:tagname)
+      params.require(:tag).permit(:tagname, :pin_ids => [])
     end
 end

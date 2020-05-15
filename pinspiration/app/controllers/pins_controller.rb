@@ -1,4 +1,5 @@
 class PinsController < ApplicationController
+  before_action :authenticate_user!, :except => [ :show, :index ]
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
 
   # GET /pins
@@ -25,6 +26,8 @@ class PinsController < ApplicationController
   # POST /pins.json
   def create
     @pin = Pin.new(pin_params)
+    @pin.user = current_user
+    @pin.save
 
     respond_to do |format|
       if @pin.save
@@ -69,6 +72,6 @@ class PinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pin_params
-      params.require(:pin).permit(:title, :image)
+      params.require(:pin).permit(:title, :image, :tag_ids => [])
     end
 end

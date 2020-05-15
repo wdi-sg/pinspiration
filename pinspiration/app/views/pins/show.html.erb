@@ -1,20 +1,29 @@
 <p id="notice"><%= notice %></p>
 <h1>Pin</h1>
-
 <div class="card mb-4" style="width: 18rem;">
   <img class="card-img-top" src=<%= @pin.image %> alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-text">Title: <%= @pin.title %></h5>
+    <p class="card-text">
+      <%= @pin.created_at.getlocal.strftime("%d %B %Y, %H:%M") %>
+    </p>
+  </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><h5>
-      Title: <%= @pin.title %>
-    </h5></li>
-    <li class="list-group-item">Comments</li>
-    <li class="list-group-item">More Comments</li>
+    <% @pin.comment.each do |comment| %>
+      <li class="list-group-item">
+        <%= comment.content %><br/>
+        <% @user = User.find(comment.user_id) %>
+        <em><%= @user.email %></em> | <em><%= comment.created_at.getlocal.strftime("%d %B %Y, %H:%M") %></em>
+      </li>
+    <% end %>
   </ul>
   <div class="card-body">
     <a href="#" class="card-link">Hashtags</a>
     <a href="#" class="card-link">Another hashtag</a>
   </div>
+  <div class="card-body">
+    <%= link_to 'New Comment', new_pin_comment_path(@pin), class:"btn btn-primary" %>
+  </div>
 </div>
-
 <%= link_to 'Edit', edit_pin_path(@pin) %> |
 <%= link_to 'Back', pins_path %>

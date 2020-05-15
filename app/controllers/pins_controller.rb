@@ -10,6 +10,7 @@ class PinsController < ApplicationController
   # GET /pins/1
   # GET /pins/1.json
   def show
+    @pin = Pin.find(params[:id])
   end
 
   # GET /pins/new

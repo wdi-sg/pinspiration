@@ -6,6 +6,7 @@ class TagsController < ApplicationController
   end
 
   def show
+    @tag = Tag.find_by tagtext: params[:name]
 
   end
 

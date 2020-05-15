@@ -32,5 +32,5 @@ get '/dashboards' => 'dashboards#index', as: 'dashboards'
   get '/tags' => 'tags#index', as: 'tags'
   get '/tags/new' => 'tags#new', as: 'new_tag'
   post '/tags' => 'tags#create'
-  get '/tags/:id' => 'tags#show' , as: 'tag'
+  get '/tags/:name' => 'tags#show' , as: 'tag'
 end

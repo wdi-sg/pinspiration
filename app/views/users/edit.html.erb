@@ -1,1 +1,11 @@
-<h1>Edit page</h1>
+
+<%= form_with scope: :user, model:@user, local: true do |form| %>
+	<p>
+		<%= form.label :username %><br>
+		<%= form.text_field :username %>
+	</p>
+
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>

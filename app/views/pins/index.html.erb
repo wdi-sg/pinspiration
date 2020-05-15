@@ -1,24 +1,56 @@
-<h1>Pinstrest Clone</h1>
+<div class="row mt-5">
+	<div class="col-12 text-center">
+			<h1>Pinstrest Clone</h1>
+	</div>
+</div>
+
+<div class="row pt-2">
+	<div class="col-12 text-center">
+		<%= link_to 'New pin', new_pin_path %>
+	</div>
+</div>
+
+<div class="row pt-2">
+	<div class="col-3 text-center">
+		<h4>Title</h4>
+	</div>
+	<div class="col-3 text-center">
+		<h4>View</h4>
+	</div>
+	<div class="col-3 text-center">
+		<h4>Edit</h4>
+	</div>
+		<div class="col-3 text-center">
+		<h4>/Delete</h4>
+	</div>
+</div>
 
 
-<%= link_to 'New pin', new_pin_path %>
 
-<table>
-  <tr>
-    <th>Url</th>
-    <th>Title</th>
-    <th></th>
-  </tr>
-
+<div class="row pt-2 border">
   <% @pins.each do |pin| %>
-    <tr>
-      <td><%= pin.url %></td>
-      <td><%= pin.title %></td>
-      <td><%= link_to 'Show', pin_path(pin) %></td>
-      <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
-      <td><%= link_to 'Destroy', pin_path(pin),
-        method: :delete,
-        data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+    <div class="col-4 border text-center">
+    	<div class="row">
+    		<div class = "col-12 text-center">
+      		<p><%= pin.url %></p>
+      	</div>
+      </div>
+
+      <div class="row justify-content-center	">
+      	<div class="col-2">
+      		<p><%= link_to 'S', pin_path(pin) %></p>
+    		</div>
+
+    		<div class="col-2">
+      		<p><%= link_to 'E', edit_pin_path(pin) %></p>
+    		</div>
+
+    		<div class="col-2">
+      		<p><%= link_to 'D', pin_path(pin),
+        	method: :delete,
+        	data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+    	</div>
+    </div>
   <% end %>
-</table>
+</div>

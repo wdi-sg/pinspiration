@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_090218) do
+ActiveRecord::Schema.define(version: 2020_05_15_091310) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_090218) do
     t.text "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_pins_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +42,5 @@ ActiveRecord::Schema.define(version: 2020_05_15_090218) do
   end
 
   add_foreign_key "comments", "pins"
+  add_foreign_key "pins", "users"
 end

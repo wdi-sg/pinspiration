@@ -1,4 +1,6 @@
 <%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+
+<%= form.collection_check_boxes :tag_ids, @tags, :id, :tagtext %>
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>

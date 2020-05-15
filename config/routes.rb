@@ -29,5 +29,8 @@ get '/dashboards' => 'dashboards#index', as: 'dashboards'
   patch '/boards/:id' => 'boards#update'
   delete '/boards/:id' => 'boards#destroy'
 
-
+  get '/tags' => 'tags#index', as: 'tags'
+  get '/tags/new' => 'tags#new', as: 'new_tag'
+  post '/tags' => 'tags#create'
+  get '/tags/:id' => 'tags#show' , as: 'tag'
 end

@@ -1,5 +1,7 @@
 <h1>Your boards </h1>
-
+		<button>
+		<%= link_to 'New Board', new_board_path %>
+		</button>
 <div class="row border">
 	<div class="col-12">
   <% @boards.each do |board| %>

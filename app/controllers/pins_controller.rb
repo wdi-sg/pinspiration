@@ -15,10 +15,12 @@ class PinsController < ApplicationController
   end
 
   def new
+      @tags = Tag.all
   end
 
   def edit
     @pin = Pin.find(params[:id])
+    @tags = Tag.all
   end
 
   def create
@@ -51,7 +53,7 @@ class PinsController < ApplicationController
 
 private
   def pin_params
-    params.require(:pin).permit(:title, :url)
+    params.require(:pin).permit(:title, :url, :tag_ids=>[])
   end
 
 end

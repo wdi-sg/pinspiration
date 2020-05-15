@@ -1,0 +1,20 @@
+<h1>Hello tags</h1>
+
+		<button>
+		<%= link_to 'New Tag', new_tag_path %>
+		</button>
+<div class="row border">
+	<div class="col-12">
+  <% @tags.each do |tag| %>
+
+    	<div class="row">
+    		<div class = "col-3 text-center">
+      		<p><%= tag.tagtext %></p>
+
+
+
+
+
+  <% end %>
+</div>
+</div>

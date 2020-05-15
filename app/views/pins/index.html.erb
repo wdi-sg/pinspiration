@@ -1,5 +1,8 @@
 <h1>Pinstrest Clone</h1>
 
+
+<%= link_to 'New pin', new_pin_path %>
+
 <table>
   <tr>
     <th>Url</th>
@@ -12,6 +15,10 @@
       <td><%= pin.url %></td>
       <td><%= pin.title %></td>
       <td><%= link_to 'Show', pin_path(pin) %></td>
+      <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+      <td><%= link_to 'Destroy', pin_path(pin),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>

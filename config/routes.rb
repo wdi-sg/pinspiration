@@ -12,7 +12,12 @@ Rails.application.routes.draw do
     get '/pins/:id/comments' => 'comments#index', as: 'comments'
     get '/pins/:id/comments/new' => 'comments#new', as:'new_comment'
     post '/pins/:id/comments' => 'comments#create'
+     get '/comments/:id' => 'comments#show' , as: 'comment'
+    get '/comments/:id/edit' => 'comments#edit', as: 'edit_comment'
+    patch '/comments/:id' => 'comments#update'
+    delete '/comments/:id' => 'comments#destroy'
 
+get '/dashboards' => 'dashboards#index', as: 'dashboards'
 
 
 end

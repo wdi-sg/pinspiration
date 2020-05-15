@@ -16,6 +16,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    puts params
+    puts "hajfh hlfdhslfhasklfh hskldfhaslkdfhl"
+    @comment = Comment.find(params[:id])
 
   end
 
@@ -43,6 +46,11 @@ class CommentsController < ApplicationController
   end
 
   def update
+
+      @comment = Comment.find(params[:id])
+
+      @comment.update(comment_params)
+      redirect_to dashboards_path
       #@pin = Pin.find(params[:id])
 
       #@pin.update(pin_params)
@@ -50,10 +58,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-      #@pin = Pin.find(params[:id])
-      #@pin.destroy
+      @comment = Comment.find(params[:id])
+      @comment.destroy
 
-      #redirect_to root_path
+      redirect_to dashboards_path
   end
 
 private

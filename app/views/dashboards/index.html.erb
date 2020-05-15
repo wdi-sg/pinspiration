@@ -1,32 +1,6 @@
-<div class="row mt-5">
-	<div class="col-12 text-center">
-			<h1>Pinstrest Clone</h1>
-	</div>
-</div>
+<h1>Welcome <%= @user.email %></h1>
 
-<div class="row pt-2 pb-2">
-
-		<% if user_signed_in? %>
-		<div class="col-6 text-center">
-		<button>
-		<%= link_to 'New pin', new_pin_path %>
-		</button>
-		</div>
-		<div class="col-6 text-center">
-		<%= link_to 'log out', destroy_user_session_url, method: :delete %>
-		</div>
-		<% else %>
-		<div class="col-12 text-center">
-			<div>Hello guest Please <%= link_to 'log in', new_user_session_url %></div>
-		</div>
-		<% end %>
-
-</div>
-
-
-
-
-
+<h2>Pins</h2>
 <div class="row border">
   <% @pins.each do |pin| %>
     <div class="col-4 border text-center pt-3 pb-3">
@@ -55,3 +29,29 @@
     </div>
   <% end %>
 </div>
+
+<h2>Comments</h2>
+
+
+  <% @comments.each do |comment| %>
+
+    	<div class="row">
+    		<div class = "col-4">
+      		<p><%= comment.body %></p>
+
+      	</div>
+
+      	 <div class="col-4">
+      		<p><%= link_to 'E', edit_comment_path(comment) %></p>
+    		</div>
+
+    		   <div class="col-4">
+      		<p><%= link_to 'D', comment_path(comment),
+        	method: :delete,
+        	data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+      </div>
+
+
+
+  <% end %>

@@ -29,12 +29,18 @@
 	</div>
 
 	<div class="col-6">
-		<p>This is for the comment section</p>
+		<h3>This is for the comment section</h3>
 
-		<% @pin.comment.each do |comment| %>
-	<p>Comment: <%= comment.body %></p>
+		<div class="row border">
+			<div class="col-12">
+			<% @pin.comment.each do |comment| %>
+			<div class="row">
+				<p><%= comment.body %> (Created at: <%= comment.created_at %>)</p>
+			</div>
 
-<% end %>
+			<% end %>
+			</div>
+		</div>
 			<%= link_to 'New comment', new_comment_path %>
 	</div>
 </div>

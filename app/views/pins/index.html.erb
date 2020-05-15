@@ -1,0 +1,17 @@
+<h1>Pinstrest Clone</h1>
+
+<table>
+  <tr>
+    <th>Url</th>
+    <th>Title</th>
+    <th></th>
+  </tr>
+
+  <% @pins.each do |pin| %>
+    <tr>
+      <td><%= pin.url %></td>
+      <td><%= pin.title %></td>
+      <td><%= link_to 'Show', pin_path(pin) %></td>
+    </tr>
+  <% end %>
+</table>

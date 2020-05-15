@@ -1,0 +1,15 @@
+<%= form_with scope: :board, url: boards_path, local: true do |form| %>
+
+<%= form.collection_check_boxes :pin_ids, @pins, :id, :title %>
+  <p>
+    <%= form.label :boardtitle %><br>
+    <%= form.text_field :boardtitle %>
+  </p>
+
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back', dashboards_path %>

@@ -20,4 +20,14 @@ Rails.application.routes.draw do
 get '/dashboards' => 'dashboards#index', as: 'dashboards'
 
 
+
+  get '/boards' => 'boards#index', as: 'boards'
+  get '/boards/new' => 'boards#new', as: 'new_board'
+  post '/boards' => 'boards#create'
+  get '/boards/:id' => 'boards#show' , as: 'board'
+  get '/boards/:id/edit' => 'boards#edit', as: 'edit_board'
+  patch '/boards/:id' => 'boards#update'
+  delete '/boards/:id' => 'boards#destroy'
+
+
 end

@@ -9,5 +9,10 @@ Rails.application.routes.draw do
   patch '/pins/:id' => 'pins#update'
   delete '/pins/:id' => 'pins#destroy'
 
+    get '/pins/:id/comments' => 'comments#index', as: 'comments'
+    get '/pins/:id/comments/new' => 'comments#new', as:'new_comment'
+    post '/pins/:id/comments' => 'comments#create'
+
+
 
 end

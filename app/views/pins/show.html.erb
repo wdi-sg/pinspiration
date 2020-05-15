@@ -1,15 +1,54 @@
-<p>
-  <strong>Url:</strong>
-  <%= @pin.url %>
-</p>
+<div class="row mt-5">
+	<div class="col-6">
+		<div class="row">
+			<div class="col-12">
+				<p>
+  				<strong>Url:</strong>
+  				<%= @pin.url %>
+				</p>
+			</div>
+		</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @pin.title %>
-</p>
-<p>By <%= @pin.user.email %></p>
+		<div class="row">
+			<div class="col-12">
+				<p>
+  				<strong>Title:</strong>
+  				<%= @pin.title %>
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<p>By <%= @pin.user.email %>
+
+				</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="col-6">
+		<p>This is for the comment section</p>
+
+		<% @pin.comment.each do |comment| %>
+	<p>Comment: <%= comment.body %></p>
+
+<% end %>
+			<%= link_to 'New comment', new_comment_path %>
+	</div>
+</div>
+
+
+
+<h2>Comment: </h2>
+
+
+
+
 <%= link_to 'Edit', edit_pin_path(@pin) %>
 <%= link_to 'Destroy', pin_path(@pin),
         method: :delete,
         data: { confirm: 'Are you sure?' } %>
+<%= link_to 'View comments', comments_path %>
 <%= link_to 'Back', root_path %>

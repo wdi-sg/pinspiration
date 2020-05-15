@@ -1,5 +1,5 @@
-class Pin < ApplicationRecord
+class Comment < ApplicationRecord
   # AR classes are singular and capitalized by convention
   belongs_to :user
-  has_many :comment
+  belongs_to :pin
 end

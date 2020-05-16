@@ -30,6 +30,11 @@ class PinsController < ApplicationController
   def destroy
   end
 
+  def dashboard
+    @pins = Pin.where(user: current_user)
+    @comments = Comment.where(user: current_user)
+  end
+
   private
     def pin_params
       params.require(:pin).permit(:title, :image_url)

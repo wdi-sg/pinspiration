@@ -1,12 +1,10 @@
 <h1>All pins</h1>
-<% @pins.each do |pin| %>
-	<%= link_to pin_path(pin) do %>
-	  <%= image_tag(pin.image_url) %>
-	<% end %>
-<% end %>
 <% if user_signed_in? %>
 	<div>
 		<%= link_to 'New pin', new_pin_path %>
+	</div>
+	<div>
+		<%= link_to 'Dashboard', dashboard_path %>
 	</div>
 	<div>
 		<%= link_to 'Log out', destroy_user_session_url, method: :delete %>
@@ -16,4 +14,9 @@
 	<div>
 		<%= link_to 'Log in', new_user_session_url %>
 	</div>
+<% end %>
+<% @pins.each do |pin| %>
+	<%= link_to pin_path(pin) do %>
+	  <%= image_tag(pin.image_url) %>
+	<% end %>
 <% end %>

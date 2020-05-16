@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, :except => [ :index, :show ]
+
   def index
+    @comments = Comment.where(user_id: current_user).order_list(params[:sort_by])
   end
 
   def new

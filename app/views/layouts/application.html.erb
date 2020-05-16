@@ -18,15 +18,11 @@
 
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
-		      <li class="nav-item active">
-		      	<% if user_signed_in? %>
-		      		<%= link_to 'Log out', destroy_user_session_url, method: :delete, :class => "nav-link" %>
-		      	<% else %>
-		      		<%= link_to 'Log in', new_user_session_url, :class => "nav-link" %>
-		      	<% end %>
+		    	<li class="nav-item">
+		        <%= link_to 'Pins', pins_path, :class => "nav-link" %>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Link</a>
+		        <%= link_to 'Comments', comments_path, :class => "nav-link" %>
 		      </li>
 		      <li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,14 +35,23 @@
 		          <a class="dropdown-item" href="#">Something else here</a>
 		        </div>
 		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link disabled" href="#">Disabled</a>
-		      </li>
 		    </ul>
-		    <form class="form-inline my-2 my-lg-0">
-		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		    </form>
+		    <div class="form-inline my-2 my-lg-0">
+		    	<ul class="navbar-nav mr-auto">
+			    	<% if user_signed_in? %>
+			    		<li class="nav-item active form-inline">
+			    			Welcome &nbsp;<strong><%= current_user.email %></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			    		</li>
+			    		<li class="nav-item active">
+			      		<%= link_to 'Log out', destroy_user_session_url, method: :delete, :class => "nav-link" %>
+			      	</li>
+			    	<% else %>
+			    		<li class="nav-item active">
+	      				<%= link_to 'Log in', new_user_session_url, :class => "nav-link" %>
+	      			</li>
+	      		<% end %>
+				  </ul>
+			  <div>
 		  </div>
 		</nav>
   	<br>

@@ -1,6 +1,8 @@
 class PinsController < ApplicationController
+  before_action :authenticate_user!, :except => [ :index, :show ]
+
   def index
-    @pins = Pin.all
+    @pins = Pin.all.order_list(params[:sort_by])
   end
 
   def new

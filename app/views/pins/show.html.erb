@@ -1,0 +1,20 @@
+<div class="container mx-auto">
+
+
+<div class="row">
+
+      <div class="col-6">
+
+      <h3><%= @pin.title %></h3>
+      <br/> By <%= @pin.user.email %>
+      <br/><%= @pin.text %>
+      </div>
+
+      <div class="col-6">
+      <%= image_tag @pin.img_url%>
+      </div>
+
+</div>
+
+
+</div>

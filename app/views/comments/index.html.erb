@@ -23,8 +23,8 @@
 			  </ul>
 			  <div class='row' style="margin-top:5px">
 			  	<div class='col'>
-				  	<%= link_to 'Edit', edit_comment_path(comment) %> &nbsp;&nbsp;&nbsp;&nbsp;
-				  	<%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+				  	<%= link_to 'Edit', edit_comment_path(comment), :class => "btn btn-info" %>
+				  	<%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
 				  </div>
 				</div>
 			</div>

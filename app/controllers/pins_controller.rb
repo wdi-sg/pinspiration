@@ -1,6 +1,7 @@
 class PinsController < ApplicationController
   before_action :authenticate_user!, :except => [ :show, :index ]
   def index
+    @pins = Pin.all
   end
 
   def show

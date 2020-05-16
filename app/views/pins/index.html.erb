@@ -1,1 +1,10 @@
-<h1>Hello</h1>
+<h1>All pins</h1>
+<% @pins.each do |pin| %>
+	<%= link_to pin_path(pin) do %>
+	  <%= image_tag(pin.image_url) %>
+	<% end %>
+<% end %>
+
+<div>
+	<%= link_to 'New pin', new_pin_path %>
+</div>

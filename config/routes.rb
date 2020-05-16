@@ -33,4 +33,21 @@ get '/dashboards' => 'dashboards#index', as: 'dashboards'
   get '/tags/new' => 'tags#new', as: 'new_tag'
   post '/tags' => 'tags#create'
   get '/tags/:name' => 'tags#show' , as: 'tag'
+
+
+get '/others' => 'others#index', as: 'others'
+
+
+  get '/followees' => 'followees#index', as: 'followees'
+  get '/followees/:id/new' => 'followees#new', as: 'new_followee'
+  post '/followees/:id' => 'followees#create'
+  get '/followees/:id' => 'followees#show', as: 'followee'
+      delete '/followees/:id' => 'followees#destroy'
+
+
+  get '/boardfollowees' => 'boardfollowees#index', as: 'boardfollowees'
+  get '/boardfollowees/:id/new' => 'boardfollowees#new', as: 'new_boardfollowee'
+  post '/boardfollowees/:id' => 'boardfollowees#create'
+  get '/boardfollowees/:id' => 'boardfollowees#show', as: 'boardfollowee'
+      delete '/boardfollowees/:id' => 'boardfollowees#destroy'
 end

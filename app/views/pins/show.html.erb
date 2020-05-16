@@ -1,1 +1,10 @@
-<h1>Showing Pin</h1>
+<%= link_to @board.name, board_url(@board) %>
+
+<div class="container ">
+	<div class="card col-12">
+	  <img src=<%= @pin.image %> class="card-img-top">
+	  <div class="card-body">
+	    <h5 class="card-title"><%= @pin.title %></h5>
+	  </div>
+	</div>
+</div>

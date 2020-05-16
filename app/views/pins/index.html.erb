@@ -27,3 +27,9 @@
 <br>
 
 <%= link_to 'New Pin', new_pin_path %>
+
+<% if user_signed_in? %>
+<%= link_to 'Log Out', destroy_user_session_url, method: :delete %>
+<% else %>
+<%= link_to 'Log In', new_user_session_url %>
+<% end %>

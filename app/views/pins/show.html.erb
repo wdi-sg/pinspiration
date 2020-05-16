@@ -19,3 +19,15 @@
 <div>
 	<%= link_to 'Back', root_path %>
 </div>
+
+<% @pin.comment.each do |comment| %>
+	<div>
+		<h3>Comment: </h3>
+		<div>
+			<%= comment.body %>
+		</div>
+		<div>
+			<%= comment.created_at %>
+		</div>
+	</div>
+<% end %>

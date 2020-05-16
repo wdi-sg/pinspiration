@@ -4,6 +4,11 @@ class PinsController < ApplicationController
 
   # GET /pins
   # GET /pins.json
+  def pinsbyuser 
+    @pins = Pin.where(user_id: current_user.id)
+    render :dashboard
+  end
+  
   def index
     @pins = Pin.all
   end

@@ -1,6 +1,27 @@
 
 <p>Title: <%= @pin.title %></p>
-<p>Comment: <%= @comment.body %></p>
+
 <p><%= image_tag (@pin.img_url), style: 'width: 200px; height: 170px' %></p>
 
-<%= link_to 'Add Comment', new_comment_path %>
+
+<%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+
+<h1>Add a comment</h1>
+
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_field :body %>
+    <%= form.hidden_field :pin_id, value: @pin.id %>
+  </p>
+
+
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<h2>Comments</h2>
+
+<% @comments.each do |comment| %>
+<p>Comment: <%= comment.body %></p>
+
+<% end %>

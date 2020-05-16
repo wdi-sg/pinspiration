@@ -1,5 +1,6 @@
 class PinsController < ApplicationController
   def index
+    @pins = Pin.all
   end
 
   def new
@@ -11,11 +12,11 @@ class PinsController < ApplicationController
       puts @pin.id
        puts '********************'
 
-      @comment = Comment.find(@pin.id)
+      @comments = Comment.where(pin_id: @pin.id)
 
 
       puts '%%%%%%%%%%%%%%%%%%%%%%'
-      puts @comment
+      puts @comments
       puts '%%%%%%%%%%%%%%%%%%%%%%'
   end
 

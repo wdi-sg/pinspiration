@@ -1,1 +1,11 @@
-<h1>THIS FUCKING WORKS</h1>
+<h1>THIS WORKS</h1>
+
+<% @pins.each do |pin| %>
+
+
+	<p>Title: <%= pin.title %></p>
+
+
+	<p><%= image_tag (pin.img_url), style: 'width: 200px; height: 170px' %></p>
+
+	<% end %>

@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @pin = Pin.find(params[:id])
-    @comment = Comment.new()
-
+    @comment = Comment.new(comments_params)
+    @comment.save
+    redirect_to root_path
   end
 
 private

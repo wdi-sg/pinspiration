@@ -1,11 +1,21 @@
 <h1>THIS WORKS</h1>
 
+
+<% if user_signed_in? %>
+<%= link_to 'Create Pin', new_pin_path %>
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>
+<% else %>
+<h3><%= link_to 'Sign in', new_user_session_path %></h3>
+<h3><%= link_to 'Sign Up', new_user_registration_path %></h3>
+<% end %>
+
 <% @pins.each do |pin| %>
-
-
+<% if user_signed_in? %>
 	<p>Title: <%= pin.title %></p>
-
-
 	<p><%= image_tag (pin.img_url), style: 'width: 200px; height: 170px' %></p>
-
+	<%= link_to 'Pin', pin_path(pin) %>
+	<% else %>
+	<p>Title: <%= pin.title %></p>
+	<p><%= image_tag (pin.img_url), style: 'width: 200px; height: 170px' %></p>
+	<% end %>
 	<% end %>

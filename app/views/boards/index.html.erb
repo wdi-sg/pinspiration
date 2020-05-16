@@ -1,0 +1,37 @@
+<h1>Your boards </h1>
+		<button>
+		<%= link_to 'New Board', new_board_path %>
+		</button>
+
+		<%= link_to 'Sort By Board held Ascending', boards_path(type: "boardSort", sequence: "asc") %>
+		<%= link_to 'Sort By Board held Descending', boards_path(type: "boardSort", sequence: "desc") %>
+<div class="row border">
+	<div class="col-12">
+  <% @boards.each do |board| %>
+
+    	<div class="row">
+    		<div class = "col-3 text-center">
+      		<p><%= board.boardtitle %></p>
+
+      	</div>
+      	  <div class="col-3">
+      		<p><%= link_to 'View', board_path(board) %></p>
+    		</div>
+
+    	<div class="col-3">
+      		<p><%= link_to 'Edit', edit_board_path(board) %></p>
+    		</div>
+
+    		 <div class="col-3">
+      		<p><%= link_to 'Delete', board_path(board),
+        	method: :delete,
+        	data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+      </div>
+
+
+
+
+  <% end %>
+</div>
+</div>

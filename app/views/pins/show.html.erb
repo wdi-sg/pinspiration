@@ -1,0 +1,84 @@
+<div class="row mt-5">
+	<div class="col-6">
+		<div class="row">
+			<div class="col-12">
+				<p>
+  				<strong>Url:</strong>
+  				<%= @pin.url %>
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<p>
+  				<strong>Title:</strong>
+  				<%= @pin.title %>
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<p>By <%= @pin.user.email %>
+
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 text-center">
+				<p>Tags
+
+				</p>
+			</div>
+		</div>
+<div class="row border">
+  <% @pin.tags.each do |tag| %>
+    <div class="col-4 border text-center pt-3 pb-3">
+    	<div class="row">
+    		<div class = "col-12 text-center">
+      		<p><%= tag.tagtext %></p>
+
+      	</div>
+      </div>
+
+
+    </div>
+  <% end %>
+</div>
+
+
+
+
+	</div>
+
+	<div class="col-6">
+		<h3>This is for the comment section</h3>
+
+		<div class="row border">
+			<div class="col-12">
+			<% @pin.comment.each do |comment| %>
+			<div class="row">
+				<p><%= comment.body %> (Created at: <%= comment.created_at %>)</p>
+			</div>
+
+			<% end %>
+			</div>
+		</div>
+			<%= link_to 'New comment', new_comment_path %>
+	</div>
+</div>
+
+
+
+<h2>Comment: </h2>
+
+
+
+
+<%= link_to 'Edit', edit_pin_path(@pin) %>
+<%= link_to 'Destroy', pin_path(@pin),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+<%= link_to 'View comments', comments_path %>
+<%= link_to 'Back', root_path %>

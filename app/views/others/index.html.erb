@@ -1,0 +1,71 @@
+<h1>To show all users</h1>
+
+
+ <% @users.each do |user| %>
+
+
+    		<div class = "row">
+
+    			<div class="col-3">
+							<p> <%= user.username %></p>
+					</div>
+
+
+      	  <div class="col-3">
+      		<p><%= link_to 'View', followee_path(user) %></p>
+      	</div>
+
+      	 <div class="col-3">
+      		<p><%= link_to 'Follow', new_followee_path(user) %></p>
+      	</div>
+
+      	 <div class="col-3">
+      		<p><%= link_to 'Do not follow', followee_path(user),
+        	method: :delete,
+        	data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+      </div>
+
+
+
+
+
+
+  <% end %>
+
+
+  <h1> To show all boxes</h1>
+
+
+   <% @boards.each do |board| %>
+
+   	<div class="row">
+    		<div class = "col-3 ">
+
+
+							<p> <%= board.boardtitle %></p>
+
+      	</div>
+
+      	      	  <div class="col-3">
+      		<p><%= link_to 'View', boardfollowee_path(board) %></p>
+      	</div>
+
+       	 <div class="col-3">
+      		<p><%= link_to 'Follow', new_boardfollowee_path(board) %></p>
+      	</div>
+
+      	 <div class="col-3">
+      		<p><%= link_to 'Do not follow', boardfollowee_path(board),
+        	method: :delete,
+        	data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+
+
+      </div>
+
+
+
+
+
+  <% end %>

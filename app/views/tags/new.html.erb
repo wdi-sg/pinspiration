@@ -1,0 +1,12 @@
+<%= form_with scope: :tag, url: tags_path, local: true do |form| %>
+  <p>
+    <%= form.label :tagtext %><br>
+    <%= form.text_field :tagtext %>
+  </p>
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back', tags_path %>

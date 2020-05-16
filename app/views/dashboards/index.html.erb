@@ -1,0 +1,152 @@
+<h1>Welcome <%= @user.email %></h1>
+
+<h2>Pins</h2>
+		<%= link_to 'Sort By pin title held Ascending', dashboards_path(type: "pinSort", sequence: "asc") %>
+		<%= link_to 'Sort By pin title held Descending', dashboards_path(type: "pinSort", sequence: "desc") %>
+<div class="row border">
+  <% @pins.each do |pin| %>
+    <div class="col-4 border text-center pt-3 pb-3">
+    	<div class="row">
+    		<div class = "col-12 text-center">
+      		<p><%= pin.title %></p>
+
+      	</div>
+      </div>
+
+      <div class="row justify-content-center	">
+      	<div class="col-2">
+      		<p><%= link_to 'V', pin_path(pin) %></p>
+    		</div>
+
+    		<div class="col-2">
+      		<p><%= link_to 'E', edit_pin_path(pin) %></p>
+    		</div>
+
+    		<div class="col-2">
+      		<p><%= link_to 'D', pin_path(pin),
+        	method: :delete,
+        	data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+    	</div>
+    </div>
+  <% end %>
+</div>
+
+<h2>Comments</h2>
+
+
+  <% @comments.each do |comment| %>
+
+    	<div class="row">
+    		<div class = "col-4">
+      		<p><%= comment.body %></p>
+
+      	</div>
+
+      	 <div class="col-4">
+      		<p><%= link_to 'E', edit_comment_path(comment) %></p>
+    		</div>
+
+    		   <div class="col-4">
+      		<p><%= link_to 'D', comment_path(comment),
+        	method: :delete,
+        	data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+      </div>
+
+
+
+  <% end %>
+
+<h2>Your boards </h2>
+
+  		<%= link_to 'Sort By Board held Ascending', boards_path(type: "boardSort", sequence: "asc") %>
+		<%= link_to 'Sort By Board held Descending', boards_path(type: "boardSort", sequence: "desc") %>
+<div class="row border">
+	<div class="col-12">
+  <% @boards.each do |board| %>
+
+    	<div class="row">
+    		<div class = "col-3 text-center">
+      		<p><%= board.boardtitle %></p>
+
+      	</div>
+      	  <div class="col-3">
+      		<p><%= link_to 'View', board_path(board) %></p>
+    		</div>
+
+    	<div class="col-3">
+      		<p><%= link_to 'Edit', edit_board_path(board) %></p>
+    		</div>
+
+    		 <div class="col-3">
+      		<p><%= link_to 'Delete', board_path(board),
+        	method: :delete,
+        	data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+      </div>
+
+
+
+
+  <% end %>
+</div>
+</div>
+
+
+<h2>Boards following </h2>
+
+
+<div class="row border">
+	<div class="col-12">
+  <% @testboards.each do |board| %>
+
+    	<div class="row">
+    		<div class = "col-3 text-center">
+      		<p><%= board.boardtitle %></p>
+
+      	</div>
+      	  <div class="col-3">
+      		<a href = <%= "/boards/" + board.board_id.to_s%>>View</a>
+    		</div>
+
+
+      </div>
+
+
+
+
+  <% end %>
+</div>
+</div>
+
+
+
+
+<h2>Users following </h2>
+
+
+<div class="row border">
+	<div class="col-12">
+  <% @followedusers.each do |followeduser| %>
+
+    	<div class="row">
+    		<div class = "col-3 text-center">
+      		<p><%= followeduser.username %></p>
+
+      	</div>
+
+      	  <div class="col-3">
+      		<a href = <%= "/followees/" + followeduser.id.to_s%>>View</a>
+    		</div>
+
+
+
+      </div>
+
+
+
+
+  <% end %>
+</div>
+</div>

@@ -1,0 +1,40 @@
+
+<%= puts @board %>
+<h1>Board title: <%= @board.boardtitle %></h1>
+
+		<%= link_to 'Sort By pin title held Ascending', board_path(type: "pinSort", sequence: "asc") %>
+		<%= link_to 'Sort By pin title held Descending', board_path(type: "pinSort", sequence: "desc") %>
+
+<div class="row border">
+  <% @pins.each do |pin| %>
+    <div class="col-4 border text-center pt-3 pb-3">
+    	<div class="row">
+    		<div class = "col-12 text-center">
+      		<p><%= pin.title %></p>
+
+      	</div>
+      </div>
+       <div class="row">
+    		<div class = "col-12 text-center">
+      		<p><%= pin.url %></p>
+
+      	</div>
+      </div>
+      <div class="row justify-content-center	">
+      	<div class="col-2">
+      		<p><%= link_to 'V', pin_path(pin) %></p>
+    		</div>
+
+    		<div class="col-2">
+      		<p><%= link_to 'E', edit_pin_path(pin) %></p>
+    		</div>
+
+    		<div class="col-2">
+      		<p><%= link_to 'D', pin_path(pin),
+        	method: :delete,
+        	data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+    	</div>
+    </div>
+  <% end %>
+</div>

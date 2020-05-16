@@ -1,0 +1,29 @@
+<h1>Hello tags</h1>
+
+		<button>
+		<%= link_to 'New Tag', new_tag_path %>
+		</button>
+
+
+	<%= link_to 'Sort tag Ascending', tags_path(type: "tagSort", sequence: "asc") %>
+		<%= link_to 'Sort tag held Descending', tags_path(type: "tagSort", sequence: "desc") %>
+<div class="row border">
+
+  <% @tags.each do |tag| %>
+
+
+    		<div class = "col-3 text-center">
+
+
+      		<a href = <%= "/tags/"+ tag.tagtext %>><%= tag.tagtext %></a>
+
+      	</div>
+
+
+
+
+
+
+  <% end %>
+
+</div>

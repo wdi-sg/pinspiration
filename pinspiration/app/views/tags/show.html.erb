@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Tagname:</strong>
-  <%= @tag.tagname %>
-</p>
+<h3>
+  <strong>Tag Name:</strong>
+  #<%= @tag.tagname %>
+</h3>
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
+<div>Associated Pins:</div>
+<ul>
+<% @tag.pins.each do |pin| %>
+  <li><%= link_to pin.title, pin_path(pin), class:"text-primary" %></li>
+<% end %>
+</ul>
+
+
 <%= link_to 'Back', tags_path %>

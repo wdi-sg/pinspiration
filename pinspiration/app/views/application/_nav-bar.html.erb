@@ -9,6 +9,10 @@
         <%= link_to "Pins", pins_path, class:"nav-link" %>
       </li>
 
+      <li class="nav-item active">   
+        <%= link_to "Tags", tags_path, class:"nav-link" %>
+      </li>
+
     <% if !user_signed_in? %>
       <li class="nav-item active">   
         <%= link_to "Login", new_user_session_path, class:"nav-link" %>
@@ -22,6 +26,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</a>
         <div class="dropdown-menu" aria-labelledby="dropdown10">
           <%= link_to 'New Pin', new_pin_path, class:"dropdown-item" %>
+           <%= link_to 'New Tag', new_tag_path, class:"dropdown-item" %>
         </div>
       </li>
       <li class="nav-item dropdown active">

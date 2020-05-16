@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :tagname %>
-    <%= form.text_field :tagname %>
+    <%= form.label :tagname, "Tag Name:" %>
+    <%= form.text_field :tagname, class:"form-control"%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Tag", class:"btn btn-primary"%>
   </div>
 <% end %>

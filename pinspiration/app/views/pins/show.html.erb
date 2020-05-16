@@ -23,7 +23,12 @@
     <% end %>
   </ul>
   <div class="card-body">
-    <p class="mb-0"><%= link_to 'Hashtags go here', class:"text-primary" %></p>
+  <p class="mb-0">
+    <% @pin.tags.each do |tag| %>
+      <% str = "#" + tag.tagname %>
+      <%= link_to str, tag_path(tag), class:"text-primary" %>&nbsp;
+    <% end %>
+  </p>
   </div>
   <div class="card-body">
     <%= link_to 'New Comment', new_pin_comment_path(@pin), class:"btn btn-primary text-white" %>

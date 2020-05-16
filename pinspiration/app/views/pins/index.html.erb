@@ -17,8 +17,16 @@
           <p class="card-text">Comments: 
             <%= pin.comment.length %>
           </p>
+          <div>
+            <p>
+              <% pin.tags.each do |tag| %>
+                <% str = "#" + tag.tagname %>
+                <%= link_to str, tag_path(tag), class:"text-primary" %>&nbsp;
+              <% end %>
+            </p>
+          </div>
           <div class="card-footer">
-            <p class="mb-0">
+            <p class="mb-0 text-center">
               <%= link_to 'Show', pin %>
             </p>
           </div>

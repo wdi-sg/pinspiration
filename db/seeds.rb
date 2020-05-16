@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Pin.create({title:'First',url: 'https://i.picsum.photos/id/755/400/400.jpg'})
+
+Pin.create({title:'Second',url: 'https://i.picsum.photos/id/756/400/400.jpg'})
+
+Pin.create({title:'Third',url: 'https://i.picsum.photos/id/757/400/400.jpg'})
+
+Pin.create({title:'Fourth',url: 'https://i.picsum.photos/id/758/400/400.jpg'})
+
+Pin.create({title:'Fifth',url: 'https://i.picsum.photos/id/741/400/400.jpg'})

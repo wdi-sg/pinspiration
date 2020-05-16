@@ -119,3 +119,34 @@
   <% end %>
 </div>
 </div>
+
+
+
+
+<h2>Users following </h2>
+
+
+<div class="row border">
+	<div class="col-12">
+  <% @followedusers.each do |followeduser| %>
+
+    	<div class="row">
+    		<div class = "col-3 text-center">
+      		<p><%= followeduser.username %></p>
+
+      	</div>
+
+      	  <div class="col-3">
+      		<a href = <%= "/followees/" + followeduser.id.to_s%>>View</a>
+    		</div>
+
+
+
+      </div>
+
+
+
+
+  <% end %>
+</div>
+</div>

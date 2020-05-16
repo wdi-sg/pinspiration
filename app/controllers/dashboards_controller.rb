@@ -36,6 +36,19 @@ puts "I am a a happy happy happy happy happy"
 #puts @unsortedboards
 @testboards = Board.joins(:boardfollowees).select("*")
 puts @testboards
+
+
+@followees = Followee.select(:followee_id).where(user_id: current_user.id)
+#puts @followees
+@array = Array.new
+p @array
+ @followees.each do|followee|
+  p followee.followee_id
+  @array << followee.followee_id
+ end
+ p @array
+ @followedusers = User.where(id: @array)
+ p @followedusers
   end
 
   def show

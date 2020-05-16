@@ -20,6 +20,7 @@ class BoardfolloweesController < ApplicationController
       @boardfollowee.user = current_user
       @boardfollowee.save
       redirect_to others_path
+
     end
 
 

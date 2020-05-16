@@ -4,6 +4,12 @@ class CommentsController < ApplicationController
 
   # GET /comments
   # GET /comments.json
+
+  def commentsbyuser 
+    @comments = Comment.where(user_id: current_user.id)
+    render :dashboard
+  end
+
   def index
     if params.has_key?(:pin_id)
       @pin = Pin.find(params[:pin_id])
@@ -23,6 +29,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   # POST /comments
@@ -47,9 +54,13 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+    @comment = Comment.find(params[:id])
+    puts @comment
+    @comment.update(comment_params)
+
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: "Comment was successfully updated." }
+        format.html { redirect_to pin_comments_path, notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -63,7 +74,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to  pin_comments_path, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
     end
   end

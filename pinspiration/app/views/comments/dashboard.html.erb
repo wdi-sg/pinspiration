@@ -1,0 +1,22 @@
+<h1>Dashboard: My Comments</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Pin ID</th>
+      <th scope="col">Content</th>
+      <th scope="col">Date Created</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @comments.each do |comment| %>
+     <tr>
+      <th scope="row"><%= comment.pin_id %></th>
+      <td><%= comment.content %></td>
+      <td><%= comment.created_at.getlocal.strftime("%d %B %Y, %H:%M") %></td>
+      <td><%= link_to 'Show Pin', pin_path(comment.pin_id), class:"text-primary" %></td>
+    </tr>
+  <% end %>
+   
+  </tbody>
+</table>

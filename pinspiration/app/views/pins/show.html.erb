@@ -13,16 +13,19 @@
       <li class="list-group-item">
         <%= comment.content %><br/>
         <% @user = User.find(comment.user_id) %>
-        <em><%= @user.email %></em> | <em><%= comment.created_at.getlocal.strftime("%d %B %Y, %H:%M") %></em>
+        <small class="text-muted"><%= @user.email %> | <%= comment.created_at.getlocal.strftime("%d %B %Y, %H:%M") %><br/>
+        
+        <%= link_to 'Edit', edit_pin_comment_path(@pin, comment), class:"text-primary"%>&nbsp;
+        <%= link_to 'Destroy', pin_comment_path(@pin, comment), method: :delete, data: { confirm: 'Are you sure?' }, class:"text-primary" %>
+        </small>
       </li>
     <% end %>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Hashtags</a>
-    <a href="#" class="card-link">Another hashtag</a>
+    <p class="mb-0"><%= link_to 'Hashtags go here', class:"text-primary" %></p>
   </div>
   <div class="card-body">
-    <%= link_to 'New Comment', new_pin_comment_path(@pin), class:"btn btn-primary" %>
+    <%= link_to 'New Comment', new_pin_comment_path(@pin), class:"btn btn-primary text-white" %>
   </div>
 </div>
 <%= link_to 'Edit', edit_pin_path(@pin) %> |

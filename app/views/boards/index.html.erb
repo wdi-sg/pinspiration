@@ -2,6 +2,9 @@
 		<button>
 		<%= link_to 'New Board', new_board_path %>
 		</button>
+
+		<%= link_to 'Sort By Board held Ascending', boards_path(type: "boardSort", sequence: "asc") %>
+		<%= link_to 'Sort By Board held Descending', boards_path(type: "boardSort", sequence: "desc") %>
 <div class="row border">
 	<div class="col-12">
   <% @boards.each do |board| %>

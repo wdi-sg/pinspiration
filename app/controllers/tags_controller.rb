@@ -3,6 +3,21 @@ class TagsController < ApplicationController
   before_action :authenticate_user!, :except => [ :show, :index ]
   def index
     @tags = Tag.all
+
+        sequence = request.query_parameters['sequence']
+    type = request.query_parameters['type']
+
+    case type
+    when "tagSort"
+      puts("I am kopi tag")
+      puts @tags
+      @tags = @tags.order("tagtext")
+      if sequence == "desc"
+        @tags = @tags.reverse
+      end
+    end
+
+
   end
 
   def show

@@ -1,6 +1,8 @@
 <h1>Welcome <%= @user.email %></h1>
 
 <h2>Pins</h2>
+		<%= link_to 'Sort By pin title held Ascending', dashboards_path(type: "pinSort", sequence: "asc") %>
+		<%= link_to 'Sort By pin title held Descending', dashboards_path(type: "pinSort", sequence: "desc") %>
 <div class="row border">
   <% @pins.each do |pin| %>
     <div class="col-4 border text-center pt-3 pb-3">

@@ -16,6 +16,7 @@ class BoardfolloweesController < ApplicationController
     else
       puts "does not exist"
       @boardfollowee = Boardfollowee.new(:boardfollowee_id => params[:id])
+      @boardfollowee.board_id = params[:id]
       @boardfollowee.user = current_user
       @boardfollowee.save
       redirect_to others_path

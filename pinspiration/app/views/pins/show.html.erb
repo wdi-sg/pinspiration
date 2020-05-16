@@ -13,11 +13,12 @@
       <li class="list-group-item">
         <%= comment.content %><br/>
         <% @user = User.find(comment.user_id) %>
-        <small class="text-muted"><%= @user.email %> | <%= comment.created_at.getlocal.strftime("%d %B %Y, %H:%M") %><br/>
-        
-        <%= link_to 'Edit', edit_pin_comment_path(@pin, comment), class:"text-primary"%>&nbsp;
-        <%= link_to 'Destroy', pin_comment_path(@pin, comment), method: :delete, data: { confirm: 'Are you sure?' }, class:"text-primary" %>
-        </small>
+        <small class="text-muted"><%= @user.email %> | <%= comment.created_at.getlocal.strftime("%d %B %Y, %H:%M") %></small><br/>
+        <% if current_user.id == comment.user_id%>
+          <small class="text-muted"><%= link_to 'Edit', edit_pin_comment_path(@pin, comment), class:"text-primary"%>&nbsp;
+            <%= link_to 'Destroy', pin_comment_path(@pin, comment), method: :delete, data: { confirm: 'Are you sure?' }, class:"text-primary" %>
+          </small>
+        <% end %>
       </li>
     <% end %>
   </ul>
@@ -28,5 +29,4 @@
     <%= link_to 'New Comment', new_pin_comment_path(@pin), class:"btn btn-primary text-white" %>
   </div>
 </div>
-<%= link_to 'Edit', edit_pin_path(@pin) %> |
 <%= link_to 'Back', pins_path %>

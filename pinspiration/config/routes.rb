@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :pins do
     resources :comments
   end
+  
+  root 'pins#index'
 
   get '/dashboard/comments' => 'comments#commentsbyuser', as: 'comments_user'
 

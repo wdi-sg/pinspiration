@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1>Pins</h1>
+<h1>Pinspiration</h1>
 <div class="card-deck row">
   <% @pins.each do |pin| %>
     <div class="col-3">
@@ -18,16 +18,12 @@
             <%= pin.comment.length %>
           </p>
           <div class="card-footer">
-          <p>
-            <%= link_to 'Show', pin %>&nbsp;
-            <%= link_to 'Edit', edit_pin_path(pin) %>&nbsp;
-            <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
-            
+            <p class="mb-0">
+              <%= link_to 'Show', pin %>
+            </p>
           </div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
-<br>
-<%= link_to 'New Pin', new_pin_path %>

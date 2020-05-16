@@ -4,7 +4,16 @@
 	  <%= image_tag(pin.image_url) %>
 	<% end %>
 <% end %>
-
-<div>
-	<%= link_to 'New pin', new_pin_path %>
-</div>
+<% if user_signed_in? %>
+	<div>
+		<%= link_to 'New pin', new_pin_path %>
+	</div>
+	<div>
+		<%= link_to 'Log out', destroy_user_session_url, method: :delete %>
+	</div>
+<% end %>
+<% if user_signed_in? == false %>
+	<div>
+		<%= link_to 'Log in', new_user_session_url %>
+	</div>
+<% end %>

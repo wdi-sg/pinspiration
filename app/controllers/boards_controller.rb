@@ -1,6 +1,7 @@
 class BoardsController < ApplicationController
   def show
     @board = current_user.boards.find(params[:id])
+    @pins = @board.pins.all
   end
 
   def new

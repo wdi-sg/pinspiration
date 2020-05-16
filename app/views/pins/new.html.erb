@@ -1,7 +1,9 @@
-<h1>New Pin</h1>
+<h2><%= @board.name %></h2>
+
+<h2>New Pin</h1>
 
 
-<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+<%= form_with scope: :pin, url: board_pins_path, local: true do |form| %>
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>

@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pins</h1>
+<div style="display:flex">
+<% @pins.each do |pin| %>
+      <div class="card small" style="width: 18rem; margin: 2rem">
+        <div class="card-image">
+          <%= image_tag pin.image_url %>
+
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="card-content">
+          <p><%= pin.title %></p>
+        </div>
+        <div class="card-action">
+          <%= form_with(url: "/pinit/#{pin.id}", method: "post") do %>
+            <%= submit_tag("Pin It!") %>
+          <% end %>
+          <%= link_to 'Show', pin %>
+          <%= link_to 'Edit', edit_pin_path(pin) %>
+          <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+<% end %>
+<div>
+<br>
+
+<%= link_to 'New Pin', new_pin_path %>

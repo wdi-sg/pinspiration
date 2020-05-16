@@ -10,6 +10,12 @@
 	</div>
 </p>
 
+<% if user_signed_in? %>
+	<div>
+		<%= link_to 'New comment', new_pin_comment_url(@pin) %>
+	</div>
+<% end %>
+
 <div>
 	<%= link_to 'Back', root_path %>
 </div>

@@ -1,0 +1,17 @@
+<%= form_with scope: :comment, url: pin_comments_path, local: true do |form| %>
+	<p>
+		Add a comment
+	</p>
+  <%= form.hidden_field :pin_id, :value => params[:pin_id]%>
+
+  <p>
+    Comment:
+    <div>
+	    <%= form.text_area :body %>
+	  </div>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

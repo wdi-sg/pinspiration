@@ -26,10 +26,18 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   def update
+    @comment = Comment.find(params[:id])
+    @comment.user = current_user
 
+    if @comment.update(comment_params)
+      redirect_to pin_path(@comment.pin_id)
+    else
+      render plain: @comment.errors.inspect
+    end
   end
 
   private

@@ -1,2 +1,24 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<h2>Edit Comment</h2>
+<br>
+<div class="card-header">
+	<div class='row'>
+		<div class='col-10'>
+			<h5>Pin: <%= @comment.pin.title %></h5>
+			<%= form_with scope: :comment, model: @comment, local: true do |form| %>
+			  <ul class="list-group list-group-flush">
+		    	<li class="list-group-item"><%= form.text_area :body, style:"width:100%" %></li>
+		    	<li class="list-group-item text-muted"><em>Posted on <%= @comment.created_at.strftime("%d %b %Y, %H:%M HRS") %></em></li>
+			  </ul>
+			  <div class='row' style="margin-top:5px">
+			  	<div class='col'>
+			  		<% form.text_area :pin_id %>
+			  		<%= form.submit :class => "btn btn-primary" %>
+				  </div>
+				</div>
+			<% end %>
+		</div>
+		<div class='col-2'>
+			<%= image_tag @comment.pin.image_url, :style => 'width:10em' %>
+		</div>
+	</div>
+</div>

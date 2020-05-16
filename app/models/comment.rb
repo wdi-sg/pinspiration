@@ -10,7 +10,7 @@ class Comment < ApplicationRecord
     elsif sort_order == "pin_desc"
       Comment.joins(:pin).order(title: :desc)
     else
-      order(created_at: :asc)
+      order(created_at: :desc)
     end
   end
 end

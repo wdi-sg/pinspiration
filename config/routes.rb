@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :users
   root 'users#index'
 
-  resources :boards
+# Nested routes due to association
+  resources :boards do
+    resources :pins
+  end
 
-  resources :pins
 end

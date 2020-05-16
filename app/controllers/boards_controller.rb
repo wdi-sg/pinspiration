@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   def show
-    @board = Board.find(params[:id])
+    @board = current_user.boards.find(params[:id])
   end
 
   def new

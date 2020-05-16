@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index
     @user = User.find(current_user.id)
 
-    @boards = Board.all
+    @boards = current_user.boards.all
   end
 
   def edit

@@ -7,7 +7,7 @@ class PinsController < ApplicationController
   # GET /pins.json
   def index
     id = current_user.id
-    @pins = Pin.where(user_id:id)
+    @pins = Pin.where(user_id:id).order(id)
     
   end
 
@@ -19,17 +19,18 @@ class PinsController < ApplicationController
   # GET /pins/new
   def new
     @pin = Pin.new
+    @userid = current_user.id
   end
 
   # GET /pins/1/edit
   def edit
+    @userid = current_user.id
   end
 
   # POST /pins
   # POST /pins.json
   def create
     @pin = Pin.new(pin_params)
-
     respond_to do |format|
       if @pin.save
         format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
@@ -73,6 +74,6 @@ class PinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pin_params
-      params.require(:pin).permit(:title, :url)
+      params.require(:pin).permit(:title, :url, :user_id)
     end
 end

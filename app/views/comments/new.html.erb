@@ -1,2 +1,17 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<h2>New Comment</h2>
+<br>
+<div class="card" style="width: 25rem;">
+	<div class="card-header">
+    <%= form_with scope: :comment, url: pin_comments_path, local: true do |form| %>
+    	<p>
+		    <%= form.label :Enter_your_comment %><br>
+		    <%= form.text_area :body, style:"width:100%" %>
+		    <%= form.submit :class => "btn btn-primary" %>
+		  </p>
+    <% end %>
+  </div>
+	<img class="card-img-bottom" src=<%= @pin.image_url %> alt= <% @pin.title %> />
+  <div class="card-body">
+	  <h4 class="card-title"><%= @pin.title %></h4>
+	</div>
+</div>

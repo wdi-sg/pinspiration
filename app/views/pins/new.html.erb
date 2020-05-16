@@ -1,2 +1,17 @@
-<h1>Pins#new</h1>
-<p>Find me in app/views/pins/new.html.erb</p>
+<h2>New Pin</h2>
+<br>
+<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+  	<%= form.label :image %><br>
+  	<%= form.text_field :image_url, placeholder: 'Enter image URL' %>
+  </p>
+  <br>
+  <p>
+  	<%= form.submit :class => "btn btn-primary" %>
+  	<%= link_to 'Back', pins_path, :class => "btn btn-secondary" %>
+  </p>
+<% end %>

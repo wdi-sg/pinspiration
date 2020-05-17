@@ -1,7 +1,7 @@
 
 
 	<nav class="navbar navbar-expand-lg navbar-light ">
-		<%= link_to 'Pinterest', root_path, class:'navbar-brand', id: 'logo' %>
+		<%= link_to 'Pinspiration', root_path, class:'navbar-brand', id: 'logo' %>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -35,7 +35,7 @@
 
 	<% if user_signed_in? %>
 		  <div class="container">
-		    <h1 class="display-4">Pinterest</h1>
+		    <h1 class="display-4">Pinspiration</h1>
 		    <p class="lead">Pin or create your favorite content</p>
 		    <%= link_to 'Create Pin', new_pin_path, class: 'nav-link btn btn-primary btn-sm create' %>
 		  </div>

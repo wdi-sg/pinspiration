@@ -30,6 +30,13 @@
     <%= form.label :img_url, "Image URL" %><br>
     <%= form.text_field :img_url, :required => true %>
   </p>
+
+  <p>
+      <%= form.label :tags, "Tags" %><br>
+
+          <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+
+  </p>
   <p>
     <%= form.submit %>
   </p>

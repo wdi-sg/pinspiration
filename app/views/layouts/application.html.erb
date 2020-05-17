@@ -34,6 +34,9 @@
     <li class="nav-item">
     <a class="nav-link" href="/boards/new">New Board</a>
     </li>
+            <li class="nav-item"> <%= link_to 'New Tag', new_tag_path, :class => 'nav-link'%> </li>
+
+            <li class="nav-item"> <%= link_to 'All Tags', tags_path, :class => 'nav-link'%> </li>
 
         <li class="nav-item"> <%= link_to 'Create Pin', new_pin_path, :class => 'nav-link'%></li>
         <li class="nav-item"> <%= link_to 'All Pins', pins_path, :class => 'nav-link'%> </li>

@@ -18,6 +18,12 @@ class PinsController < ApplicationController
             end
       end
 
+      def update
+            @pin = Pin.find(params[:id])
+            @pin.update(pin_params)
+            redirect_to @pin
+      end
+
       def dashboard
             @user = current_user
             @pins = current_user.pins
@@ -35,9 +41,14 @@ class PinsController < ApplicationController
             @pin.board_ids = @board_ids
             redirect_to @pin
       end
+
+      def add_tags
+            
+      end
+
       
       private
             def pin_params
-                  params.require(:pin).permit(:title, :text, :img_url, :board_ids => [])
+                  params.require(:pin).permit(:title, :text, :img_url, :board_ids => [], :tag_ids => [])
             end
 end

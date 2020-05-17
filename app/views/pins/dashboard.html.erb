@@ -1,11 +1,76 @@
+<div class="container-fluid">
+
+<div class="row">
+
+<div class="col">
+
+<h2 class="mb-3">Your Comments</h2>
+
+<% if @comments.length!=0 %>
+<% @comments.each do |comment | %>
+
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">      
+      <span class="text-muted">"</span><%= comment.text %><span class="text-muted">"</span></p>
+            <footer class="blockquote-footer">
+        <small class="text-muted">
+          on <%= link_to comment.pin.title, pin_path(comment.pin) %>, <%= time_ago_in_words(comment.created_at) %> ago
+          </small>
+      </footer>
+    </div>
+</div>
+
+<% end %>
+
+<% else %>
+
+<h6> You haven't made any comments yet. Head <%=link_to "here", pins_path %> to start the conversation! </h6>
+
+<% end %>
+
+
+</div>
+
+
+
+
+<div class="col">
+
+
+<% if @boards.length!=0 %>
+
+<h2 class="mb-3">Your Boards</h2>
+<% @boards.each do |board| %>
+ <div class="card"">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to board.title, board_path(board) %> </h5>
+    <h6 class="card-subtitle mb-2 text-muted"> <%= board.pins.count %> pins </h6>
+    <p class="card-text"> <%= board.description%> </p>
+  </div>
+      <div class="card-footer">
+      <small class="text-muted">Board by @<%=board.user.username%> | Created <%= time_ago_in_words(board.updated_at) %> ago </small>
+    </div>
+</div>
+    <% end %>
+    <%end %>
+</div>
+
+</div>
+
+
+<div class="row">
+
+
+<div class="col">
 <h2>Your Pins</h2>
 
-<div class="card-deck mb-5">
 
 <% if @pins.length!=0 %>
+<div class="card-deck mb-5">
+
 <% @pins.each do |pin| %>
 <div class="col-lg-3 col-md-6">
-
   <div class="card">
   <%= image_tag(pin.img_url, :class => "card-img-top") %>
     <div class="card-body">
@@ -18,7 +83,8 @@
       </footer>
     </div>
   </div>
-</div>
+    </div>
+
   <% end %>
   </div>
 
@@ -27,24 +93,10 @@
   <h6>You don't have any pins yet. Head <%=link_to "here", pins_path %> to start adding pins! </h6>
 
   <% end %>
-
-<h2 class="mb-3">Your Comments</h2>
-
-<% @comments.each do |comment | %>
-<div class="col-lg-3 col-md-6">
-
-  <div class="card">
-    <div class="card-body">
-      <p class="card-text">      
-      <span class="text-muted">"</span><%= comment.text %><span class="text-muted">"</span></p>
-            <footer class="blockquote-footer">
-        <small class="text-muted">
-          on <%= link_to comment.pin.title, pin_path(comment.pin) %>, <%= time_ago_in_words(comment.created_at) %> ago
-          </small>
-      </footer>
-    </div>
   </div>
+
 </div>
 
 
-<% end %>
+</div>
+

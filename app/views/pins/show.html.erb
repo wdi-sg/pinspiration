@@ -12,6 +12,14 @@
       <h3><%= @pin.title %></h3>
       <br/> By @<%= @pin.user.username %>
       <br/><%= @pin.text %>
+
+      <p>Tags:
+      <% @pin.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag) %>,
+      <% end %>
+      </p>
+
+
       </div>
 
       <div class="col-6">
@@ -20,7 +28,22 @@
       
 </div>
 
-<h4>Add To Your Boards</h4>
+<% if current_user==@pin.user %>
+
+<h1 class="my-4">Modify Tags</h1>
+<%= form_with scope: :pin, model: @pin, local: true, include_hidden: false do |form| %>
+        
+        <p>
+        <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+        </p>
+        
+        <%= form.submit("Update Tags") %>
+<% end %> 
+
+
+<% end %>
+
+<h4 class="my-4">Add To Your Boards</h4>
 <%= form_with scope: :pin, url: pins_add_board_path, local: true, include_hidden: false do |form| %>
         
         <p>

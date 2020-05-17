@@ -1,8 +1,6 @@
+<h1>Pins tagged "<%=@tag.name%>"</h1>
 
-<div class="text-center mb-5">
-<h1>Find your inspiration today.</h1>
-</div>
-
+<% if @pins.count!=0 %>
 <div class="card-columns">
 
 <% @pins.each do |pin| %>
@@ -24,3 +22,9 @@
   <% end %>
 
 </div>
+
+<% else %>
+
+<h3>There are no pins with this tag</h3>
+
+<% end %>

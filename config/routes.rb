@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/dashboard' => "pins#dashboard", as: 'dashboard'
   post '/boards/:id/pins' => "boards#add_pins", as: 'board_pins'
   post '/pins/:id/boards' => "pins#add_to_board", as: 'pins_add_board'
+
+  resources :tags
   resources :pins do 
     resources :comments
   end

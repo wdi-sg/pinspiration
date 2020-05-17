@@ -1,0 +1,17 @@
+<p>
+  <strong>media_url:</strong>
+  <%= @pin.media_url %>
+</p>
+
+<p>
+  <strong>caption:</strong>
+  <%= @pin.caption %>
+</p>
+
+
+
+<%= link_to 'Back', root_path %>
+
+<%= link_to 'Edit', edit_pin_path(@pin) %>
+
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>

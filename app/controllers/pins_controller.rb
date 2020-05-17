@@ -14,6 +14,8 @@ class PinsController < ApplicationController
   # GET /pins/1
   # GET /pins/1.json
   def show
+    @comment = Comment.new
+    @comments = @pin.comments.order("created_at DESC")
   end
 
   # GET /pins/new

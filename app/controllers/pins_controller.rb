@@ -1,7 +1,7 @@
 class PinsController < ApplicationController
   def show
     @pin = Pin.find(params[:id])
-    @comments = Comment.all
+    @comments = Comment.where(pin_id: (params[:id]))
   end
 
   def edit

@@ -1,26 +1,36 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
-
-<p>
-  <strong>Pin's title:</strong>
-  <%= @pin.title %>
-</p>
-
-<p>
-  <strong>Img's url:</strong>
-  <img src=<%= @pin.imgurl %>>
-</p>
-
-<%= form_with scope: :comment, url: pin_comments_path, local: true do |form| %>
-
-  <p>
-  	Comments:<br>
-    <%= form.text_area :body %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
-
-<%= link_to 'Home page', root_path %>
+<body class="teal lighten-2">
+	<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo" style="margin-left: 30px">Pinspiration</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      	<% if user_signed_in? %>
+        <li stlye="margin-right:30px"><%= link_to 'log out', destroy_user_session_url, method: :delete %></li>
+        <% else %>
+				<li ><%= link_to 'log in', new_user_session_url %></li>
+				<% end %>
+      </ul>
+    </div>
+  </nav>
+  <div class="container" style="margin-top:30px">
+  	<div class="card">
+        <div class="card-content">
+        	<div class='imgcardshow'>
+        		<img src=<%= @pin.imgurl %>>
+        	</div>
+          <span class="card-title"><%= @pin.title %></span>
+        </div>
+        <div class="card-action">
+        	<%= form_with scope: :comment, url: pin_comments_path, local: true do |form| %>
+        	<div>
+        		Comments:<br>
+		    		<%= form.text_area :body %>
+		  		</div>
+				  <div>
+				    <%= form.submit %>
+				  </div>
+					<% end %>
+					<%= link_to 'Home page', root_path %>
+				</div>
+			</div>
+		</div>
+</body>

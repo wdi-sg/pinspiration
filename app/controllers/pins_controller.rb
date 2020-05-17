@@ -1,5 +1,9 @@
 class PinsController < ApplicationController
 
+  def index
+    @pins = Pin.all
+  end
+
   def show
     @board = current_user.boards.find(params[:board_id])
     @pin = @board.pins.find(params[:id])

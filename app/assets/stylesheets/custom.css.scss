@@ -36,6 +36,11 @@ body {
 	box-shadow: 3px 3px 5px 6px #ccc;
 }
 
+.img-box:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
 .pin-links {
 	display: flex;
 	justify-content: space-around;
@@ -46,6 +51,7 @@ body {
 	color: white;
 }
 
-.link-button {
-
+.create {
+	width: 200px;
+	margin: 0 auto;
 }

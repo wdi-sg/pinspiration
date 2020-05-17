@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   get '/comments/new' => 'comments#new', as: 'new_comment'
   post '/comments' => 'comments#create'
+  get '/comments' => 'comments#show', as: 'comment'
 end

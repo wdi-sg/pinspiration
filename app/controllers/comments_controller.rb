@@ -6,7 +6,10 @@ before_action :authenticate_user!, :except => [ :show, :index ]
     @comments = Comment.all
   end
 
+
+
   def create
+
     @comment = Comment.new(comments_params)
     @comment.save
     redirect_to root_path

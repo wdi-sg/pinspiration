@@ -10,11 +10,8 @@
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
 		      <li class="nav-item active">
-		       <%= link_to 'Create Pin', new_pin_path, class: 'nav-link' %>
+		      <%= link_to 'Log Out', destroy_user_session_url, method: :delete, class: 'nav-link' %>
 			      </li>
-			      <li class="nav-item">
-			        <%= link_to 'Log Out', destroy_user_session_url, method: :delete, class: 'nav-link' %>
-				      </li>
 			    </ul>
 			  </div>
 	<% else %>
@@ -32,11 +29,22 @@
 	</nav>
 
 
+
 <div class="jumbotron jumbotron-fluid text-center">
-  <div class="container">
-    <h1 class="display-4">Pinterest</h1>
-    <p class="lead">Pin or create your favorite content</p>
-  </div>
+
+
+	<% if user_signed_in? %>
+		  <div class="container">
+		    <h1 class="display-4">Pinterest</h1>
+		    <p class="lead">Pin or create your favorite content</p>
+		    <%= link_to 'Create Pin', new_pin_path, class: 'nav-link btn btn-primary btn-sm create' %>
+		  </div>
+		  <% else %>
+		   <div class="container">
+		    <h1 class="display-4">Pinterest</h1>
+		    <p class="lead">Pin or create your favorite content</p>
+		  </div>
+		  <% end %>
 </div>
 
 
@@ -49,7 +57,7 @@
 
 			<div class="pin-card">
 				<div class="pin-title">
-					<p>Title: <%= pin.title %></p>
+					<p><%= pin.title %></p>
 				</div>
 				<div class="pin-img">
 				<%= image_tag (pin.img_url), style: 'width: 200px; height: 170px', class: 'img-box' %>
@@ -65,7 +73,7 @@
 	<% else %>
 	<div class="pin-card">
 			<div class="pin-title">
-				<p>Title: <%= pin.title %></p>
+				<p><%= pin.title %></p>
 			</div>
 			<div class="pin-img">
 				<p><%= image_tag (pin.img_url), style: 'width: 200px; height: 170px', class: 'img-box' %></p>

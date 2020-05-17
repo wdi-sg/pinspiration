@@ -20,14 +20,13 @@
 
 </div>
 
-<h4>Leave A Comment</h4>
+<h4 class="mt-5">Leave A Comment</h4>
 <p>
       <%= form_with scope: :comment, url: pin_comments_path(@pin), local: true do |form| %>
-    <%= form.label :text %><br>
     <%= form.text_field :text, :required => true %>
   </p>
   <p>
-    <%= form.submit %>
+    <%= form.submit("Go!") %>
   </p>
 <% end %>
 </p>
@@ -39,7 +38,7 @@
 
 <% @pin.comments.each do |comment| %>
 <p>
-<h6>@<%= comment.user.username %> <%= comment.created_at.localtime.strftime("at %I:%M | %m %b %Y") %> </h6>
+<h6>@<%= comment.user.username %> <%= comment.created_at.localtime.strftime("at %I:%M:%S | %m %b %Y") %> </h6>
 <%= comment.text %>
 
 </p>

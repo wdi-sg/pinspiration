@@ -14,8 +14,8 @@
       <p class="card-text"><%= pin.text %> </p>
             <footer class="blockquote-footer">
         <small class="text-muted">
-          Pin by <%= "@#{pin.user.username}" %>
-        </small>
+          Pin by <%= pin.user.username %> | <%= time_ago_in_words(pin.created_at) %> ago, <%= pin.comments.count %> comment<%="s" if pin.comments.count!=1 %>
+          </small>
       </footer>
     </div>
   </div>

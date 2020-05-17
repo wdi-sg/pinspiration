@@ -8,15 +8,17 @@
 require 'faker'
 
 
-# 10.times do 
-#       Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"400x400"), user_id: 4)
-#       Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"150x150"), user_id: 4)
-#       Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"300x400"), user_id: 4)
-#       Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"300x200"), user_id: 4)
-#       Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"300x500"), user_id: 4)
-#       Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"400x300"), user_id: 4)
-# end
+10.times do 
+      Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"400x300"), user: User.find(rand(User.first.id..User.last.id)))
+      Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"400x300"), user: User.find(rand(User.first.id..User.last.id)))
+      Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"400x300"), user: User.find(rand(User.first.id..User.last.id)))
+      Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"400x400"), user: User.find(rand(User.first.id..User.last.id)))
+      Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"150x150"), user: User.find(rand(User.first.id..User.last.id)))
+      Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"300x400"), user: User.find(rand(User.first.id..User.last.id)))
+      Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"300x200"), user: User.find(rand(User.first.id..User.last.id)))
+      Pin.create(title: Faker::Book.title, text: Faker::Lorem.paragraph, img_url: Faker::LoremFlickr.image(size:"300x500"), user: User.find(rand(User.first.id..User.last.id)))
+end
 
 50.times do
-      Comment.create(text: Faker::Lorem.paragraph, pin: Pin.find(rand(Pin.first.id..Pin.last.id)), user_id: 4)
+      Comment.create(text: Faker::Lorem.paragraph, pin: Pin.find(rand(Pin.first.id..Pin.last.id)), user: User.find(rand(User.first.id..User.last.id)))
 end

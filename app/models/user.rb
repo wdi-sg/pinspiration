@@ -10,4 +10,5 @@ class User < ApplicationRecord
     @login || self.username || self.email
   end
          has_many :pins
+         has_many :comments
 end

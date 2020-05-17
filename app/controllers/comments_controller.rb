@@ -2,11 +2,13 @@ class CommentsController < ApplicationController
 
       def create
             @comment = Comment.new(comment_params)
+            @comment.pin_id = params[:pin_id]
             @comment.user = current_user
             if @comment.save
                   redirect_to "/pins/#{@comment.pin_id}"
             else
-                  redirect_to "/pins/#{@comment.pin_id}"
+                  p @comment.errors
+                  redirect_to pins_path
             end
       end
 

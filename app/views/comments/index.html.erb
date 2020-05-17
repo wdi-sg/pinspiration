@@ -6,9 +6,9 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="padding:5px">
-  	<li><%= link_to "Recent", comments_path(sort_by: "recent") %></li>
-  	<li><%= link_to "Pin (A-Z)", comments_path(sort_by: "pin_asc") %></li>
-  	<li><%= link_to "Pin (Z-A)", comments_path(sort_by: "pin_desc") %></li>
+  	<li class="dropdown-item"><%= link_to "Recent", comments_path(sort_by: "recent") %></li>
+  	<li class="dropdown-item"><%= link_to "Pin (A-Z)", comments_path(sort_by: "pin_asc") %></li>
+  	<li class="dropdown-item"><%= link_to "Pin (Z-A)", comments_path(sort_by: "pin_desc") %></li>
   </ul>
 		</div>
 <br>

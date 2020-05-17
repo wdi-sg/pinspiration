@@ -1,15 +1,20 @@
 <table>
   <thead>
     <tr>
-      <th>Comments:</th>
-      <th>User:</th>
+      <th>Pin Title</th>
+      <th>Comments</th>
+      <th>Date/Time Posted</th>
       <th colspan="5"></th>
     </tr>
   </thead>
   <% @comments.each do |comment|%>
     <tr>
+        <td><%= link_to comment.pin.title, comment.pin %></td>
         <td><%=comment.body%></td>
-        <td><%=comment.user.email%></td>
+        <% time = comment.created_at + (8*60*60) %>
+        <% time = time.strftime("%a, %e %b %Y, %r SGT")%>
+        <td><%=time%></td>
+        <td><%= link_to 'Edit', edit_pin_comment_path(comment.pin_id, comment.id) %></td>
         <td><%= link_to  "Delete", pin_comment_path(comment.pin_id, comment.id), method: :delete , data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>

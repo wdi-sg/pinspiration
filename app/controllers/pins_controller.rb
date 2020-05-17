@@ -8,6 +8,7 @@ class PinsController < ApplicationController
   def index
     id = current_user.id
     @pins = Pin.where(user_id:id).order(id)
+    @comments = Comment.where(user_id:id).order("created_at DESC")
     
   end
 

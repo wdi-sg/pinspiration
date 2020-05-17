@@ -9,6 +9,18 @@ class CommentsController < ApplicationController
             redirect_to @pin
         end
     end
+    def edit
+        @pin = Pin.find(params[:pin_id])
+        @comment = Comment.find(params[:id])
+    end
+    
+    def update
+        @pin = Pin.find(params[:pin_id])
+        @comment = Comment.find(params[:id]).update(comment_params)
+
+        redirect_to @pin
+        
+    end
 
     def destroy
         @pin = Pin.find(params[:pin_id])

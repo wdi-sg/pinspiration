@@ -26,7 +26,7 @@
 			      <% end %>
 	</nav>
 
-	<div class="pin-card">
+	<div class="pin-card show-card">
 		<div class="pin-title">
 		<p>Title: <%= @pin.title %></p>
 	</div>
@@ -37,19 +37,25 @@
 
 <%= form_with scope: :comment, url: comments_path, local: true do |form| %>
 	<% if user_signed_in? %>
-	<h3>Add a comment</h3>
+
+<p class="error">
+  <%= show_errors(@comment, :body) %>
+</p>
+
+	<h3 class="add-comment">Add a comment</h3>
 <form>
   <div class="form-group">
      <%= form.label :body, class: 'col-2 col-form-label text-light' %>
-     <%= form.text_area :body, rows: 4, class: 'form-control shadow rounded'%>
+     <%= form.text_area :body, rows: 4, class: 'form-control shadow rounded', placeholder: 'Make a comment' %>
      <%= form.hidden_field :pin_id, value: @pin.id %>
   </div>
  		  <div class="form-group">
-			    <%= form.submit class: "btn btn-outline-dark btn-lg" %>
+			    <%= form.submit class: "btn btn-outline-dark btn-lg " %>
 			  </div>
 </form>
-
-<h2>Comments</h2>
+	<div class="comment-header">
+		<h2>Comments</h2>
+	</div>
 <% @comments.each do |comment| %>
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action">
@@ -63,7 +69,8 @@
 </div>
 			<% end %>
 	<% else %>
-	<h2>Comments</h2>
+	<div class="comment-header">
+	<h2 >Comments</h2></div>
 		<% @comments.each do |comment| %>
 				<div class="list-group">
 				  <a href="#" class="list-group-item list-group-item-action">

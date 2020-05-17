@@ -11,8 +11,12 @@ before_action :authenticate_user!, :except => [ :show, :index ]
   def create
 
     @comment = Comment.new(comments_params)
-    @comment.save
-    redirect_to root_path
+    if @comment.save
+        redirect_to root_path
+      else
+        @pin = Pin.all
+        render 'new'
+    end
   end
 
 private

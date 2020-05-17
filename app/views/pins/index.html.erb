@@ -1,0 +1,17 @@
+<h1>Listing Pins</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th>Img_url</th>
+  </tr>
+
+  <% @pins.each do |pin| %>
+    <tr>
+      <td><%= pin.title %></td>
+      <td><%= pin.comment %></td>
+      <td><%= link_to 'Show', pin_path(pin) %></td>
+    </tr>
+  <% end %>
+</table>

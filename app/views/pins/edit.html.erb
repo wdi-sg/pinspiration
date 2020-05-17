@@ -1,0 +1,16 @@
+<h1>Edit Pin</h1>
+<%= form_with scope: :pin, model: @pin, local: true do |form| %>
+  <p>
+    <%= form.label :Title: %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :Image URL: %><br>
+    <%= form.text_area :image %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back', root_path %> 

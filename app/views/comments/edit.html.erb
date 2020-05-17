@@ -1,0 +1,11 @@
+<%= form_with url: pin_comment_path, method: "patch",scope: :comment, model: @pin_comment, local: true do |form| %>
+  <p>
+  	Comment:<br>
+    <%= form.text_area :body %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<%= link_to 'Home page', root_path %>

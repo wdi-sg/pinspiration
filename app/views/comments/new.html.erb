@@ -1,0 +1,26 @@
+<h1>Comments#new</h1>
+<p>Find me in app/views/comments/new.html.erb</p>
+
+<p>
+  <strong>Pin's title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Img's url:</strong>
+  <img src=<%= @pin.imgurl %>>
+</p>
+
+<%= form_with scope: :comment, url: pin_comments_path, local: true do |form| %>
+
+  <p>
+  	Comments:<br>
+    <%= form.text_area :body %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Home page', root_path %>

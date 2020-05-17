@@ -1,0 +1,26 @@
+<p>
+  <strong>Pin's title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Img's url:</strong>
+  <img src=<%= @pin.imgurl %>>
+</p>
+
+<table>
+  <tr>
+    <th>Comments</th>
+  </tr>
+
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.body %></td>
+      <td><%= link_to 'Edit', edit_pin_comment_path(comment) %></td>
+      <td><%= link_to 'Destroy', pin_comment_path(comment),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'Home page', root_path %>

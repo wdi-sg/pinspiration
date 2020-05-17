@@ -1,20 +1,53 @@
 <div class="container mx-auto">
 
+<%= link_to "Previous", pin_path(@pin.id-1), :class => "btn btn-dark my-3" if @pin.id!=1 %>
+<%= link_to "Next", pin_path(@pin.id+1), :class => "btn btn-dark my-3" if @pin.id!=Pin.count %>
+
+
 
 <div class="row">
 
       <div class="col-6">
 
       <h3><%= @pin.title %></h3>
-      <br/> By <%= @pin.user.email %>
+      <br/> By @<%= @pin.user.username %>
       <br/><%= @pin.text %>
       </div>
 
       <div class="col-6">
-      <%= image_tag @pin.img_url%>
+      <%= image_tag @pin.img_url, :class => "img-fluid" %>
       </div>
 
 </div>
 
+<h4>Leave A Comment</h4>
+<p>
+      <%= form_with scope: :comment, url: pin_comments_path(@pin), local: true do |form| %>
+    <%= form.label :text %><br>
+    <%= form.text_field :text, :required => true %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+</p>
+
+
+<h5>Comments</h5>
+
+<% if @pin.comments.length!=0 %>
+
+<% @pin.comments.each do |comment| %>
+<p>
+<h6>@<%= comment.user.username %> <%= comment.created_at.localtime.strftime("at %I:%M | %m %b %Y") %> </h6>
+<%= comment.text %>
+
+</p>
+<% end %>
+
+<% else %>
+
+No comments yet. 
+<% end %>
 
 </div>

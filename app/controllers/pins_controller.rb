@@ -1,7 +1,11 @@
 class PinsController < ApplicationController
 
+      def index
+            @pins = Pin.all
+      end
       def new
             @pin = Pin.new
+            # @comment = Comment.new
       end
 
       def create

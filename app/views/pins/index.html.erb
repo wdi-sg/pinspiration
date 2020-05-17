@@ -1,0 +1,25 @@
+
+<div class="text-center mb-5">
+<h1>Find your inspiration today.</h1>
+</div>
+
+<div class="card-columns">
+
+<% @pins.each do |pin| %>
+  <div class="card">
+
+  <%= image_tag(pin.img_url, :class => "card-img-top") %>
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to pin.title, pin_path(pin) %></h5>
+      <p class="card-text"><%= pin.text %> </p>
+            <footer class="blockquote-footer">
+        <small class="text-muted">
+          Pin by <%= "@#{pin.user.username}" %>
+        </small>
+      </footer>
+    </div>
+  </div>
+
+  <% end %>
+
+</div>

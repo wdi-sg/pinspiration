@@ -4,7 +4,6 @@ class Pins < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :description
       t.string :url
-      t.references :user
       t.timestamps
     end
   end

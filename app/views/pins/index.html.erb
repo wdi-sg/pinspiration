@@ -1,0 +1,32 @@
+
+<%= link_to 'New pin', new_pin_path %>
+
+<h1>Explore</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Destination Link</th>
+    <th></th>
+  </tr>
+
+  <% @pins.each do |pin| %>
+
+    <tr>
+      <td><%= pin.title %></td>
+      <td><%= pin.description %></td>
+      <td><%= pin.url %></td>
+      <td><%= link_to 'Show', pin_path(pin) %></td>
+      <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+      <td><%= link_to 'Destroy', pin_path(pin),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+
+    </tr>
+  <% end %>
+</table>
+
+
+
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>

@@ -1,0 +1,22 @@
+<p>
+  <strong>Title:</strong>
+  <%= @pin.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pin.description %>
+</p>
+
+<p>
+  <strong>Destination Link:</strong>
+  <%= @pin.url %>
+</p>
+
+<%= link_to 'Back', root_path %>
+
+<%= link_to 'Edit', edit_pin_path(@pin) %>
+
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>
+
+<%= link_to 'log in', new_user_session_url %>

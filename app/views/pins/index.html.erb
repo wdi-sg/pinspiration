@@ -1,21 +1,79 @@
-<h1>THIS WORKS</h1>
 
 
-<% if user_signed_in? %>
-<%= link_to 'Create Pin', new_pin_path %>
-<%= link_to 'log out', destroy_user_session_url, method: :delete %>
-<% else %>
-<h3><%= link_to 'Sign in', new_user_session_path %></h3>
-<h3><%= link_to 'Sign Up', new_user_registration_path %></h3>
-<% end %>
+	<nav class="navbar navbar-expand-lg navbar-light ">
+		<%= link_to 'Pinterest', root_path, class:'navbar-brand', id: 'logo' %>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
 
-<% @pins.each do |pin| %>
-<% if user_signed_in? %>
-	<p>Title: <%= pin.title %></p>
-	<p><%= image_tag (pin.img_url), style: 'width: 200px; height: 170px' %></p>
-	<%= link_to 'Pin', pin_path(pin) %>
+	<% if user_signed_in? %>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		       <%= link_to 'Create Pin', new_pin_path, class: 'nav-link' %>
+			      </li>
+			      <li class="nav-item">
+			        <%= link_to 'Log Out', destroy_user_session_url, method: :delete, class: 'nav-link' %>
+				      </li>
+			    </ul>
+			  </div>
 	<% else %>
-	<p>Title: <%= pin.title %></p>
-	<p><%= image_tag (pin.img_url), style: 'width: 200px; height: 170px' %></p>
-	<% end %>
-	<% end %>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+			      </li>
+			      <li class="nav-item">
+			        <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+				      </li>
+			    </ul>
+			  </div>
+			      <% end %>
+	</nav>
+
+
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="display-4">Pinterest</h1>
+    <p class="lead">Pin or create your favorite content</p>
+  </div>
+</div>
+
+
+
+
+
+		<div class="card-container">
+<% @pins.each do |pin| %>
+	<% if user_signed_in? %>
+
+			<div class="pin-card">
+				<div class="pin-title">
+					<p>Title: <%= pin.title %></p>
+				</div>
+				<div class="pin-img">
+				<%= image_tag (pin.img_url), style: 'width: 200px; height: 170px', class: 'img-box' %>
+				</div>
+				<div class="pin-links">
+					<button type="button" class="btn btn-outline-dark"><%= link_to 'View', pin_path(pin) %></button>
+					<button type="button" class="btn btn-outline-dark"><%= link_to 'Edit', edit_pin_path(pin) %></button>
+					<button type="button" class="btn btn-outline-dark"><%= link_to 'Delete', pin_path(pin), method: :delete, data:{ confirm: 'Are you sure?' } %></button>
+
+				</div>
+		</div>
+
+	<% else %>
+	<div class="pin-card">
+			<div class="pin-title">
+				<p>Title: <%= pin.title %></p>
+			</div>
+			<div class="pin-img">
+				<p><%= image_tag (pin.img_url), style: 'width: 200px; height: 170px', class: 'img-box' %></p>
+			</div>
+			<div class="pin-links">
+						<button type="button" class="btn btn-outline-dark"><%= link_to 'View', pin_path(pin) %></button>
+			</div>
+			</div>
+		<% end %>
+		<% end %>
+</div>

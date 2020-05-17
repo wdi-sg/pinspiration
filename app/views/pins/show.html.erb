@@ -1,27 +1,59 @@
-<%= link_to 'Home', root_path %>
-<p>Title: <%= @pin.title %></p>
+<nav class="navbar navbar-expand-lg navbar-light ">
+		<%= link_to 'Pinterest', root_path, class:'navbar-brand', id: 'logo' %>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
 
-<p><%= image_tag (@pin.img_url), style: 'width: 200px; height: 170px' %></p>
-
-
+	<% if user_signed_in? %>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		       <%= link_to 'Create Pin', new_pin_path, class: 'nav-link' %>
+			      </li>
+			      <li class="nav-item">
+			        <%= link_to 'Log Out', destroy_user_session_url, method: :delete, class: 'nav-link' %>
+				      </li>
+			    </ul>
+			  </div>
+	<% else %>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+			      </li>
+			      <li class="nav-item">
+			        <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+				      </li>
+			    </ul>
+			  </div>
+			      <% end %>
+	</nav>
+	<div class="pin-card">
+		<div class="pin-title">
+		<p>Title: <%= @pin.title %></p>
+	</div>
+	<div class="pin-img">
+			<p><%= image_tag (@pin.img_url), style: 'width: 200px; height: 170px', class: 'img-box show-img' %></p>
+		</div>
+	</div>
 <%= form_with scope: :comment, url: comments_path, local: true do |form| %>
-
-<h1>Add a comment</h1>
-
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_field :body %>
-    <%= form.hidden_field :pin_id, value: @pin.id %>
-  </p>
-
-
-    <%= form.submit %>
-  </p>
-<% end %>
-
-<h2>Comments</h2>
-
-<% @comments.each do |comment| %>
-<p>Comment: <%= comment.body %></p>
-
+	<% if user_signed_in? %>
+			<h1>Add a comment</h1>
+			  <p>
+			    <%= form.label :body %><br>
+			    <%= form.text_field :body %>
+			    <%= form.hidden_field :pin_id, value: @pin.id %>
+			  </p>
+			    <%= form.submit %>
+			  </p>
+			<h2>Comments</h2>
+			<% @comments.each do |comment| %>
+			<p><%= comment.body %></p>
+			<% end %>
+	<% else %>
+			 <h2>Comments</h2>
+				<% @comments.each do |comment| %>
+				<p><%= comment.body %></p>
+		<% end %>
+		<% end %>
 <% end %>

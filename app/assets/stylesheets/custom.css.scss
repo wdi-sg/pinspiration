@@ -1,0 +1,51 @@
+@import "bootstrap";
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.navbar {
+	background-color: #bc658d !important;
+}
+
+
+.card-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.pin-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	text-align: center;
+	height: 280px;
+	width: 200px;
+	margin: 20px;
+
+}
+
+.img-box {
+	border-radius: 20px;
+	height: 300px;
+	box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.pin-links {
+	display: flex;
+	justify-content: space-around;
+}
+
+.jumbotron {
+	background-color: black !important;
+	color: white;
+}
+
+.link-button {
+
+}

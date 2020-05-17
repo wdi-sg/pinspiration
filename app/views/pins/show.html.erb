@@ -1,0 +1,35 @@
+<% if user_signed_in? %>
+  <%= link_to '+', new_pin_path, class: "btn btn-outline-primary add-item" %>
+<% end %>
+
+<div class="shadow p-3 mb-5 bg-white container-show-pin">
+  <div class="row">
+    <div class="container-left">
+      <div class="col-sm">
+        <%= image_tag(@pin.photo_url, style:'width: 320px') %>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <div class="container-right">
+      <div class="col-sm">
+        <%= link_to 'Edit', edit_pin_path(@pin), class:"btn btn-outline-primary" %>
+        <%= link_to 'Destroy', pin_path(@pin),
+              method: :delete,
+              data: { confirm: 'Are you sure?' },class:"btn btn-outline-danger" %>
+        <br>
+        <br>
+        <p> Uploaded by User <%= @pin.user.id %><p>
+        <h3>
+          <%= @pin.title %>
+        </h3>
+        <p>
+          <%= @pin.caption %>
+        </p>
+        <br>
+        <p>COMMENTS NOT FUNCTIONING YET</p>
+      </div>
+    </div>
+  </div>
+</div>

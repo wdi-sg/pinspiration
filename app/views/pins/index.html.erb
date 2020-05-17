@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+  <%= link_to '+', new_pin_path, class: "btn btn-outline-primary add-item" %>
+<% end %>
+
+
+<div class="cards">
+  <% @pins.each do |pin| %>
+    <div class="each-pin">
+      <%= link_to image_tag(pin.photo_url, ), pin_path(pin) %>
+    </div>
+  <% end %>
+</div>

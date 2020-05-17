@@ -1,0 +1,29 @@
+<div class="shadow p-3 mb-5 bg-white container-show-pin form-group">
+
+  <%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+
+    <div class="row">
+      <div class="col col-md-6">
+          <%= form.text_field :photo_url, class:"form-control", placeholder:"Photo URL", required:"required" %>
+      </div>
+
+      <div class="col col-md-6">
+        <!-- <div class="md-form active-cyan active-cyan-2 mb-3"> -->
+        <div class="form-group">
+          <%= form.text_field :title, class:"title-field", placeholder:"Add your title", required:"required"  %>
+        </div>
+        <br>
+        <div class="form-group">
+          <%= form.text_area :caption, class:"form-control", placeholder:"Tell everyone what your Pin is about", rows: "3" %>
+        </div>
+        <br>
+
+        <div>
+          <%= form.submit class:"btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>

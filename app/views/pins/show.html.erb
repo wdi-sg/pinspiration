@@ -4,8 +4,9 @@
 </p>
 
 <p>
-<strong>Location:</strong>
-<%= @pin.image%>
+<strong>Image:</strong>
+<img src="<%= image_url @pin.image %>"/>
+
 </p>
 
 <% if user_signed_in? %>

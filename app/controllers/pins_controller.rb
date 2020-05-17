@@ -1,4 +1,5 @@
 class PinsController < ApplicationController
+    before_action :authenticate_user!, :except => [ :show, :index ]
     def index
         @pins = Pin.all
     end
@@ -8,8 +9,12 @@ class PinsController < ApplicationController
 
     def create
         @pin = Pin.new(pin_params)
-        @pin.save
-        redirect_to @pin
+        @pin.user = current_user
+        if @pin.save
+            redirect_to @pin
+          else
+            render 'new'
+          end
     end
 
     def show

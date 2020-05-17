@@ -12,7 +12,7 @@
     <% @pins.each do |pin| %>
       <tr>
         <td><%= pin.title %></td>
-        <td><img src= pin.image/></td>
+        <td><img src="<%= image_url pin.image %>"/></td>
         <td><%= link_to 'Show', pin %></td>
         <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
         <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>

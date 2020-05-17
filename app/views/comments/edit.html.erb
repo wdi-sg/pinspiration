@@ -7,7 +7,7 @@
 			<%= form_with scope: :comment, model: @comment, local: true do |form| %>
 			  <ul class="list-group list-group-flush">
 		    	<li class="list-group-item"><%= form.text_area :body, style:"width:100%" %></li>
-		    	<li class="list-group-item text-muted"><em>Posted on <%= @comment.created_at.strftime("%d %b %Y, %H:%M HRS") %></em></li>
+		    	<li class="list-group-item text-muted"><em>Posted on <%= @comment.updated_at.strftime("%d %b %Y, %H:%M HRS") %></em></li>
 			  </ul>
 			  <div class='row' style="margin-top:5px">
 			  	<div class='col'>

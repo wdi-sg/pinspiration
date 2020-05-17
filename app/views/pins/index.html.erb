@@ -5,11 +5,8 @@
 
 <div class="cards">
   <% @pins.each do |pin| %>
-      <div class = "card">
-        <div class ="card-body">
-          <%= link_to image_tag(pin.photo_url, ), pin_path(pin) %>
-        </div>
+    <div class="each-pin">
+      <%= link_to image_tag(pin.photo_url, ), pin_path(pin) %>
     </div>
   <% end %>
-
 </div>

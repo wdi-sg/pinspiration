@@ -6,6 +6,7 @@
   position: relative;
   top: 100px;
   max-width: 1012px;
+  margin: 0 auto;
 }
 
 .navbar-brand {
@@ -22,11 +23,22 @@
 }
 
 .cards {
-  display: flex;
-  flex-direction: row;
+  // display: inline-block;
+  // display: flex;
+  // flex-direction: row;
   max-width: 1012px;
+  margin: 0 auto;
+}
+
+.each-pin {
+  display: inline-block;
+  margin: 10px;
+}
+
+img {
+  border-radius: 15px;
 }
 
 .container-show-pin {
-  max-width: 750px;
+  max-width: 780px;
 }

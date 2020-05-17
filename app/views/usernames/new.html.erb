@@ -1,0 +1,16 @@
+<h1>Hi there,</h1>
+<h3>let us know a bit more about you!</h3>
+
+<%= form_with scope: :username, url: usernames_path, local: true do |form| %>
+
+  <p>
+    <%= form.label :name, "What is your name?" %><br>
+    <%= form.text_area :name %>
+  </p>
+
+ 
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

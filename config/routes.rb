@@ -9,4 +9,8 @@ Rails.application.routes.draw do
     resources :pins
   end
 
+  resources :pins, only: [:index] do
+    resources :comments, only: [:create]
+  end
+
 end

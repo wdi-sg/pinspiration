@@ -8,3 +8,14 @@
 	  </div>
 	</div>
 </div>
+
+<%= form_with scope: :comment, url: pin_comments_path(@pin), class: "form-group",local: true do |form| %>
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_area :body, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= form.submit 'Add Comment', :class => "btn btn-primary" %>
+  </p>
+<% end %>

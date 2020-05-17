@@ -90,5 +90,3 @@ paperclip or carrierwave
 
 ### Further
 A user's feed is compilation of the users they follow and the boards they follow
-
-

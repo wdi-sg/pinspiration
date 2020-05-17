@@ -62,12 +62,12 @@ class PinsController < ApplicationController
   end
 
   def pinit
-    puts "=============="
-    puts @pin.id #this is the relevant pin id, and pin if u need it
-    @user_id = current_user.id #this is the relevatn userid
-
-    #need to figure out how to update the model. See https://guides.rubyonrails.org/v3.1/association_basics.html
-    redirect_to "/pins"
+    @pin.users << current_user
+    respond_to do |format|
+        format.js {render inline: "location.reload();" }
+        format.html { redirect_to root_path, notice: 'Pinning was successful.' }
+        format.json { render :show, status: :ok, location: root_path }
+    end
   end
 
   private

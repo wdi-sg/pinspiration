@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Pins</h1>
-<div style="display:flex">
+<div style="display:flex; flex-wrap: wrap">
 <% @pins.each do |pin| %>
       <div class="card small" style="width: 18rem; margin: 2rem">
         <div class="card-image">
@@ -13,8 +13,14 @@
           <p><%= pin.title %></p>
         </div>
         <div class="card-action">
-          <%= form_with(url: "/pinit/#{pin.id}", method: "post") do %>
-            <%= submit_tag("Pin It!") %>
+         <% if user_signed_in? %>
+              <% if pin.users.include? current_user %>
+                  <span class="badge">Pinned!</span>
+              <% else %>
+                  <%= form_with(url: "/pinit/#{pin.id}", method: "post") do %>
+                    <%= submit_tag("Pin It!") %>
+                  <% end %>
+              <% end %>
           <% end %>
           <%= link_to 'Show', pin %>
           <%= link_to 'Edit', edit_pin_path(pin) %>
@@ -22,7 +28,7 @@
         </div>
       </div>
 <% end %>
-<div>
+</div>
 <br>
 
 <%= link_to 'New Pin', new_pin_path %>

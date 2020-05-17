@@ -23,9 +23,6 @@
 }
 
 .cards {
-  // display: inline-block;
-  // display: flex;
-  // flex-direction: row;
   max-width: 1012px;
   margin: 0 auto;
 }
@@ -36,6 +33,7 @@
 }
 
 img {
+  width: 180px;
   border-radius: 15px;
 }
 

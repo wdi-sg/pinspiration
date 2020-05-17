@@ -2,9 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  background-color: lightgrey;
+}
+
 .container {
   position: relative;
-  top: 100px;
+  top: 10px;
   max-width: 1012px;
   margin: 0 auto;
 }
@@ -39,4 +43,13 @@ img {
 
 .container-show-pin {
   max-width: 780px;
+  border-radius: 15px;
 }
+
+.title-field {
+  font-size: 32px;
+  border: none;
+  border-bottom: 2px solid grey;
+  width: 95%;
+}
+

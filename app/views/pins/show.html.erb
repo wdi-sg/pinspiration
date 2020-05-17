@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-light ">
+		<%= link_to 'Pinspiration', root_path, class:'navbar-brand', id: 'logo' %>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+
+	<% if user_signed_in? %>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+			<%= link_to 'Log Out', destroy_user_session_url, method: :delete, class: 'nav-link' %>
+			      </li>
+			    </ul>
+			  </div>
+	<% else %>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+			      </li>
+			      <li class="nav-item">
+			        <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+				      </li>
+			    </ul>
+			  </div>
+			      <% end %>
+	</nav>
+
+	<div class="pin-card show-card">
+		<div class="pin-title">
+		<p>Title: <%= @pin.title %></p>
+	</div>
+	<div class="pin-img">
+			<p><%= image_tag (@pin.img_url), style: 'width: 200px; height: 170px', class: 'img-box show-img' %></p>
+		</div>
+	</div>
+
+<%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+	<% if user_signed_in? %>
+
+<p class="error">
+  <%= show_errors(@comment, :body) %>
+</p>
+
+	<h3 class="add-comment">Add a comment</h3>
+<form>
+  <div class="form-group">
+     <%= form.label :body, class: 'col-2 col-form-label text-light' %>
+     <%= form.text_area :body, rows: 4, class: 'form-control shadow rounded', placeholder: 'Make a comment' %>
+     <%= form.hidden_field :pin_id, value: @pin.id %>
+  </div>
+ 		  <div class="form-group">
+			    <%= form.submit class: "btn btn-outline-dark btn-lg " %>
+			  </div>
+</form>
+	<div class="comment-header">
+		<h2>Comments</h2>
+	</div>
+<% @comments.each do |comment| %>
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <small>Posted approximately <%= time_ago_in_words(comment.created_at) %> ago.</small>
+    </div>
+    <p class="mb-1"><%= comment.body %></p>
+  </a>
+
+  </a>
+</div>
+			<% end %>
+	<% else %>
+	<div class="comment-header">
+	<h2 >Comments</h2></div>
+		<% @comments.each do |comment| %>
+				<div class="list-group">
+				  <a href="#" class="list-group-item list-group-item-action">
+				    <div class="d-flex w-100 justify-content-between">
+				      <small><%= time_ago_in_words(comment.created_at) %></small>
+				    </div>
+				    <p class="mb-1"><%= comment.body %></p>
+				  </a>
+		  </a>
+</div>
+		<% end %>
+		<% end %>
+<% end %>

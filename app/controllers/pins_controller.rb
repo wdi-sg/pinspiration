@@ -19,6 +19,7 @@ class PinsController < ApplicationController
     @pin = Pin.find(params[:id])
   end
 
+
   def create
     @pin = Pin.new(pin_params)
 

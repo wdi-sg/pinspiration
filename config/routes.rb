@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   
   devise_for :users
-  resources :pins 
-  # do  
-  #   resources :comments, :except => [:update , :destroy, :show]
-  #   # resources :comments, :only => [:post]
-  # end
-  # resources :comments, :only => [:update, :destroy]
+  resources :pins do  
+    resources :comments
+  end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to => redirect('/dashboard')

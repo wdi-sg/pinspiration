@@ -20,7 +20,15 @@
       
 </div>
 
-
+<h4>Add To Your Boards</h4>
+<%= form_with scope: :pin, url: pins_add_board_path, local: true, include_hidden: false do |form| %>
+        
+        <p>
+        <%= form.collection_check_boxes :board_ids, current_user.boards, :id, :title %>
+        </p>
+        
+        <%= form.submit("Yes!") %>
+<% end %> 
 
 <h4 class="mt-5">Leave A Comment</h4>
 <p>

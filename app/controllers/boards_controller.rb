@@ -23,7 +23,7 @@ class BoardsController < ApplicationController
         @board.user = current_user
         
         if @board.save
-            redirect_to pins_path
+            redirect_to boards_path
         else
             render 'new'
         end
@@ -31,7 +31,7 @@ class BoardsController < ApplicationController
 
     def show
         @board = Board.find(params[:id])
-        @pins = @board.pins
+        @pins = @board.pins.order(created_at: :desc)
 
         @pins.each do |pin|
             puts pin.title
@@ -40,7 +40,7 @@ class BoardsController < ApplicationController
 
     private
     def board_params
-          params.require(:board).permit(:title, :user, :pin_ids => [])
+          params.require(:board).permit(:title, :description, :user, :pin_ids => [])
     end
 
 end

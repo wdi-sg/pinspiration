@@ -34,11 +34,16 @@
 
   <% end %>
 </div>
-<%end %>
+
+<% else %>
+
+<div class="mx-auto text-center">
+
+<h4>This board has no pins yet!</h4>
+
+<% if @board.user.id==current_user.id %>
 
 
-
-<h3>Add to Your Boards</h3>
 
 <%= form_with scope: :board, url: board_pins_path(@board), local: true, include_hidden: false do |form| %>
         
@@ -48,3 +53,15 @@
         
         <%= form.submit("Yes!") %>
 <% end %> 
+
+<%end%>
+
+</div>
+
+<%end %>
+
+
+
+
+
+

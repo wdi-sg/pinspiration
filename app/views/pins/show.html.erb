@@ -1,0 +1,12 @@
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @pin.image %>
+</p>
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>
+
+<%= link_to 'Back', root_path %>

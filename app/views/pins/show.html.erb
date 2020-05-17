@@ -9,6 +9,18 @@
 	</div>
 </div>
 
+<div>
+	All Comments
+</div>
+
+<div class="container">
+	<% @comments.each do |comment| %>
+		<div class="pin-comment-div border border-secondary rounded">
+			<p><%= comment.body%></p>
+		</div>
+	<% end %>
+</div>
+
 <%= form_with scope: :comment, url: pin_comments_path(@pin), class: "form-group",local: true do |form| %>
   <p>
     <%= form.label :comment %><br>

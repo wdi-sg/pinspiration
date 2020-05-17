@@ -3,6 +3,8 @@ class PinsController < ApplicationController
   def show
     @board = current_user.boards.find(params[:board_id])
     @pin = @board.pins.find(params[:id])
+
+    @comments = @pin.comments.all
   end
 
   def new

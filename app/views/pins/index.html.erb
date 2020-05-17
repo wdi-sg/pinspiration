@@ -1,0 +1,38 @@
+<% if params[:user] == nil %>
+	<h2>All Pins</h2>
+<% else %>
+	<h2>My Pins</h2>
+<% end %>
+<br>
+<div class='row'>
+	<div class='col-1'>
+		<div class="dropdown">
+		  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Sort by
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		  	<li class="dropdown-item"><%= link_to "Recent", pins_path(sort_by: "recent") %></li>
+		  	<li class="dropdown-item"><%= link_to "Title (Low - High)", pins_path(sort_by: "title_asc", :class => "dropdown-item" ) %></li>
+		  	<li class="dropdown-item"><%= link_to "Title (High - Low)", pins_path(sort_by: "title_desc", :class => "dropdown-item" ) %></li>
+		  </ul>
+		</div>
+	</div>
+	<div class='col-2'>
+		<% if user_signed_in? %>
+			<%= link_to 'New Pin', new_pin_path, :class => 'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>
+<br>
+<div class="card-columns">
+	<% @pins.each do |pin| %>
+		<div class="card">
+	  	<img class="card-img-top" src=<%= pin.image_url %> alt= <% pin.title %> />
+		  <div class="card-body">
+		    <h5 class="card-title"><%= pin.title %></h5>
+		   	<%= link_to 'Show more', pin_path(pin), :class => "btn btn-secondary" %>
+		  </div>
+		</div>
+	<% end %>
+</div>

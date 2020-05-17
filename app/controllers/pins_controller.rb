@@ -22,8 +22,11 @@ class PinsController < ApplicationController
             @pin = Pin.find(params[:id])
       end
 
+      def add_to_boards
+      end
+      
       private
             def pin_params
-                  params.require(:pin).permit(:title, :text, :img_url)
+                  params.require(:pin).permit(:title, :text, :img_url, :board_ids)
             end
 end

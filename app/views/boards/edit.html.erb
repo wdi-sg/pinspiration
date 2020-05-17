@@ -1,0 +1,13 @@
+
+            <h3>Add to Your Boards</h3>
+
+            
+
+            <%= form_with scope: :board, url: boards_pins_path, local: true, include_hidden: false do |form| %>
+       
+       <p>
+               <%= form.collection_check_boxes :board_ids, current_user.boards, :id, :title %>
+       </p>
+       
+       <%= form.submit("Yes!") %>
+        <% end %> 

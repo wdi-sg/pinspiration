@@ -11,4 +11,5 @@ class User < ApplicationRecord
   end
          has_many :pins
          has_many :comments
+         has_many :boards
 end

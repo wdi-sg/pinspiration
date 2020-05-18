@@ -1,6 +1,6 @@
-<h2>New Pin</h2>
+<h2>Edit Pin</h2>
 
-<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+<%= form_with scope: :pin, model: @pin, local: true do |form| %>
 	<p>
 		<%= form.label :title %><br>
 		<%= form.text_field :title %>
@@ -14,9 +14,5 @@
 	<p>
 		<%= form.label :caption %><br>
 		<%= form.text_area :caption %>
-	</p>
-
-	<p>
-		<%= form.submit %>
 	</p>
 <% end %>

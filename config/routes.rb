@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   get '/' => 'pins#index'
   get '/pins/new' => 'pins#new', as: 'new_pin'
   get '/pins/:id' => 'pins#show', as: 'pin'
+  get '/pins/:id/edit' => 'pins#edit', as: 'edit_pin'
 
   post '/pins' => 'pins#create'
+
+  patch '/pins/:id' => 'pins#update'
+
+  delete '/pins/:id' => 'pins#destroy'
 end

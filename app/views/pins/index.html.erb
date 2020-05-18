@@ -1,0 +1,20 @@
+<h1>Pins</h1>
+<%= link_to 'New pin', new_pin_path %>
+<table>
+  <tr>
+    <th>Image URL</th>
+    <th>Caption</th>
+    <th></th>
+  </tr>
+
+  <% @pins.each do |pin| %>
+    <tr>
+      <td><%= pin.url %></td>
+      <td><%= pin.caption %></td>
+      <td><%= link_to 'Show', pin_path(pin) %></td>
+      <td><%= link_to 'Destroy', pin_path(pin),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

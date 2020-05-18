@@ -1,0 +1,16 @@
+<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+    <p>
+      <%= form.label :url%><br>
+      <%= form.text_field :url %>
+    </p>
+  
+    <p>
+      <%= form.label :caption %><br>
+      <%= form.text_area :caption %>
+    </p>
+  
+    <p>
+      <%= form.submit %>
+    </p>
+  
+  <% end %>

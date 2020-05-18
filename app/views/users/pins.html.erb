@@ -1,4 +1,5 @@
-<h1>Your Pins</h1>
+<h1><%= current_user.email %>'s Dashboard</h1>
+
 
 <table>
   <tr>
@@ -30,3 +31,4 @@
 
 <%= link_to 'log out', destroy_user_session_url, method: :delete %>
 
+<%= link_to 'Home Page', root_path %>

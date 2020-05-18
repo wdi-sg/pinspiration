@@ -4,6 +4,7 @@
   <tr>
     <th>media_url</th>
     <th>caption</th>
+    <th>comments</th>
     <th></th>
   </tr>
 
@@ -11,6 +12,7 @@
     <tr>
       <td><%= pin.media_url %></td>
       <td><%= pin.caption %></td>
+
 
 <!--       SHOW ONE pin -->
       <td><%= link_to 'Show', pin_path(pin) %></td>
@@ -23,9 +25,12 @@
         method: :delete,
         data: { confirm: 'Are you sure?' } %></td>
     </tr>
+
   <% end %>
 </table>
 
 <%= link_to 'New Pin', new_pin_path %>
 
 <%= link_to 'log out', destroy_user_session_url, method: :delete %>
+
+<%= link_to 'Your Pins', user_pins_path(current_user) %>

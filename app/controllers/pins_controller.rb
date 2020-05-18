@@ -2,7 +2,7 @@ class PinsController < ApplicationController
 
 before_action :authenticate_user!
 
-def new
+  def new
       @pin = Pin.all
   end
 

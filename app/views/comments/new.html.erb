@@ -1,0 +1,13 @@
+<%= form_with scope: :comment, model: @comment, local: true do |form| %>
+
+  <p>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+  </p>
+
+
+      <p>
+        <%= form.submit %>
+      </p>
+    <% end %>
+

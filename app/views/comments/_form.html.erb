@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label "Comment:"%>
-    <%= form.text_field :body %>
+    <%= form.text_area :body %>
   </div>
   <div class="field">
     <%= form.hidden_field(:user_id, value: current_user.id)

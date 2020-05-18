@@ -1,40 +1,40 @@
 <p id="notice"><%= notice %></p>
-<h3>Logged In: <%= current_user.email%></h3>
+<%# <h3>Logged In: <%= current_user.email</h3> %>
+        
 
-<h1>Pins</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<%# <h1 class = "text-warning">Pins</h1> %>
+  <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 justify-content-center">
     <% @pins.each do |pin| %>
-      <tr>
-        <td><%= pin.title %></td>
-        <td><%= pin.url %></td>
-        <td><%= link_to 'Show', pin %></td>
-        <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
-        <td><%= link_to 'Delete', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="card rounded-lg" style="width: 18rem;">
+  <img src="<%= image_url pin.url %>" class="card-img-top">
+  <div class="card-body">
+    <h3 class="card-title c_font "><%= pin.title %></h3>
+    <%if pin.comments.last%>
+      <p class="card-text font-size-md">Latest comment:<%= pin.comments.last.body %></p>
+    <%else%>
+    <p class="card-text font-size-md">No comments...</p>
     <% end %>
-  </tbody>
-</table>
+    <div class="btn-group-md" role="group" aria-label="Functions">
+    <%= link_to 'View', pin, class:"btn btn-outline-dark bd-black"%>
+    <%= link_to 'Edit', edit_pin_path(pin) , class:"btn btn-outline-dark bd-black"%>
+    <%= link_to 'Delete', pin, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger bd-black" %>
+    </div>
 
+  </div>
+</div>
+    <% end %>
+
+  </div>
+
+<%# <%= link_to 'New Pin', new_pin_path %>
+<br>
 <br>
 
-<%= link_to 'New Pin', new_pin_path %>
-
-
-<h1>Comments</h1>
+<h2 class="c_font">Comments</h2>
 <%= render 'comments/comment'%>
 
-<br>
-<% if user_signed_in? %>
-<%= link_to 'Log Out', destroy_user_session_url, method: :delete %>
-<% else %>
-<%= link_to 'Log In', new_user_session_url %>
-<% end %>
+<%# <% if user_signed_in? %>
+<%# <%= link_to 'Log Out', destroy_user_session_url, method: :delete %>
+<%# <% else %>
+<%# <%= link_to 'Log In', new_user_session_url %>
+<%# <% end %>

@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+ @import url(https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap); 
+
+ .c_font{
+    font-family: 'Jost', sans-serif;
+ }
+ .bg-black{
+     background-color: black;
+ }
+
+ .font-size-md{
+    font-size: medium;
+ }
+
+ .bd-black{
+     border-color: black;
+     color: black;
+ }

@@ -1,0 +1,16 @@
+<h1>Pin</h1>
+  <div class="card my-3" id="myID" style="width: 32rem">
+    <img src=<%= @pin.photo_url %> class="card-img-top"/>
+    <div class="card-body">
+      <h5 class="card-title">
+        <%= @pin.title %><br/>
+        <small class="text-muted"><%= @pin.title %></small>
+      </h5>
+      <p>
+      <%= link_to 'Edit', edit_pin_path(@pin), class: 'btn btn-secondary'%>
+      <%= link_to 'Delete', pin_path(@pin), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </p>
+    </div>
+  </div>
+
+<%= link_to 'Back to index', posts_path %>

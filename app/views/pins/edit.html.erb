@@ -1,0 +1,24 @@
+<h1>Edit Pins</h1>
+
+<%= form_with scope: :pin, model: @pin, local: true do |form| %>
+
+  <p>
+    <%= form.label :media_url %><br>
+    <%= form.text_field :media_url %>
+  </p>
+
+    <p>
+    <%= form.label :caption %><br>
+    <%= form.text_area :caption %>
+  </p>
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', root_path %>
+
+<%= link_to 'log out', destroy_user_session_url, method: :delete %>

@@ -1,0 +1,31 @@
+<p></p>
+<div  class ="container">
+    <h4 style="font-family: Sans">Dashboard</h4>
+    <div class ="row">
+        <div class="card-group">
+        <% @pin.each do |pin| %>
+            <div class="card" style="width: 18rem;">
+                <%= link_to pin_path(pin.id) do %>
+                <%=image_tag pin.media_url, :class=>"card-img-top"%>
+        <%end%>
+
+                <div class="card-body">
+                    <p>
+                        <strong><%=pin.user.email %></strong>
+                        <p style="font-family: Freight"><%= pin.caption%></p>
+                    </p>
+                </div>
+
+                <p class="card-body">
+                    <strong><u>Comments</u></strong><br>
+                    <% pin.comments.each do |comment| %>
+                    <p><%= comment.user.email%></p><br>
+                    <%= comment.content%><br>
+                    <% end %>
+                </p>
+
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>

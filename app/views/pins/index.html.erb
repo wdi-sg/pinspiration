@@ -5,12 +5,16 @@
 <%# <h1 class = "text-warning">Pins</h1> %>
   <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 justify-content-center">
     <% @pins.each do |pin| %>
-    <div class="card rounded-lg" style="width: 18rem;">
-  <img src="<%= image_url pin.url %>" class="card-img-top">
+    <div class="card rounded-xl ml-2 mr-2 mt-2 mb-2" style="width: 18rem;">
+    <% if pin.url.include? "http"%>
+      <img src="<%= image_url pin.url %>" class="card-img-top rounded-xl">
+    <% else %>
+      <img src="<%= image_url 'noimage.jpg' %>" class="card-img-top rounded-xl">
+    <% end %>
   <div class="card-body">
     <h3 class="card-title c_font "><%= pin.title %></h3>
     <%if pin.comments.last%>
-      <p class="card-text font-size-md">Latest comment:<%= pin.comments.last.body %></p>
+      <p class="card-text font-size-md"><strong>Latest comment: </strong><%= pin.comments.last.body %></p>
     <%else%>
     <p class="card-text font-size-md">No comments...</p>
     <% end %>

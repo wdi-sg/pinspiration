@@ -1,0 +1,21 @@
+<h1>Edit Your Pin</h1>
+
+<%= form_with scope: :pin, model: @pins, local: true do |form| %>
+
+  <p>
+    <%= form.label :url %><br>
+    <%= form.text_field :url %>
+  </p>
+
+  <p>
+    <%= form.label :caption %><br>
+    <%= form.text_area :caption %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
+

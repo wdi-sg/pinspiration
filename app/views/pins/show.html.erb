@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</h1>
+
+<% if @pin.url.include? "http"%>
+  <img src="<%= image_url @pin.url %>" width="350"/>
+<% else %>
+  <img src="<%= image_url 'noimage.jpg' %>" width="350"/>
+<% end %>
+<br/>
+<br/>
+
+<%= render 'comments/form'  %>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Comments</th>
+      <th scope="col">Date/Time Posted</th>
+      <th  colspan="5"></th>
+    </tr>
+  </thead>
+  <% @comments.each do |comment|%>
+    <tr>
+        <td><%=comment.body%></td>
+        <% time = comment.created_at + (8*60*60) %>
+        <% time = time.strftime("%a, %e %b %Y, %r SGT")%>
+        <td><%=time%></td>
+        <td><%= link_to 'Edit', edit_pin_comment_path(comment.pin_id, comment.id) %></td>
+        <td><%= link_to  "Delete", pin_comment_path(comment.pin_id, comment.id), method: :delete , data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<%= link_to 'Back to Dashboard', root_path %>

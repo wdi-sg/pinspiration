@@ -1,0 +1,25 @@
+<h1>All Pins</h1>
+
+<%= link_to 'upload a new pin', new_pin_path %> 
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Photo</th>
+    <th>Created by</th>
+
+  </tr>
+
+  <% @pins.each do |pin| %>
+    <tr>
+      <td><%= pin.title.capitalize %></td>
+      <td><%= image_tag(pin.image_url) %></td>
+      <% @pins.usernames.each do |username| %>
+        <td> <%= username.name %></td>   
+        <% end %>
+       <td><%= link_to 'Show', pin_path(pin) %></td>
+
+    
+    </tr>
+  <% end %>
+</table>

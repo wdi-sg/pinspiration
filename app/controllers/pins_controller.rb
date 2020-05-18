@@ -5,6 +5,8 @@ class PinsController < ApplicationController
 
   def index
     @pins = Pin.all
+    @users = User.all
+
   end
 
   def show

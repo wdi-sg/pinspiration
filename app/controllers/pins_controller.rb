@@ -7,7 +7,7 @@ class PinsController < ApplicationController
   # GET /pins.json
   def index
     id = current_user.id
-    @pins = Pin.where(user_id:id).order(id)
+    @pins = Pin.where(user_id:id).order("created_at DESC")
     @comments = Comment.where(user_id:id).order("created_at DESC")
     
   end

@@ -1,1 +1,29 @@
-<h1>PENIS</>
+<h1>Listing Pins</h1>
+
+<table>
+  <tr>
+    <th>Pin Name</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+
+  <% @pins.each do |pin| %>
+    <tr>
+      <td><%= pin.name %></td>
+      <td><%= pin.description %></td>
+      <td><%= link_to 'Show', pin_path(pin) %></td>
+      <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+
+      <td><%= link_to 'Destroy', pin_path(pin),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+
+<% if user_signed_in? %>
+<%= link_to 'New Pin', new_pin_path %>
+<% end %>
+
+
+

@@ -1,0 +1,27 @@
+<div>
+	<%= link_to 'Back', root_path %>
+</div>
+
+<h1>All pins by you</h1>
+<ul>
+<% @pins.each do |pin| %>
+	<%= link_to pin_path(pin) do %>
+	  <li><%= pin.title %></li>
+	<% end %>
+<% end %>
+</ul>
+
+<h1>All comments by you</h1>
+<ul>
+	<% @comments.each do |comment| %>
+	<div>
+		<h3>Comment: </h3>
+		<div>
+			<%= comment.body %>
+		</div>
+		<div>
+			<%= comment.created_at %>
+		</div>
+	</div>
+<% end %>
+</ul>

@@ -1,0 +1,33 @@
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <div>
+  	<%= image_tag (@pin.image_url) %>
+	</div>
+</p>
+
+<% if user_signed_in? %>
+	<div>
+		<%= link_to 'New comment', new_pin_comment_url(@pin) %>
+	</div>
+<% end %>
+
+<div>
+	<%= link_to 'Back', root_path %>
+</div>
+
+<% @pin.comment.each do |comment| %>
+	<div>
+		<h3>Comment: </h3>
+		<div>
+			<%= comment.body %>
+		</div>
+		<div>
+			<%= comment.created_at %>
+		</div>
+	</div>
+<% end %>

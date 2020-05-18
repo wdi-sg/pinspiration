@@ -1,0 +1,14 @@
+<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+    <p>
+      <%= form.label :Title %>
+      <%= form.text_field :title %>
+    </p>
+    <p>
+      <%= form.label :Image %>
+      <%= form.text_area :image %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+  <%= link_to 'Back', root_path %> 

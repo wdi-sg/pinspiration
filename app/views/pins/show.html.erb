@@ -10,7 +10,7 @@
 
 <p>
   <strong>Created by:</strong>
- <% @pin.usernames.each do |username| %>
-<p> <%= username.name %></p>   
-  <% end %>      
+
+ <%= @pin.user.username.name %>
+     
 </p>

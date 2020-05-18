@@ -14,9 +14,9 @@
     <tr>
       <td><%= pin.title.capitalize %></td>
       <td><%= image_tag(pin.image_url) %></td>
-      <% @pins.usernames.each do |username| %>
-        <td> <%= username.name %></td>   
-        <% end %>
+ 
+        # <td> <%= pin.user.username.name %></td>   
+    
        <td><%= link_to 'Show', pin_path(pin) %></td>
 
     

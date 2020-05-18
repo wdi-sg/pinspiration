@@ -1,5 +1,5 @@
-class Comment < ActiveRecord::Base
+class Username < ActiveRecord::Base
   belongs_to :user
-  has_many :pin
+  has_many :pins
   
 end

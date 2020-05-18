@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   root 'pins#index'
 
-  get '/usernames' => 'usernames#index', as: 'customers'
-  # get '/customers/new' => 'customers#new', as: 'new_customer'
+  get '/usernames' => 'usernames#index', as: 'usernames'
+  get '/usernames/new' => 'usernames#new', as: 'new_username'
   post '/usernames' => 'usernames#create'
   get '/usernames/:id' => 'usernames#show', as: 'username'
 

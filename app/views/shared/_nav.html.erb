@@ -1,0 +1,11 @@
+    <div class="container text-center heading">
+    <h2>
+        <a href="<%= pins_path %>">All Pins</a>
+
+    </h2>
+    <% if user_signed_in? %>
+      <%= link_to 'Logout', destroy_user_session_url, method: :delete %>
+    <% else %>
+      <%= link_to 'log in', new_user_session_url %>
+    <% end %>
+    </div>

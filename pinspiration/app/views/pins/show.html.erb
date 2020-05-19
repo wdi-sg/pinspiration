@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<h1>Pin</h1>
+<div class="card mb-4" style="width: 18rem;">
+  <img class="card-img-top" src=<%= @pin.image %> alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-text">Title: <%= @pin.title %></h5>
+    <p class="card-text">
+      <%= @pin.created_at.getlocal.strftime("%d %B %Y, %H:%M") %>
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <% @pin.comment.each do |comment| %>
+      <li class="list-group-item">
+        <%= comment.content %><br/>
+        <% @user = User.find(comment.user_id) %>
+        <small class="text-muted"><%= @user.email %> | <%= comment.created_at.getlocal.strftime("%d %B %Y, %H:%M") %></small><br/>
+        <% if current_user.id == comment.user_id%>
+          <small class="text-muted"><%= link_to 'Edit', edit_pin_comment_path(@pin, comment), class:"text-primary"%>&nbsp;
+            <%= link_to 'Destroy', pin_comment_path(@pin, comment), method: :delete, data: { confirm: 'Are you sure?' }, class:"text-primary" %>
+          </small>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="card-body">
+  <p class="mb-0">
+    <% @pin.tags.each do |tag| %>
+      <% str = "#" + tag.tagname %>
+      <%= link_to str, tag_path(tag), class:"text-primary" %>&nbsp;
+    <% end %>
+  </p>
+  </div>
+  <div class="card-body">
+    <%= link_to 'New Comment', new_pin_comment_path(@pin), class:"btn btn-primary text-white" %>
+  </div>
+</div>
+<%= link_to 'Back', pins_path %>

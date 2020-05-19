@@ -1,0 +1,67 @@
+<div class="mx-auto text-center">
+
+<h1><%= @board.title %></h1>
+
+<p>By @<%= @board.user.username %>
+</p>
+
+<p><%= link_to "Edit Board", edit_board_path(@board) %>
+</p>
+
+</div>
+
+
+
+
+<% if @pins.length!=0 %>
+
+<div class="card-columns">
+
+<% @pins.each do |pin| %>
+  <div class="card">
+
+  <%= image_tag(pin.img_url, :class => "card-img-top") %>
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to pin.title, pin_path(pin) %></h5>
+      <p class="card-text"><%= pin.text %> </p>
+            <footer class="blockquote-footer">
+        <small class="text-muted">
+          Pin by <%= pin.user.username %> | <%= time_ago_in_words(pin.created_at) %> ago, <%= pin.comments.count %> comment<%="s" if pin.comments.count!=1 %>
+          </small>
+      </footer>
+    </div>
+  </div>
+
+  <% end %>
+</div>
+
+<% else %>
+
+<div class="mx-auto text-center">
+
+<h4>This board has no pins yet!</h4>
+
+<% if @board.user.id==current_user.id %>
+
+
+
+<%= form_with scope: :board, url: board_pins_path(@board), local: true, include_hidden: false do |form| %>
+        
+        <p>
+        <%= form.collection_check_boxes :pin_ids, Pin.all, :id, :title %>
+        </p>
+        
+        <%= form.submit("Yes!") %>
+<% end %> 
+
+<%end%>
+
+</div>
+
+<%end %>
+
+
+
+
+
+

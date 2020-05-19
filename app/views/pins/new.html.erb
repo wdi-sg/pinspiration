@@ -1,0 +1,44 @@
+
+
+<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+
+
+  <% if @pin.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@pin.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @pin.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, :required => true %>
+  </p>
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_field :text, :required => true %>
+  </p>
+    <p>
+    <%= form.label :img_url, "Image URL" %><br>
+    <%= form.text_field :img_url, :required => true %>
+  </p>
+
+  <p>
+      <%= form.label :tags, "Tags" %><br>
+
+          <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+

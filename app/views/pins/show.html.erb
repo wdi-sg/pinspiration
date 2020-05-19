@@ -1,0 +1,85 @@
+<div class="container mx-auto">
+
+<%= link_to "Previous", pin_path(@pin.id-1), :class => "btn btn-dark my-3" if @pin.id!=1 %>
+<%= link_to "Next", pin_path(@pin.id+1), :class => "btn btn-dark my-3" if @pin.id!=Pin.count %>
+
+
+
+<div class="row">
+
+      <div class="col-6">
+
+      <h3><%= @pin.title %></h3>
+      <br/> By @<%= @pin.user.username %>
+      <br/><%= @pin.text %>
+
+      <p>Tags:
+      <% @pin.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag) %>,
+      <% end %>
+      </p>
+
+
+      </div>
+
+      <div class="col-6">
+      <%= image_tag @pin.img_url, :class => "img-fluid" %>
+      </div>
+      
+</div>
+
+<% if current_user==@pin.user %>
+
+<h1 class="my-4">Modify Tags</h1>
+<%= form_with scope: :pin, model: @pin, local: true, include_hidden: false do |form| %>
+        
+        <p>
+        <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+        </p>
+        
+        <%= form.submit("Update Tags") %>
+<% end %> 
+
+
+<% end %>
+
+<h4 class="my-4">Add To Your Boards</h4>
+<%= form_with scope: :pin, url: pins_add_board_path, local: true, include_hidden: false do |form| %>
+        
+        <p>
+        <%= form.collection_check_boxes :board_ids, current_user.boards, :id, :title %>
+        </p>
+        
+        <%= form.submit("Yes!") %>
+<% end %> 
+
+<h4 class="mt-5">Leave A Comment</h4>
+<p>
+      <%= form_with scope: :comment, url: pin_comments_path(@pin), local: true do |form| %>
+    <%= form.text_field :text, :required => true %>
+  </p>
+  <p>
+    <%= form.submit("Go!") %>
+  </p>
+<% end %>
+</p>
+
+
+<h5>Comments</h5>
+
+<% if @pin.comments.length!=0 %>
+
+<% @pin.comments.each do |comment| %>
+<p>
+<h6>@<%= comment.user.username %> <%= comment.created_at.localtime.strftime("at %I:%M:%S | %m %b %Y") %> </h6>
+<%= comment.text %>
+
+</p>
+<% end %>
+
+<% else %>
+
+No comments yet. 
+<% end %>
+
+</div>

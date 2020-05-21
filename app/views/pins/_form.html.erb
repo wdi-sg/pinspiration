@@ -1,0 +1,33 @@
+<%= form_with(model: pin, local: true) do |form| %>
+  <% if pin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pin.errors.count, "error") %> prohibited this pin from being saved:</h2>
+
+      <ul>
+      <% pin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :img_url %>
+    <%= form.text_field :img_url %>
+  </div>
+
+  <div class="board">
+    <%= form.label :board_id %>
+    <%= form.collection_select :board_id, @boards, :id, :name, { include_blank: true }, { class: 'browser-default' } %>
+  </div>
+
+  <hr />
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

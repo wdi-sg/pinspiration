@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col m4 valign-wrapper center-align">
+    <%= image_tag @pin.img_url, class: "responsive-img"%>
+  </div>
+  <div class="col m8">
+    <h4><%= @pin.title %></h4>
+    <% @pin.tags.each do |tag| %>
+      <%= link_to tag.tag, tag_path(tag.tag), class: "chip" %>
+    <% end %>
+    <p>Posted by <%= @pin.user.username %> <%= time_ago_in_words(@pin.created_at) %> ago.</p>
+    <hr/>
+    <h5>Comments</h5>
+    <ul>
+      <% @comments.each do |comment| %>
+        <li><%= comment.body %><br />
+        <em>- Posted by <%= comment.user.username %> <%= time_ago_in_words(comment.created_at) %> ago.</em>
+        <td>
+          <% if user_signed_in? && comment.user_id == current_user.id %>
+            <%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+        <br/></li>
+      <% end %>
+    <% if user_signed_in? %>
+      <%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+        <p>
+          <strong>Add a comment:</strong><br/>
+          <%= form.label :comment %><br>
+          <%= form.text_field :body %>
+        </p>
+          <%= form.hidden_field :pin_id, value: @pin.id %>
+          <%= form.submit :class => "waves-effect waves-light btn" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<% if user_signed_in? && @pin.user_id == current_user.id %>
+  <%= link_to edit_pin_path(@pin), class: "waves-effect waves-light btn" do %>
+    <i class="material-icons left">edit</i>edit
+  <% end %>
+  <%= link_to @pin, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn" do %>
+    <i class="material-icons left">delete</i>delete
+  <% end %>
+<% end %>
+ <%= link_to 'Back', pins_path, class: "waves-effect waves-light btn" %>

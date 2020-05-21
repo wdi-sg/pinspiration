@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pins</h1>
+
+<p>
+  <%= link_to new_pin_path, class: "waves-effect waves-light btn-large" do %>
+    <i class="material-icons left">create</i>create new pin
+  <% end %>
+</p>
+
+<hr />
+
+<%= render "pin_cards" %>

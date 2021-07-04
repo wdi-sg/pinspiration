@@ -1,0 +1,20 @@
+<h2>
+<%= @pin.title  %>
+</h2>
+
+<div>
+    <h6>Pinned by: <%= @pin.user.email %></h6>
+</div>
+
+
+<img src="<%=@pin.media_url%>" width="auto" height="400" border="2"/>
+
+
+<button type="button" class="btn btn-warning">
+    <%= link_to 'Back', root_path %>
+</button>
+
+
+<button type="button" class="btn btn-warning">
+    <%= link_to 'Delete', pin_path, method: :delete, data: { confirm: "Do you really want to delete this pin? 🧐" } %>
+</button>

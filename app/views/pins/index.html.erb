@@ -1,0 +1,21 @@
+<div>
+    <button type="button" class="btn btn-warning">
+    <%= link_to "Add a New Pin", new_pin_path %>
+    </button>
+</div>
+
+
+
+<div class="container">
+    <%= @pins.each do |pinimage| %>
+</div>
+
+
+ <div class="container">
+    <p><%=pinimage.title%></p>
+    <p><a href=<%=pin_path(pinimage)%>></p>
+    <img src="<%=pinimage.media_url%>" width="600" height="auto" border="2" border-radius: 50px />
+  </div>
+
+
+<% end %>

@@ -1,0 +1,16 @@
+<div class="card-columns d-inline-block">
+  <% @pins.each do |pin| %>
+    <div class="card text-center">
+      <img class="card-img-top" src=<%= pin.image_url %> alt=<%= pin.title %>>
+      <div class="card-body">
+        <h3 class="card-title"><%= pin.title %></h3>
+        <%= link_to "Read More", pin_path(pin), :class => "btn btn-primary" %>
+      </div>
+      <div class="card-footer">
+        <div>
+          <small class="text-muted">Last updated on <%= pin.updated_at.to_s(:db) %></small>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

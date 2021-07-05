@@ -1,0 +1,16 @@
+<nav>
+    <%= link_to 'Create Pin', new_pin_path %>
+    <%= link_to 'Logout', destroy_user_session_url, method: :delete %>
+</nav>
+
+<h1>Pin Index</h1>
+
+<% if @pins.length > 0 %>
+    <% @pins.each do |pin| %>
+        <p><%= link_to pin.title, pin_path(pin.id) %></p>
+        <%= image_tag(pin.image_url.url, alt: 'Image') if pin.image_url? %>
+        <!-- <img src="<%= pin.image_url %>" style="width: 300px; height: 200px" /> -->
+    <% end %>
+<% else %>
+    <p>You have no pins.</p>
+<% end %>

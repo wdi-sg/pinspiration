@@ -94,3 +94,9 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+# By default, files will be placed inside the public/uploads directory, so it is best to exclude it from the version control system
+public/uploads

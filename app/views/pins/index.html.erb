@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pinspiration</h1>
+<div>
+	<% if user_signed_in? %>
+		<%= link_to 'New Pin', new_pin_path %> |
+		<%= link_to 'Log Out', destroy_user_session_url, method: :delete %>
+	<% else %>
+		<%= link_to 'Sign up', new_user_registration_url %> |
+		<%= link_to 'Log In', new_user_session_url %>
+	<% end %>
+</div>
+<div class="container">
+	<div class="card-columns">
+	    <% @pins.each do |pin| %>
+	      <div class="card">
+		      <img src= <%= pin.pin_url %> class="card-img-top">
+		      <div class="card-body">
+			      <h5 class="card-title"><%= pin.title %></h5>
+			      <p class="card-text">by <%= link_to pin.user.username, user_path(id: pin.user_id) %></p>
+		        <p class="card-text"><%= link_to 'Show', pin %>|
+		        <%= link_to 'Edit', edit_pin_path(pin) %>|
+		        <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+		        <p class="card-text"><small class="text-muted"><%= pin.created_at %></small></p>
+	      	</div>
+	      </div>
+	    <% end %>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<h1>Editing Pin</h1>
+
+<%= form_with scope: :pin, model: @pin, local: true do |form| %>
+
+	<p>
+		<%= form.label :pin_url %><br>
+		<%= form.url_field :pin_url, required: true %>
+	</p>
+
+	<p>
+		<%= form.label :title %><br>
+		<%= form.text_field :title, required: true %>
+	</p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Show', @pin %> |
+<%= link_to 'Homepage', pins_path %>

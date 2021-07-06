@@ -1,0 +1,20 @@
+<% if current_user %>
+
+      <p>Hello! <%= current_user[:email] %> | <%= link_to 'log out', destroy_user_session_url, method: :delete %>      
+
+      <br/>
+
+      <p>pins | <%= link_to 'create pins', new_pin_path %> </p>
+      <% puts @pins %>
+      <ul>
+      <% @pins.each do |pin| %>
+      <li><%= link_to pin.title, pin_path(pin) %></li>
+      <% end %>
+      </ul>
+
+<% else %>
+      <p>Please <%= link_to 'log in', new_user_session_url %> to view and create pins</p>
+<% end %>
+
+
+

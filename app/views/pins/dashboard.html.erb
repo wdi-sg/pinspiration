@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="jumbotron col-8">
+		<h1 class="display-4">Your Pins</h1>
+		<div class="card-columns">
+			<% @pins.each do |pin| %>
+				<div class="card">
+			    <a href="/pins/<%= pin.id %>" class="stretched-link"><img src="<%= pin.img_src %>" class="card-img-top"/></a>
+			    <div class="card-body">
+			      <h5 class="card-title"><%= pin.title %></h5>
+			      <p class="card-text"><small class="text-muted">Created at <%= distance_of_time_in_words(Time.now,pin.created_at) %></small></p>
+			    </div>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+	<div class="jumbotron col-4">
+		<h1 class="display-4">Your Comments</h1>
+		<% @comments.each do |comment|%>
+			<div class="card mb-3">
+			  <div class="row no-gutters">
+			    <div class="col-5">
+			      <a href="/pins/<%= comment.pin.id %>" class="stretched-link"><img src="<%= comment.pin.img_src %>" class="card-img"/></a>
+			    </div>
+			    <div class="col-7">
+			      <div class="card-body p-0 mx-3">
+			      	<h5 class="card-title"><%= comment.pin.title %></h5>
+			        <p class="card-text"><%= comment.body %></p>
+			        <p class="card-text"><small class="text-muted">Created <%= distance_of_time_in_words(Time.now,comment.created_at) %> ago</small></p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		<% end %>
+	</div>
+</div>

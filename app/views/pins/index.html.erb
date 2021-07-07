@@ -1,0 +1,40 @@
+<h1>Hello</h1>
+
+<h1>Listing pins</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Created on</th>
+      <th scope="col">Updated on</th>
+      <th scope="col">Show</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  	  <% @pins.each do |pin| %>
+    <tr>
+      <td><%= pin.title %></td>
+      <td><%= image_tag pin.media_url %></td>
+      <td><%= pin.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %></td>
+      <td><%= pin.updated_at.strftime("Posted on %m/%d/%Y at %I:%M%p") %></td>
+      <td><%= link_to 'Show', pin_path(pin) %></td>
+      <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+      <td><%= link_to 'Destroy', pin_path(pin),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+	<% if user_signed_in? %>
+		<%= link_to 'New pin', new_pin_path %>
+		<%= link_to 'log out', destroy_user_session_url, method: :delete %>
+	<% else %>
+		<%= link_to 'log in', new_user_session_url %>
+<% end %>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pinterest</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= image_tag "pinterest.svg" , size: "70" %>
+        
+        <div class="w-100 d-flex justify-content-end">
+          <div class="p-2">
+            <% if current_user%>
+              <p>Logged in as <%= current_user.email %></p>
+            <% end %>
+          </div>
+
+          <div class="ml-0">
+          <%= link_to 'Board Menu', boards_path, :class => "btn btn-outline-secondary" %>
+          </div>
+
+          <div>
+          <%= link_to 'Log Out', destroy_user_session_url, :class => "btn btn-outline-secondary" %>      
+          </div>
+        </div>
+
+      
+      
+    </nav>
+    
+
+    <%= yield %>
+  </body>
+</html>

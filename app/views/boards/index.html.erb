@@ -1,0 +1,45 @@
+<div class="board_tbody_content">
+
+<h1>Boards</h1>
+<p>List of all the boards</p>
+
+<%= form_tag boards_path, :method => "get" do %>
+  <%= text_field_tag :spam, params[:duck].to_s.split("=")[1], class: "search_boards" %>
+  <% end %>
+
+<ul class="list-group">
+<% @boards.each do |board|%>
+  <li class="list-group-item"><a href="/boards/<%= board.id %>" ><%= board.name%></a></li>
+
+<% end %>
+</ul>
+
+
+</div>
+
+<script type="text/javascript">
+
+
+  
+  $(".search_boards").keyup(function() {
+               $.ajax({
+                  url: '/boards',
+                  data: {duck: $(this).serialize()},
+                  success: function(response) {
+                
+                  
+                  $('body').html(response)
+                  },
+               });
+           });
+  
+    $(document).ready(function() {
+  
+    var input = $(".search_boards");
+    var len = input.val().length;
+    input[0].setSelectionRange(len, len);
+    input[0].focus();
+
+});
+</script>
+

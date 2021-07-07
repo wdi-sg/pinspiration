@@ -1,0 +1,63 @@
+
+<h1><%= @board.name%></h1>
+
+<h5>Owned by <%= @board.user.email %></h5>
+
+<% if current_user.id == @board.users_id%>
+  <%= link_to 'Create new pin', '/pins/new?board=' + @board.id.to_s  %>
+<% else %>
+  <%= "You can't create Post" %>
+<% end %>
+<%= %>
+<% %>
+
+<div class="d-flex flex-column">
+<% @pins.each do |pin| %>
+<div class="mx-auto">
+  <img height="200" width="200" src=<%= pin.img_link %>/>
+</div>
+  <div class="mx-auto">
+    <% @comments.where(pins_id: pin.id).each do |comment| %>
+      <div class=" px-0">
+        <div><strong ><%= comment.user.email %></strong></div>
+          <%= form_with scope: :comment, url: "/comments/#{comment.id}?board=#{@board.id}", method: :delete,local: true do |form| %>
+            <button type="submit" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            
+              <%= form.hidden_field :comments_id, :value => comment.id %>
+            
+          <% end %>
+        <div><%= comment.text %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mx-auto">
+  <%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+     <div class="col-md-6 px-0">
+      <%= form.label :text, 'Comment' %><br>
+      <%= form.text_field :text, :class=>"input-xxlarge" %>
+    </div>
+
+    <p>   
+      <%= form.hidden_field :users_id, :value => current_user.id %>
+    </p>
+
+    <p>
+      <%= form.hidden_field :pins_id, :value => pin.id %>
+    </p>
+
+    <p>
+      <%= form.hidden_field :boards_id, :value => @board.id %>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+</div>
+
+<% end %>
+
+</div>

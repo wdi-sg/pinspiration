@@ -1,0 +1,16 @@
+<h1>New Pin</h1>
+
+<%= form_with scope: :pin, url: pins_path, local: true do |form| %>
+  <p>
+    <%= form.label :img_link , 'Image Link' %><br>
+    <%= form.text_field :img_link %>
+  </p>
+
+  <p>
+	  <%= form.hidden_field :boards_id, :value => @boards_id %>
+	</p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

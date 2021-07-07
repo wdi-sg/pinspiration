@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+begin
+  load File.expand_path('../spring', __FILE__)
+rescue LoadError => e
+  raise unless e.message.include?('spring')
+end
+APP_PATH = File.expand_path('../config/application', __dir__)
+require_relative '../config/boot'
+require 'rails/commands'
+
+
+
+
+def render(partial, locals = {})
+  Haml::Engine.new(File.read("_#{partial}.html.haml")).render(Object.new, locals)
+end
